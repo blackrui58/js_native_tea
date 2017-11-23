@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oH1 = document.getElementsByTagName('h1')[0];
+		setInterval(function () {
+			var oDate = new Date();
+			// 当前的时间戳
+			var nowTime = oDate.getTime();
+			
+			// 目的时间戳
+			// 设置时间
+			oDate.setFullYear(2018,0,1);
+			oDate.setHours(0,0,0);
+			var targetTime = oDate.getTime();
+
+			//倒计时的总时间(秒)
+			var distance = parseInt((targetTime - nowTime) / 1000);
+
+			// 天
+			var day = parseInt(distance / 86400);
+			// 剩下的秒数
+			var a = distance % 86400;
+			// 时
+			var hour = parseInt(a / 3600);
+			// 剩下的秒数
+			var b = a % 3600;
+
+			//分
+			var mintues = parseInt(b / 60);
+
+			//秒数
+			var seconds = b % 60;
+
+			oH1.innerHTML = day+'天'+hour+'小时'+mintues+'分'+seconds+'秒';
+
+
+		},1000);
+	}
+	</script>
+</head>
+<body>
+	距离国庆还有
+	<h1></h1>
+</body>
+</html>

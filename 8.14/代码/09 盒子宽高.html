@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	div {
+		width: 200px;
+		height: 200px;
+		background-color: red;
+		border: 10px solid #000;
+		padding: 10px;
+	}
+	</style>
+	<script type="text/javascript">
+	function getStyle (obj,attr) {
+		if (obj.currentStyle) {
+			return obj.currentStyle[attr];
+		} else {
+			return getComputedStyle(obj,false)[attr];
+		}
+
+	}
+	window.onload = function () {
+		var oDiv = document.getElementsByTagName('div')[0];
+		// alert(oDiv.style.width);
+		// alert(getStyle(oDiv,'width'));
+		console.log(oDiv.clientWidth,oDiv.clientHeight);
+		console.log(oDiv.offsetWidth,oDiv.offsetHeight);
+	}
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

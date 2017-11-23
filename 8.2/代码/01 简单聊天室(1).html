@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 280px;
+			height: 528px;
+			background-color: #ccc;
+			color: #fff;
+			padding: 20px;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<input type="text" value="我" readonly />: <input type="text" /> <button>发送</button> <br />
+	<input type="text" value="你" readonly />: <input type="text" /> <button>发送</button> <br />
+</body>
+</html>
+<script type="text/javascript">
+	var aBtn = document.getElementsByTagName('button');
+
+	var oDiv = document.getElementsByTagName('div')[0];
+	var aInput = document.getElementsByTagName('input');
+	// 我说的发送
+	aBtn[0].onclick = function () {
+		oDiv.innerHTML = oDiv.innerHTML + '我说:' + aInput[1].value + '<br>';
+		aInput[1].value = '';
+	}
+
+	aBtn[1].onclick = function () {
+		oDiv.innerHTML = oDiv.innerHTML + '你说:' + aInput[3].value + '<br>';
+		aInput[3].value = '';
+	}
+
+
+</script>

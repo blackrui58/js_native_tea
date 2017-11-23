@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="jsonp.js"></script>
+	<script type="text/javascript">
+
+
+	// var a = 10;
+	// alert(window.a)
+	window.onload = function () {
+		var oInput = document.getElementsByTagName('input')[0];
+		var oUl = document.getElementsByTagName('ul')[0];
+		var oHead = document.getElementsByTagName('head')[0];
+		// 下标
+		var iNow = -1;
+
+		// 原来的值
+		var oldVal = '';
+		oInput.oninput = oInput.propertychange = function () {
+			iNow = -1;
+			jsonp({
+				url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+				data: {wd: oInput.value},
+				success: function (str) {
+					var arr = str.s;
+					oUl.innerHTML = '';
+					for (var i = 0;i < arr.length;i++) {
+						// 创建Li
+						var oLi = document.createElement('li');
+						oLi.innerHTML = arr[i];
+						oUl.appendChild(oLi);
+					}
+					oUl.style.border = '1px solid #ccc';
+					if (oInput.value.length == 0) {
+						oUl.style.border = 'none';
+					}
+				}
+			});
+		}
+
+		oInput.onfocus = function () {
+			this.style.borderColor = '#4791ff';
+		}
+		oInput.onblur = function () {
+			this.style.borderColor = '#ccc';
+		}
+		// 鼠标摁下
+		oInput.onkeydown = function (evt) {
+			evt = evt || window.event;
+			var aLi = oUl.children;
+			if (aLi.length > 0) {
+				// 上是38 下是40
+				if (evt.keyCode == 40) {
+					iNow++;
+					if (iNow == aLi.length) {
+						iNow = -1;
+					}
+					tab(aLi);
+				}
+				if (evt.keyCode == 38) {
+					iNow--;
+					if (iNow == -2) {
+						iNow = aLi.length - 1;
+					}
+					tab(aLi);
+					return false;
+				}
+				if (evt.keyCode == 13) {
+					// window.open('https://www.baidu.com/s?wd='+this.value,'_self');
+					// 设置url地址
+					location.href = 'https://www.baidu.com/s?wd='+this.value;
+				}
+
+
+
+			}
+		
+		}
+		// 清空给自己添加
+		function tab (aLi) {
+			for (var i = 0;i < aLi.length;i++) {
+					aLi[i].className = '';
+				}
+				if(iNow >= 0) {
+					aLi[iNow].className = 'active';
+					oInput.value = aLi[iNow].innerHTML;
+				} else if (iNow == -1){
+					oInput.value = oldVal;
+				} 
+		}
+		
+	}
+	</script>
+
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		div {
+			width: 300px;
+			margin: 100px auto;
+		}
+		input {
+			width: 300px;
+			height: 30px;
+			outline: none;
+			border: 1px solid #ccc;
+		}
+		ul {
+			width: 300px;
+		}
+
+		li {
+			height: 30px;
+			line-height: 30px;
+		}
+		li.active {
+			background: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="text" />
+		<ul></ul>
+	</div>
+</body>
+</html>

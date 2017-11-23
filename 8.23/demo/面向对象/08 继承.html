@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	// 人
+	function Person (name,age) {
+		// this-->worker的this
+		this.name = name;
+		this.age = age;
+	}
+
+	// 工人
+	function Worker (name,age) {
+		//  Worker的对象
+		// Person.call(this,name,age);
+		Person.apply(this,arguments);
+	}
+	// var p1 = new Person('zs',20);
+	var w1 = new Worker('ls',30);
+	console.log(w1);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

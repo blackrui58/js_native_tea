@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	// var a = 10;
+	// alert(window.a)
+	window.onload = function () {
+		var oInput = document.getElementsByTagName('input')[0];
+		var oUl = document.getElementsByTagName('ul')[0];
+		var oHead = document.getElementsByTagName('head')[0];
+		oInput.oninput = oInput.propertychange = function () {
+			var src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?cb=show&wd='+this.value;
+			// 手动创建script标签
+			var oScript = document.createElement('script');
+			// 添加
+			oHead.appendChild(oScript);
+			oScript.src = src;
+		}
+		// 相当于把show变成了全局函数
+		window.show = function (str) {
+			var arr = str.s;
+			oUl.innerHTML = '';
+			for (var i = 0;i < arr.length;i++) {
+				// 创建Li
+				var oLi = document.createElement('li');
+				oLi.innerHTML = arr[i];
+				oUl.appendChild(oLi);
+			}
+		}
+
+		// function show (str) {
+		// 	var arr = str.s;
+		// 	console.log(arr);
+		// 	for (var i = 0;i < arr.length;i++) {
+		// 		// 创建Li
+		// 		var oLi = document.createElement('li');
+		// 		oLi.innerHTML = arr[i];
+		// 		oUl.appendChild(oLi);
+		// 	}
+		// }
+
+	}
+	</script>
+
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		div {
+			width: 300px;
+			margin: 100px auto;
+		}
+		input {
+			width: 300px;
+			height: 30px;
+
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+		<input type="text" />
+		<ul></ul>
+	</div>
+</body>
+</html>

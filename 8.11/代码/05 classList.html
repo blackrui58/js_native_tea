@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	.box1 {
+		width: 200px;
+		height: 200px;
+		background-color: red;
+	}
+	</style>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oDiv = document.querySelector('div');
+		document.onclick = function () {
+			//添加
+			// oDiv.classList.add('box1');
+			//删除
+			// oDiv.classList.remove('box');
+			// 开关
+			oDiv.classList.toggle('box1');
+		}
+		// console.log(oDiv.classList[0]);
+		// 添加类名
+	}
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

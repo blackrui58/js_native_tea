@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		#box {
+			width: 310px;
+			margin: 0 auto;
+		}
+		#box .top button {
+			width: 80px;
+			height: 30px;
+			background: #ccc;
+			margin: 10px 10px;
+			outline: none;
+		}
+		#box .bottom div {
+			height: 200px;
+			border: 1px solid red;
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload = function () {
+		var aBtn = document.getElementsByTagName('button');
+		// 父元素
+		var oBottom = document.getElementById('bottom');
+		var aDiv = oBottom.getElementsByTagName('div');
+		// 默认显示和选中第一个
+		aBtn[0].style.background = 'red';
+		aDiv[0].style.display = 'block';
+
+		// 给每个按钮添加点击事件
+		for (var i = 0;i < aBtn.length;i++) {
+			aBtn[i].onclick = function (){
+				// 先清空所有的颜色
+				// 先隐藏所有,再给点击对应的div显示
+				for (var j = 0;j < aBtn.length;j++) {
+					aBtn[j].style.background = '#ccc';
+					aDiv[j].style.display = 'none';
+				}
+				// 给点击的按钮添加样式
+				this.style.background = 'red';
+				// this-->点击的按钮
+				// alert(this.title);
+				// 点击每个按钮显示中考的内容
+				aDiv[this.title].style.display = 'block';
+				// aDiv[1].style.display = 'block';
+				// aDiv[2].style.display = 'block';
+				// 点第一个按钮,aDiv的下标为0
+				// 点第二个按钮,aDiv的下标为1
+				// 点第三个按钮,aDiv的下标为2
+			}
+		}
+
+	}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div class="top">
+			<button title="0">初中</button>
+			<button title="1">中考</button>
+			<button title="2">高中</button>
+		</div>
+		<div class="bottom" id="bottom">
+			<div>初中的内容</div>
+			<div>中考的内容</div>
+			<div>高中的内容</div>
+		</div>
+	</div>
+</body>
+</html>

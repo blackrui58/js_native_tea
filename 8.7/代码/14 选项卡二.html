@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		#box {
+			width: 310px;
+			margin: 0 auto;
+		}
+		#box .top button {
+			width: 80px;
+			height: 30px;
+			background: #ccc;
+			margin: 10px 10px;
+			outline: none;
+			border: 1px solid blue;
+		}
+		#box .bottom div {
+			height: 200px;
+			border: 1px solid red;
+			display: none;
+		}
+		/* 选中的类名 */
+		#box .top button.selected {
+			border-bottom: 3px solid red;
+			font-weight: bold;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload = function () {
+		var aBtn = document.getElementsByTagName('button');
+		// 父元素
+		var oBottom = document.getElementById('bottom');
+		var aDiv = oBottom.getElementsByTagName('div');
+		// 默认显示和选中第一个
+		aBtn[0].className = 'selected';
+		aDiv[0].style.display = 'block';
+
+		// 给每个按钮添加点击事件
+		for (var i = 0;i < aBtn.length;i++) {
+			// 当i = 0; aBtn[0].index = 0
+			// 当i = 1; aBtn[1].index = 1
+			// 当i = 2; aBtn[2].index = 2
+			aBtn[i].index = i;
+			aBtn[i].onmouseover = function (){
+				// 先清空所有的颜色
+				// 先隐藏所有,再给点击对应的div显示
+				for (var j = 0;j < aBtn.length;j++) {
+					aBtn[j].className = '';
+					aDiv[j].style.display = 'none';
+				}
+				// 给点击的按钮添加样式
+				// this.style.background = 'red';
+				this.className = 'selected';
+
+				// this-->点击的按钮
+				// alert(this.index);
+				// 点击每个按钮
+				// 下标值: 0 1 2
+				aDiv[this.index].style.display = 'block';
+				
+			}
+		}
+
+	}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div class="top">
+			<button>初中</button>
+			<button>中考</button>
+			<button>高中</button>
+		</div>
+		<div class="bottom" id="bottom">
+			<div>初中的内容</div>
+			<div>中考的内容</div>
+			<div>高中的内容</div>
+		</div>
+	</div>
+</body>
+</html>

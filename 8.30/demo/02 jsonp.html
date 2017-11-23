@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+	$(document).click(function () {
+		// https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=a&cb=jQuery1102020063111223803753_1504057862404&_=1504057862409
+		// $.ajax({
+		// 	url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+		// 	data: {wd: 'a'},
+		// 	dataType: 'jsonp',
+		// 	jsonp: 'cb',
+		// 	success: function(str) {
+		// 		console.log(str);
+		// 	}
+		// });
+		//https://sug.so.360.cn/suggest?callback=suggest_so&word=%20a
+
+		$.ajax({
+			url: 'https://sug.so.360.cn/suggest',
+			data: {word: 'a'},
+			dataType: 'jsonp',
+			jsonp: 'callback',
+			success: function (str) {
+				console.log(str);
+			}
+		});
+
+	});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

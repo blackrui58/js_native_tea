@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		var aC = document.getElementsByTagName('input');
+
+		var oBtn = document.getElementsByTagName('button')[0];
+
+		oBtn.onclick = function () {
+			for (var i = 0;i < 3;i++) {
+				if (aC[i].checked) {
+					aC[i].checked = false;
+				} else {
+					aC[i].checked = true;
+				}
+			}
+		}
+	}
+	
+	</script>
+</head>
+<body>
+	<input type="checkbox">
+	<input type="checkbox">
+	<input type="checkbox">
+	<button>选择</button>
+</body>
+</html>

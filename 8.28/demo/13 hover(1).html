@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			display: none;
+		}
+	</style>
+	<script type="text/javascript" src="jq1.7.2/jquery.js"></script>
+	<script type="text/javascript">
+	$(function (){
+		// $('button').mouseenter(function () {
+		// 	$('div').show();
+		// });
+		// $('button').mouseleave(function () {
+		// 	$('div').hide();
+		// });
+		$('button').hover(function () {
+			// $('div').show();
+			// $('div').slideDown();
+			// 淡入 (显示)
+			$('div').fadeIn();
+		},function () {
+			// $('div').hide();
+			// $('div').slideUp();
+			// 淡出 (隐藏)
+			$('div').fadeOut();
+		});
+	})
+	</script>
+</head>
+<body>
+	<button>设置</button>
+	<div>	</div>
+</body>
+</html>

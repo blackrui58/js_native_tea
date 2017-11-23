@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	#box {
+		width: 670px;
+		height: 240px;
+		margin: 0 auto;
+		background: pink;
+		position: relative;
+		overflow: hidden;
+	}
+	.ul1 {
+		overflow: hidden;
+		position: absolute;
+		right: 10px;
+		bottom: 0;
+		z-index: 1000;
+	}
+	.ul1 li {
+		float: left;
+		margin: 5px;
+		width: 22px;
+		height: 22px;
+		background: #ccc;
+		text-align: center;
+		line-height: 22px;
+		border-radius: 50%;
+	}
+	.ul1 li.active {
+		background: orange;
+	}
+	.ul1 li a {
+		color: #fff;
+		text-decoration: none;
+	}
+	.ul2 {
+		overflow: hidden;
+		left: -670px;
+		position: absolute;
+		height: 240px;
+	}
+	.ul2 li {
+		/*display: none;*/
+		float: left;
+		position: relative;
+	}
+	.ul2 li span {
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		background-color: #ccc;
+		left: 50%;
+		top: 50%;
+		text-align: center;
+		line-height: 50px;
+		margin: -25px 0 0 -25px;
+	}
+	img {
+		vertical-align: top;
+	}
+	.pre-next {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		margin-top: -30px;
+		height: 60px;
+		width: 100%;
+	}
+	.pre-next a {
+		width: 40px;
+		height: 60px;
+		background: rgba(0,0,0,0.3);
+		color: #fff;
+		text-decoration: none;
+		font-size: 20px;
+		line-height: 60px;
+		position: absolute;
+		text-align: center;
+	}
+	#pre {
+		left: 0;
+	}
+	#next {
+		right: 0;
+	}
+	</style>
+	<script type="text/javascript" src="jq1.7.2/jquery.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		// 下标
+		var iNow = 0;
+		var aLi2 = $('.ul2 li');
+		// 一个li的宽
+		var liW = aLi2.width();
+		// 先设置ul的宽
+		$('.ul2').width(aLi2.length * liW);
+
+		// 下一页
+		$('#next').on('click',nextPage);
+
+		// 上一页
+		$('#pre').on('click',prePage);
+
+		//上一页的函数
+		function prePage () {
+			iNow--;
+			if (iNow == -1) {
+				$('.ul2').stop().animate({left: -(iNow + 1) * liW},100,function () {
+					$('.ul2').css('left',-(aLi2.length - 2) * liW);
+				});
+				iNow = aLi2.length - 3;
+
+			}else {
+				$('.ul2').stop().animate({left: -(iNow + 1) * liW},100);
+			}
+
+			// 改变选项
+			$('.ul1 li').removeClass('active');
+			$('.ul1 li').eq(iNow).addClass('active');
+			
+		}
+
+		// 下一页的函数
+		function nextPage() {
+			iNow++; // 1
+			if (iNow == aLi2.length - 2) {
+				$('.ul2').stop().animate({left: -(iNow + 1) * liW},100,function () {
+					$('.ul2').css('left',-liW);
+				});
+				iNow = 0;
+			} else {
+				// 给ul设置left
+				// $('.ul2').css('left',-(iNow + 1) * liW);
+				$('.ul2').stop().animate({left: -(iNow + 1) * liW},100);
+			}
+
+			// 改变选项
+			$('.ul1 li').removeClass('active');
+			$('.ul1 li').eq(iNow).addClass('active');
+			
+		}
+
+		// 选项卡
+		$('.ul1 li').click(function () {
+			// 先清空所有
+			// 改变选项
+			$('.ul1 li').removeClass('active');
+			iNow = $(this).index();
+			$('.ul1 li').eq(iNow).addClass('active');
+			$('.ul2').stop().animate({left: -(iNow + 1) * liW},100);
+		});
+	})
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul class="ul1" id="ul1">
+			<li class="active"><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">6</a></li>
+		</ul>
+		<ul class="ul2" id="ul2">
+			<li><a href="#"><img src="轮播/pic3.jpg" height="240" width="670"></a><span>-1</span></li>
+			<li style="display: block;"><a href="#"><img src="轮播/pic1.jpg" height="240" width="670"></a><span>0</span></li>
+			<li><a href="#"><img src="轮播/pic2.jpg" height="240" width="670"></a><span>1</span></li>
+			<li><a href="#"><img src="轮播/pic4.jpg" height="240" width="670"></a><span>2</span></li>
+			<li><a href="#"><img src="轮播/pic5.jpg" height="240" width="670"></a><span>2</span></li>
+			<li><a href="#"><img src="轮播/pic6.jpg" height="240" width="670"></a><span>2</span></li>
+			<li><a href="#"><img src="轮播/pic3.jpg" height="240" width="670"></a><span>2</span></li>
+			<li style="display: block;"><a href="#"><img src="轮播/pic1.jpg" height="240" width="670"></a><span>3</span></li>
+		</ul>
+		<div class="pre-next">
+			<a href="javascript:;" id="pre">&lt;</a>
+			<a href="javascript:;" id="next">&gt;</a>
+		</div>
+	</div>	
+</body>
+</html>

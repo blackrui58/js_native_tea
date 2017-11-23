@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		li {
+			margin: 10px;
+		}
+	</style>
+	<script type="text/javascript" src="jq1.7.2/jquery.js"></script>
+	<script type="text/javascript">
+	$(function (){
+		// $('.ul1 li').css('background','#123bfd');
+		// $('.ul1 li:nth-child(8)').css('background','#ccc');
+		// $('.ul1 li:first-child').css('background','#ccc')
+		// $('.ul1 li:last-child').css('background','#ccc')
+		// $('.ul1 li:odd').css('background','#ccc')
+		// $('.ul1 li:even').css('background','orange')
+		// $('.ul1 li:gt(3)').css('background','#ccc')
+		// $('.ul1 li:lt(3)').css('background','#ccc')
+		$('.ul1 li:eq(2)').css('background','#ccc')
+	})
+	</script>
+</head>
+<body>
+	<ul class="ul1">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+			display: none;
+			transition: 1s linear all;
+
+		}
+	</style>
+</head>
+<body>
+	<button onclick="document.getElementById('box').style.display = 'block';">显示</button>
+	<button onclick="document.getElementById('box').style.display = 'none';">隐藏</button>
+	<button onclick="document.getElementById('box').style.width = '300px';document.getElementById('box').style.height = '300px';">变大</button>
+	<button onclick="document.getElementById('box').style.width = '100px';document.getElementById('box').style.height = '100px';">变小</button>
+	<button onclick="document.getElementById('box').style.background = 'red';">变红</button>
+	<button onclick="document.getElementById('box').style.background = 'green';">变绿</button>
+	<button onclick="document.getElementById('box').style.width = '300px';document.getElementById('box').style.height = '300px';document.getElementById('box').style.width = '100px';document.getElementById('box').style.height = '100px';document.getElementById('box').style.background = 'red';document.getElementById('box').style.background = 'green';">全变</button>
+	<button onclick="document.getElementById('box').style.borderRadius = '50%';">变圆</button>
+	<button onclick="document.getElementById('box').style.border = '10px solid red';">边框线</button>
+	<button onclick="document.getElementById('box').style.borderTopColor = '#000';">上边框线黑色</button>
+	<div id="box"></div>
+</body>
+</html>

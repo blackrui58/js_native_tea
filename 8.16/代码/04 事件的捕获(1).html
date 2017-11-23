@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: #000;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oDiv = document.getElementsByTagName('div')[0];
+		oDiv.onclick = function () {
+			alert(1);
+			// 设置捕获
+			oDiv.setCapture();
+			// 释放捕获
+			oDiv.releaseCapture();
+		}
+	}
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

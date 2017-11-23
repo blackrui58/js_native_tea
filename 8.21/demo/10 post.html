@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oBtn = document.getElementsByTagName('button')[0];
+		oBtn.onclick = function () {
+			//1.创建Ajax对象
+			if(window.XMLHttpRequest)
+			{
+				var oAjax=new XMLHttpRequest();
+			}
+			else
+			{
+				var oAjax=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			//2.连接服务器（打开和服务器的连接）
+			// a=10&b=20
+			oAjax.open('POST', 'post.php', true);
+
+			// 设置请求头
+			oAjax.setRequestHeader( "CONTENT-TYPE","application/x-www-form-urlencoded");
+
+			//3.发送
+			//  get  Get GET 
+			//post Post POST
+			oAjax.send('a=10&b=20');
+
+			//4.接收
+			oAjax.onreadystatechange=function ()
+			{
+				if(oAjax.readyState==4)
+				{
+					if(oAjax.status==200)
+					{
+						//alert('成功了：'+oAjax.responseText);
+						alert(oAjax.responseText);
+					}
+					else
+					{
+					
+					}
+				}
+			};
+		}
+	}
+	</script>
+</head>
+<body>
+	<button>post</button>
+</body>
+</html>

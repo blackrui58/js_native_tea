@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="jq1.7.2/jquery.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		$(document).click(function () {
+			// 在div的最后面添加元素
+			var oH1 = $('<h1>这是h1</h1>');
+			// $('div').append(oH1);
+			// appendTo : 添加到谁后面
+			// oH1.appendTo($('div'));
+			// prepend()
+			// $('div').prepend(oH1);
+			// prependTo()
+			// oH1.prependTo($('div'));
+			// insertBefore(): 插入到谁前面
+			// oH1.insertBefore($('p'));
+			// insertAfter(): 插入到谁后面
+			// oH1.insertAfter($('p'));
+			// 删除所有的元素: 包括本身
+			// $('div').remove();
+			// 删除所有的子元素: 不会删除本身
+			// $('div').empty();
+
+			// 删除某个子元素
+			// $('div').remove();
+			// $('a').remove();
+			// console.log($('div').children());
+			// console.log($('div').parent())
+			$('div').children().click(function () {
+				alert(1);
+			})
+		});
+	});
+	</script>
+</head>
+<body>
+	<div>
+		<a href="#">哈哈哈</a>
+		<p>爱生活的三</p>
+	</div>
+</body>
+</html>

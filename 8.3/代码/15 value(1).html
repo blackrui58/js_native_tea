@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		var aInput = document.getElementsByTagName('input');
+		// var oBody = document.getElementsByTagName('body')[0];
+		var oSelect = document.getElementsByTagName('select')[0];
+		aInput[0].onclick = function () {
+			document.body.style.background = oSelect.value;
+			// alert(oSelect.value);
+		}
+
+	}
+	</script>
+</head>
+<body>
+	<!-- <input type="text" /> -->
+	
+	<select>
+		<option value="red">红色</option>
+		<option value="#ccc">灰色</option>
+		<option value="green">绿色</option>
+		<option value="yellow">黄色</option>
+	</select>
+
+	<input type="button" value="变色" />
+</body>
+</html>

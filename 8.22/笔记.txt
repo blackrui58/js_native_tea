@@ -1,0 +1,53 @@
+get,post请求:
+1.get只能发送4kb数据.post一个G
+2.get的参数拼接到url后面,post不需要拼接参数
+3.get的send里面不需要写东西,post需要写参数
+4.post需要设置请求头,get不用
+接收数据的事件:
+oAjax.onreadystatechange = function () {
+	if (oAjax.readyState == 4) {
+		if (oAjax.status>= 200 && oAjax.statu <=299 || oAjax.status == 304) {
+			函数调用;
+			oAjax.responseText;
+		} else {
+
+		}
+	}
+}
+
+使用ajax:
+ajax({
+	type: 'GET',
+	url: url,
+	data: {},
+	success: function (str) {},
+	fail: function (err) {}
+});
+
+以后按照数据创建标签元素的时候,封装一个函数,单独创建;
+如果要做删除操作,还是在该函数里面做
+
+ajax不允许跨域请求数据,只能请求自己本地服务器的接口数据
+
+http://www.a.com    a.txt
+http://www.b.com
+
+jsonp: 跨域取数据
+1.写一个script,把接口地址放到src里面
+2.看callback或者cb后面的值是什么,那么就在前面写一个对应的函数
+3.数据在该函数的形参里面,不需要用eval处理
+4.函数必须是全局函数
+
+jsonp: 子公司取总公司的数据
+
+本质就是函数调用.只不过此函数调用的代码写到了另外一个文件里面
+
+jsonp注意点: script只加载一次后面再重新给src设置值,不会重新加载
+
+如何用ajax实现跨域取数据???
+ajax不能实现跨域取数据,谢谢!
+
+jsonp使用:
+1.先拿接口去浏览器测试
+2.手动写script标签,并且将接口赋值给此src
+3.写全局函数,解析数据 (window.show = function () {})

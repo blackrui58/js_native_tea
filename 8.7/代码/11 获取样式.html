@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+	</style>
+	<script type="text/javascript">
+
+	// 获取样式
+	function getStyle (obj,attr) {
+		// var attr = 'width';
+		if (obj.currentStyle) {
+			return obj.currentStyle[attr];
+		} else {
+			return getComputedStyle(obj,false)[attr];
+		}
+	}
+	function getStyle1 () {
+			var oDiv = document.getElementsByTagName('div')[0];
+			var oH1 = document.getElementsByTagName('h1')[0];
+			var value1 = getStyle(oDiv,'width');
+			// alert(value1);
+			var value2 = getStyle(oH1,'height');
+			alert(value2);
+
+		}
+	</script>
+</head>
+<body>
+	<button onclick="getStyle1();" >获取</button>
+	<div style="width: 300px;"></div>
+	<h1 style="height: 300px;background: #ccc;"></h1>
+</body>
+</html>

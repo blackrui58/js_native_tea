@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	// 小和尚
+	var youngMonk = {
+				name: '小法海',
+				age: 8,
+				sex: '男',
+				tiaoshui: function () {
+					alert('跳水');
+				},
+				story: function () {
+					alert('讲故事');
+				},
+				huayuan: function () {
+					alert('化缘');
+				}
+			};
+
+	//老和尚
+	var oLdMonk = {
+				name: '法海',
+				age: 18,
+				sex: '女',
+				tiaoshui: function () {
+					alert('跳水');
+				},
+				story: function () {
+					alert('讲故事');
+				},
+				huayuan: function () {
+					alert('化缘');
+				}
+			}
+
+	// 庙
+	var temple = {
+			name: '尼姑庵',
+			area: 100,
+			old: oLdMonk,
+			young: youngMonk
+		};
+
+
+	// 山
+	var mountain = {
+		name: '唐',
+		height: 100,
+		temple: temple
+	};
+	oLdMonk.story();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

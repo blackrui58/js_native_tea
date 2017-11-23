@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			display: none;
+		} 
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div></div>
+</body>
+</html>
+<script type="text/javascript">
+//  collection : 集合
+	// 获取事件添加的元素
+	var aBtn = document.getElementsByTagName('button');
+	// 获取div a: 伪数组(集合,容器)
+	// var aDiv = document.getElementsByTagName('div');
+	var oDiv = document.getElementsByTagName('div')[0];
+
+	// console.log(aDiv[0]);
+
+	//显示按钮的点击事件
+	aBtn[0].onclick = function () {
+		console.log(oDiv.style);
+		oDiv.style.display = 'block';
+
+	}
+
+	aBtn[1].onclick = function () {
+		oDiv.style.display = 'none';
+	}
+
+</script>

@@ -1,0 +1,126 @@
+js的数据类型: number string boolean object undefined function
+typeof()  typeof 变量
+
+数据类型的转化:
+隐式转换: 不需要通过程序员,直接在运行的过程中自行发生变化
+强制转化: 直接由程序员转化
+数字类型:
+Number(变量)
+parseInt(变量) : 取整数部分
+parseFloat(): 整数+小数
+保留小数后几位: 变量.toFixed(位数)
+
+字符串:
+String()
+变量.toString()
+
+boolean:
+Boolean()
+
+false: 0 false 空字符串 undefined null
+
+运算符: + - * / % = ()
+
+复合运算符: +=  -= *= /= %=
+
+自增自减: ++ --
+如果和其他运算符一起使用:
+a++: 先赋值,再自增
+++a: 先自增.再赋值
+
+比较运算符: < > >= <= == === != !==
+逻辑运算符: ||  &&  !
+
+if..else 
+
+if (条件) {} else {}
+
+循环: while  do..while for
+
+while (条件) {
+	循环体
+}
+do {
+	循环体
+} while(条件)
+for (var i = 0;i < 9;i++) {循环体}
+
+步骤:
+1.初始化循环变量
+2.判断循环条件
+3.执行循环代码
+4.更改循环变量的值
+
+this: 在事件函数里面,在谁身上触发事件,this指的就是谁
+
+步骤:
+1.宽高
+2.左上角坐标赋值给position x y,负值
+
+判断结构: if..else  
+三目运算符: 简化if..else,只针对if...else里面就一行代码
+条件 ? 条件成立的代码 : 条件不成立的代码;
+
+if ..else if ... else if ...else
+
+if嵌套:
+if () {
+	if () {
+
+	}
+}
+
+switch: 把if里面的条件是等于的情况替换
+switch (要判断的变量) {
+	case 值:
+		满足条件的执行代码;
+		break; 跳出switch语句;
+	default:
+	    以上条件都不满足
+}
+case穿透: 满足条件并且执行对应的代码以后,程序继续往下执行
+
+Cannot set property 'onclick' of undefined: 不能给一个undefined的值设置一个onclick属性
+script标签标准是写到head里面
+
+window对象: 浏览器窗口
+onload: 加载事件
+
+box.onclick = function () {}
+
+当窗口的所有内容加载完毕以后执行事件函数
+window.onload = function () {}
+
+预解析: 在正式执行js代码以前,会把变量的声明和函数的定义提前
+获取body: document.body
+
+下拉列表的value属性值,是select的value,选中的值是option的value属性
+
+循环: for (var i = 0;i < 9;i++) {}
+循环嵌套: 一个循环里面套另一个循环,先执行大循环,执行大循环的每一次都会将里面循环执行一次,里面循环的执行次数:
+n (外层循环次数) * m (里面的循环次数)
+
+循环里面的语句: continue  break
+
+continue: 跳出一次循环
+break: 跳出整个循环
+
+求2-100的质数,素数?
+
+只能被1和它本身的数整除的数就是质数
+
+2 3 5 7 11 13 17 19 23 29 ....
+
+h5新属性: autofocus
+自动获取光标
+
+js自动获取光标: oInput
+oInput.focus();
+
+新的事件:
+onfocus: 聚焦 (把光标点在输入框的时候触发此事件)
+onblur:  失去焦点 (光标丢失)
+
+点击操作: 鼠标摁下 鼠标抬起
+onmousedown
+onmouseup

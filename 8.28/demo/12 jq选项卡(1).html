@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	#box {
+		width: 670px;
+		margin: 0 auto;
+		background: pink;
+		position: relative;
+	}
+	.ul1 {
+		overflow: hidden;
+		position: absolute;
+		right: 10px;
+		bottom: 0;
+	}
+	.ul1 li {
+		float: left;
+		margin: 5px;
+		width: 22px;
+		height: 22px;
+		background: #ccc;
+		text-align: center;
+		line-height: 22px;
+		border-radius: 50%;
+	}
+	.ul1 li.active {
+		background: orange;
+	}
+	.ul1 li a {
+		color: #fff;
+		text-decoration: none;
+	}
+	.ul2 li {
+		display: none;
+	}
+	img {
+		vertical-align: top;
+	}
+	</style>
+	<script type="text/javascript" src="jq1.7.2/jquery.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		$('.ul1 li').click(function () {
+			// 移出所有
+			$('.ul1 li').removeClass('active');
+			$('.ul2 li').hide();
+			// 给自己添加
+			$(this).addClass('active');
+			$('.ul2 li').eq($(this).index()).show();
+		})
+	})
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul class="ul1" id="ul1">
+			<li class="active"><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">6</a></li>
+		</ul>
+
+		<ul class="ul2" id="ul2">
+			<li style="display: block;"><a href="#"><img src="轮播/pic1.jpg" height="240" width="670"></a></li>
+			<li><a href="#"><img src="轮播/pic2.jpg" height="240" width="670"></a></li>
+			<li><a href="#"><img src="轮播/pic3.jpg" height="240" width="670"></a></li>
+			<li><a href="#"><img src="轮播/pic4.jpg" height="240" width="670"></a></li>
+			<li><a href="#"><img src="轮播/pic5.jpg" height="240" width="670"></a></li>
+			<li><a href="#"><img src="轮播/pic6.jpg" height="240" width="670"></a></li>
+		</ul>
+	</div>	
+</body>
+</html>

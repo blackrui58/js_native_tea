@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	var str = 'we are family';
+
+	// alert(str.match(/\w+/g));
+	alert(str.replace(/\w+/g,function (s) {
+		//s we  are  family
+		// 大写的W A F
+	     return s.charAt(0).toUpperCase() + s.substr(1);
+	}));
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

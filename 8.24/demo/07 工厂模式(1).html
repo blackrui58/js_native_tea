@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	function createObj (name,age) {
+		// 1.
+		// var obj = new Object();
+		// 2.把obj的值赋值给了this
+		// this = obj;
+		this.name = name;
+		this.age = age;
+		// 3.返回了this
+		// return this;
+	}
+
+	function Obj (name,age) {
+		// 1.自动创建了一个对象 
+		this.name = name;
+		this.age = age;
+		// return this;
+	}
+
+	// var o = createObj();
+	var o = new Obj();
+	console.log(o);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	// window.onload = function () {
+	// 	alert('window');
+	// }
+	document.onreadystatechange = function () {
+		// 当状态值完成的时候,才代表整个DOM加载完毕
+		if (document.readyState == 'complete') {
+			var oDiv = document.getElementsByTagName('div')[0];
+			oDiv.onclick =function () {
+				alert(1);
+			}
+		}
+		
+	}
+	</script>
+</head>
+<body>
+	<div>萨达撒多撒</div>
+</body>
+</html>

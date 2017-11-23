@@ -1,0 +1,176 @@
+正则: 操作字符串
+
+创建正则: 
+new RegExp(规则,选项)
+
+选项: i g m
+
+或: |
+[a-z0-9_]: \w
+[0-9]: \d
+
+量词:
+{1,}: 最少一个,最多不限  +
+{n,m}: n-m个
+{0,1}: 可有可无  ?
+{0,}: 最少0,多了不限,* 
+.: 任意值
+
+转义:
+\d \w \s
+\D \W \S
+
+字符串的方法:
+search(): 查看下标
+match(): 查找内容,结果是数组
+
+正则:
+test(): 一般和^ $一起使用
+
+cookie:
+1.存储空间4KB
+2.不安全: 可以在浏览器里面观察看
+3.必须在服务器打开
+4.还有过期时间: 默认是session
+
+存储空间5M,不安全,不需要再服务器打开
+localStorage: 永远都不过期,除非手动删除
+sessionStorage: 关闭窗口就删除了
+
+校验网址:
+协议:
+(https?:\/\/)?
+www.一部分:
+([a-z]\.)*
+域名
+[a-z]+
+域名后面一部分
+(\.[a-z]{2,6}){1,4}
+
+^(https?:\/\/)?([a-z]\.)*[a-z]+(\.[a-z]{2,6}){1,4}$
+
+存cookie的时候,不论你存的是什么东西,那么最后都是字符串
+eval(字符串): 操作字符串,会把字符串的内容解析为js代码
+
+eval注入: 可以通过客户去修改网页的源码
+
+不让你用; 抽烟有害健康.抽.
+
+eval('('+json+')'): 解析数据写法
+
+交互: 数据的交互,前后端的交互
+
+表单: 表单是用提交数据
+缺陷:
+1.刷新界面
+2.只是提交数据
+get: 不安全,参数能看到;get能提交的数据特别小; 有缓存
+post: 安全一点,参数在url地址看不到;post提交的数据特大(1G);没有缓存
+
+缓存: 对用户来说,特好;
+	  对程序员来说,搞死人
+用的多的还是get;98%  分享,收藏
+post: 2%
+
+Ajax:(啊贾克斯) Asynchronous Javascript And XML 异步JavaScript和XML
+XML和json都是数据的一种格式:
+XML: 
+<cinema>
+	<movie>
+		<title>杀破狼</title>
+		<rating>8.0</rationg>
+	</movie>
+	<movie>
+		<title>杀破狼</title>
+		<rating>8.0</rationg>
+	</movie>
+	<movie>
+		<title>杀破狼</title>
+		<rating>8.0</rationg>
+	</movie>
+</cinema>
+
+无刷新从服务器获取数据
+
+接口: 就是一个url地址  
+http://localhost/74/js/8.19/demo/%E8%B1%86%E7%93%A3.json
+
+get
+post
+
+在于用,不在于写
+
+1.不关心文件后缀,只关心里面的内容
+2.获取到的都是字符串
+3.所有文件的编码要一致 (utf-8)
+4.需要一个随机因子(t=?): 防止缓存
+
+https://developers.douban.com/wiki/?title=guide&a=10
+
+缓存: 一个url地址只请求一次
+
+状态码:
+200: 数据请求成功
+4开头都是前端问题
+404: 找不到该文件 (前端的问题)
+5开头才是后台的问题
+
+交互:
+1.拼接接口
+2.解析数据
+
+服务器的路径最好不要是中文,如果是中文,需要将中文解析成Unicode编码,而IE浏览器的解析能力特别差
+
+编码: encodeURIComponent(中文)
+解码(后台): decodeURIComponent(unicode)
+
+只要是登录注册或者交互,那么必须进行编码
+
+写ajax就跟打电话似的?
+
+1.偷一个手机
+2.拨号  建立连接
+3.说话
+4.听
+
+1.得有个ajax对象
+2.建立连接,打开连接
+3.发送
+4.接收数据 (onreadystatechange)
+
+get请求: 参数是拼接到url地址后面的,有缓存
+post请求: 不会拼接,也没有缓存
+
+if(window.XMLHttpRequest)
+			{
+				var oAjax=new XMLHttpRequest();
+			}
+			else
+			{
+				var oAjax=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+
+readyState:
+0: ajax对象创建完毕
+1: 数据发送成功
+2: 原始数据接收完毕
+3: 解析数据,解编码
+4: 完成
+
+status:
+200 - 299: OK 
+304: 成功
+4开头代表出问题:
+404: 文件路径的问题
+405: 对某些特定的资源不允许使用
+414: url地址太长了
+5开头的问题不是咱的问题
+
+
+get和post区别:
+1.get只能发送4kb的数据,post可以发送1G的数据
+2.get的参数是拼接到url后面的,post不是
+3.post发送数据请求的时候,需要设置请求头
+4.get里面的send()不需要内容,post里面需要将参数放到send方法里面
+
+Unexpected token <: 中文路径问题

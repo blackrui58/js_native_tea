@@ -1,0 +1,190 @@
+h5新属性新方法
+c3新的选择器
+
+h5以前,在高版本浏览器设置自定义属性的时候,浏览器会自动忽略你设置的属性;
+在IE低版本能获取到
+
+获取属性: 只有写在标签里面的属性,通过此方法才能获取到
+getAttribute(属性名)
+
+设置属性
+setAttribute(属性名,属性值)
+
+h5允许自定义属性,允许自定义标签,行内元素
+
+自定义属性: 必须data-开头,在以后的版本里面,属性绝对不会以data-开头
+通过dataset对象获取到自定义属性值
+
+获取元素:
+1.byId
+2.byTagName
+3.byClassName
+4.querySelector(): 通过选择器获取元素 (一个)
+5.querySelectorAll(): 多个元素 (集合)
+
+有关于类名的: (classList)
+添加类名:
+oDiv.classList.add(类名)
+
+删除类名:
+oDiv.classList.remove(类名)
+
+开关: 有则删除,没有就添加
+----------------------------------------------------------------
+js高级
+js什么组成? --> java+script 错
+三部分组成: es,DOM,BOM
+(ECMA组织)
+1.ECMAScript:(es) 定义了语法标准
+	var 变量;
+	if (){}
+	for () {}
+	作用: 和语法打交道
+	兼容性: 兼容所有的浏览器
+	es3
+	es4
+	es5: var a; var a;
+	es6: es2015,不兼容低版本浏览器;let a;变量不允许重复定义
+	es8: es2017
+
+	微信号: zhaodehua8310
+	var a = 10; 变量
+	const a = 'zhaodehua8310';  常量
+	a = '32113';
+
+2.DOM: document object model 文档 对象 模型 
+	作用: 和网页上的元素打交道
+	document.getElementById() (DOM操作)
+	oDiv.innerHTML; (DOM操作)
+
+	兼容性: 一般,需要去做兼容
+	获取样式:
+	高版本:
+		getComputedStyle(oDiv,false).属性名
+	低版本:
+		oDiv.currentStyle.属性名
+	function getStyle (obj,attr) {
+		if (obj.currentStyle) {
+			return obj.currentStyle[attr];
+		} else {
+			return getComputedStyle(obj,false)[attr];
+		}
+	}
+
+3.BOM: browser object model 浏览器对象模型
+	作用: 和浏览器打交道
+	navigator.userAgent
+
+	兼容性: 完全不兼容
+
+DOM: 文档对象模型,专门和网页上的元素打交道的
+DOM树: 就是把网页上的元素抽象成了树结构;使结构清晰
+
+节点: 标签或者元素  元素节点(标签)  文本节点(标签内容,文字,空格)  属性节点(属性)
+
+节点的关系:
+父子关系
+兄弟关系
+
+获取父子节点
+获取父节点:
+	子元素.parentNode
+获取子节点:
+	父元素.childNodes: 会获取到空格  基本不用
+	父元素.children: 不会获取到空格  常用
+
+获取兄弟节点:
+	上一个兄弟节点:
+		previousSibling: 兼容低版本
+		previousElementSibling: 兼容高版本
+
+	下一个兄弟节点:
+		nextSibling
+
+兼容上一个兄弟节点:
+function previousSibling (obj) {
+		if (obj.previousElementSibling) {
+			return obj.previousElementSibling;// 高版本
+		} else {
+			return obj.previousSibling; //低版本
+		}
+	}
+三目运算:
+function previousSibling (obj) {
+	return obj.previousElementSibling ? obj.previousElementSibling : obj.previousSibling;		
+}
+
+或运算: 1 || 2; 1  0 || 1; 1
+
+function previousSibling (obj) {
+	return 	obj.previousElementSibling || obj.previousSibling;
+}
+
+function nextSibling (obj) {
+	return 	obj.nextElementSibling || obj.nextSibling;
+}
+
+第一个节点: 父节点.children[0]
+最后一个节点: 父节点.children[父节点.children.length - 1]
+
+第一个节点:
+最后一个节点:
+function firstChild (obj) {
+	return obj.firstElementChild || obj.firstChild;
+}
+function lastChild (obj) {
+	return obj.lastElementChild || obj.lastChild;
+}
+
+节点: 元素节点,属性节点,文本节点
+nodeType: 节点类型
+1元素节点
+2属性节点
+3文本节点
+9文档节点 document 
+nodeValue: 节点值
+null: 元素节点值
+属性值
+文本值
+
+nodeName: 节点的名字
+标签名
+属性名
+#text
+
+DOM操作:
+添加元素:
+父元素.appendChild(子元素);
+
+创建元素: document.createElement(元素名);
+
+剪切的操作
+
+克隆:
+元素.cloneNode(): 默认将标签结构克隆;如果要克隆里面的内容,需要true
+
+添加元素:
+父元素.insertBefore(要插入的元素,谁);
+
+删除元素:
+父元素.removeChild(子元素);
+
+BOM: 浏览器对象模型  window
+open(url,target): 打开窗口
+close(): 关闭窗口
+
+直接打开新窗口: chrome,firefox会拦截;IE不会
+this: 谁调用,this指的就是谁; 不知道是谁,也是window
+
+window调用属性或者方法可以省略不写
+
+open(url,target): 返回值是新开的窗口对象
+url: 打开窗口的地址
+target: 窗口打开方式 (_self,_blank)
+
+window.localtion.reload(): 刷新浏览器
+
+history: 历史
+location: url地址
+go: 
+

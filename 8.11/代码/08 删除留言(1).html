@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		var aA = document.getElementsByTagName('a');
+
+		for (var i = 0;i < aA.length;i++) {
+			aA[i].onclick = function () {
+				//  隐藏
+				// 获取到父元素,再隐藏
+				this.parentNode.style.display = 'none';
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<ul>
+		<li>小红:今天吃早饭了吗?<a href="javascript:;">删除</a></li>
+		<li>小花:今天吃午饭了吗?<a href="javascript:;">删除</a></li>
+		<li>小红花:今天吃晚饭了吗?<a href="javascript:;">删除</a></li>
+	</ul>
+</body>
+</html>

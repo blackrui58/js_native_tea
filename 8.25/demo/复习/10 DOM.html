@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	/*
+	js的组成部分:
+	1.ECMAScript: es ,定义语法标准
+	2.DOM: 和网页上的元素打交道
+	3.BOM: 和浏览器打交道
+	*/
+	// DOM操作: 添加删除
+	// 添加:
+	// 1.创建元素: document.createElement(标签名)
+	// 2.添加: 父元素.appendChild(子元素): 添加到最后面
+	// 2.2: 父元素.insertBefore(要添加的元素,谁): 添加到谁前面
+
+	// 删除: 父元素.removeChild(子元素)
+
+	// scrollTop: 向上滚动的距离
+	// 兼容
+	// document.documentElement.scrollTop || document.body.scrollTop
+	// 兼容的可视区宽
+	// document.documentElement.clientWidth || document.body.clientWidth
+	// 兼容兄弟节点
+	// 上一个兄弟节点 (obj)
+	// previousSibling: 会获取到空格,低版本 previousElementSibling
+	// obj.previousElementSibling || obj.previousSibling
+	// obj.nextElementSibling || obj.nextSibling
+
+	// 第一个和最后一个
+	// firstChild firstElementChild  last....
+
+	// 父节点: parentNode: 结构父级
+	// 子节点: children
+
+	// offsetParent: 定位父级
+
+
+	//BOM: 浏览器打交道
+	// open(url,target);
+	// close();
+
+	//前进后退记录:
+	// history.forward();
+	// history.back();
+	// history.go(1): 下一页
+	// history.go(-1): 上一页
+
+	// localtion: url地址
+
+	// 可读写的属性: 既可以获取也可以设置
+	// href: url
+	// hash: #后面的内容 (包括)
+	// search: ?后面的内容(包括)
+
+	// replace(): 替换url,不支持后退
+
+	// reload(): 刷新浏览器
+
+	document.onclick = function () {
+		// location.href = 'http://www.baidu.com';
+		location.replace('http://www.baidu.com');
+	}
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

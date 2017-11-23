@@ -1,0 +1,66 @@
+对象: 万物皆对象
+属性:
+设置:
+对象名.属性名 = 属性值
+对象名['属性名'] = 属性值
+
+方法: 方法值是一个函数 对象名.方法名();
+
+for..in:
+for (var key in json) { }
+设置样式:
+function setStyle (obj,json) {
+	for (var key in json) {
+		obj.style[key] = json[key];
+	}
+}
+
+获取样式:
+function getStyle (obj,attr) {
+	if (obj.currentStyle) {
+		return obj.currentStyle[attr];
+	} else {
+		return getComputedStyle(obj,false)[attr];
+	}
+}
+删除属性: delete 对象名.属性名(方法名)
+
+选项卡: 一个选项对应一块内容
+
+children: 孩子 该标签元素所有的孩子
+
+定时器: 
+1.间歇调用: 每隔一段时间调用一个函数,函数重复调用
+2.延迟调用: 隔一段时间以后,调用一个函数,函数只调用一次
+
+开启定时器:
+setInterval(函数,时间); 时间单位是毫秒 1s = 1000ms
+setInterval函数的返回值就是该定时器的名字
+关闭定时器:
+clearInterval(定时器的名字);
+
+定时器的问题: 重复开启一个定时器,会加快速度
+解决方式: 在开启之前,先关闭一次
+
+Math对象:
+
+Math.pow(x,y): x的y次幂
+Math.sqrt(x): 开平方
+
+随机数:Math.random(): 取值范围 : [0,1)   0<= random <1
+
+[0,1) * 100 [0,101)
+0-100: Math.floor(Math.random() * 101)
+
+(0,1) * 90 --> (0,90) + 10--> (10,100)
+10 - 100: Math.floor(Math.random() * 90 + 10)
+
+(0,1) * 150 --> (0,150) + 50 --> (50,200)
+
+50-200: Math.floor(Math.random() * 150 + 50)
+
+n-m随机函数:
+
+function random (n,m) {
+	return Math.floor(Math.random() * (m - n) + n)
+}

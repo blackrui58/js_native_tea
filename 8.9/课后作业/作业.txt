@@ -1,0 +1,23 @@
+1.封装函数,去除数组里面的重复元素 (返回值是去除了重复元素的数组)
+2.将一组单词的首字母变为大写 (返回值是首字母大写的字符串) 
+we are family --> We Are Family
+3.封装函数,将以下类型的字符串变为对象(返回值是该对象)
+	username='张三'&password="12345"&sex="男"
+	变为:
+	{
+		username: '张三',
+		password: '12345',
+		sex: '男'
+	}
+4.封装函数,传入一个文件的路径,返回文件的后缀,如:
+file:///C:/Users/Administrator/Desktop/74%E7%8F%AD/js/8.9/%E4%BB%A3%E7%A0%81/18%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%96%B9%E6%B3%95.html
+
+C:\Users\Administrator\Desktop\74班\js\8.9\代码\img\0.jpg
+
+后缀为: html
+(返回值是该后缀名)
+
+5.图片时钟:
+
+思考题:
+6.求倒计时,到国庆还有多久

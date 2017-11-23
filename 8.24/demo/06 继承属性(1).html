@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	function Person (name,age,sex) {
+		// alert(this);
+		// this-->Worker创建的对象
+		this.name = name;
+		this.age = age;
+		this.sex = sex;
+		this.height = 180;
+	}
+
+	//  工人
+	function Worker (name,age,sex) {
+		// Person(name,age,sex); // 错误
+		// this --> Worker创建的对象
+		// Person.call(this,name,age,sex);
+		Person.apply(this,arguments);
+		this.weight = 200;
+	}
+
+
+	var p = new Person('zs',18,'男');
+
+	var w = new Worker('ls',20,'女');
+	// 爹!
+	console.log(w.constructor);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		a {
+			width: 100px;
+			height: 30px;
+			background-color: #ccc;
+			display: block;
+			text-align: center;
+			text-decoration: none;
+			color: #000;
+			line-height: 30px;
+		}
+		div {
+			position: relative;
+			width: 100px;
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			width: 300px;
+			border: 1px solid #000;
+			overflow: hidden;
+			display: none;
+			position: absolute;
+			left: 0;
+			top: 31px;
+			z-index: -10;
+		}
+		ul li {
+			width: 100px;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div  onmouseover="changeA();" onmouseout="changeB();">
+		<a href="#" id="a">京东</a>
+		<ul id="ul1">
+			<li>111</li>
+			<li>222</li>
+			<li>333</li>
+			<li>444</li>
+			<li>555</li>
+			<li>666</li>
+			<li>777</li>
+			<li>888</li>
+		</ul>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	// a标签样式改变
+	function changeA () {
+		var oA = document.getElementById('a');
+		var oUl1 = document.getElementById('ul1');
+		oA.style.background = '#fff';
+		oA.style.border = '1px solid #000';
+		oA.style.borderBottomColor = '#fff';
+		oA.style.color = 'magenta';
+		oUl1.style.display = 'block';
+	}
+	function changeB () {
+		var oA = document.getElementById('a');
+		var oUl1 = document.getElementById('ul1');
+		oA.style = '';
+		oUl1.style = '';
+	}
+</script>

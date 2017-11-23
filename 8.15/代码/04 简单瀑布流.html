@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		ul {
+			width: 220px;
+			border: 1px solid #ccc;
+			float: left;
+			margin-left: 40px;
+			margin-top: 40px;
+		}
+		ul li {
+			width: 200px;
+			margin: 10px auto;
+		}
+	</style>
+	<script type="text/javascript">
+
+	function random (n,m) {
+		return Math.floor(Math.random() * (m - n) + n);
+	}
+
+	window.onload = function () {
+		// 伪数组
+		var aUl = document.getElementsByTagName('ul');
+
+		createLi();
+		// createLi();
+		// 创建20个li
+		function createLi () {
+			for (var i = 0;i < 20;i++) {
+				//创建Li
+				var oLi = document.createElement('li');
+				oLi.innerHTML = i;
+				// 高度200-500
+				oLi.style.height = random(200,501) + 'px';
+				oLi.style.background = 'rgb('+random(0,256)+','+random(0,256)+','+random(0,256)+')';
+				// 每次创建选出高度最小的
+				var arr = [];
+				//1.先把伪数组数组
+				for (var j = 0;j < aUl.length;j++) {
+					arr[j] = aUl[j];
+				}
+				//2.用sort方法,取第0个元素进行添加
+				arr.sort(function (n1,n2) {
+					return n1.offsetHeight - n2.offsetHeight;
+				});
+				
+				// 取第0个元素添加
+				arr[0].appendChild(oLi);
+			}
+		}
+		
+		
+		window.onscroll = function () {
+			// 获取到网页的滚动高度
+			var scrollHeight = document.documentElement.scrollHeight;
+
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+			var wHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+			var result = scrollTop + wHeight;
+
+			if (result + 200  >= scrollHeight) {
+				// 2442   + 200                2642
+				// 重新加载20个li
+				createLi();
+			}
+		}
+
+	}
+	</script>
+</head>
+<body>
+	<ul></ul>
+	<ul></ul>
+	<ul></ul>
+</body>
+</html>

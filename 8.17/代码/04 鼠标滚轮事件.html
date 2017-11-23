@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	body {
+		/* 把水平和垂直方向的滚动条给干掉 */
+		/*overflow: hidden;*/
+	}
+		img {
+			transition: 1s ease all;
+			display: block;
+			margin: 200px auto;
+		}
+		/*img:hover {
+			transform: scale(2,2);
+		}*/
+	</style>
+	<script type="text/javascript" src="common.js"></script>
+	<script type="text/javascript">
+	ready(function () {
+		//图片
+		var oImg =  document.getElementsByTagName('img')[0];
+		// 缩放倍数
+		var scale = 1;
+
+		function scroll (evt) {
+		evt = evt || window.event;
+		
+		if (isUp(evt)) { // 向上
+			scale += 0.5;
+			if (scale > 3) {
+				scale = 3;
+			}
+		} else { // 向下
+			scale -= 0.5;
+			if (scale < 0.5) {
+				scale = 0.5;
+			}
+		}
+		oImg.style.transform = 'scale('+scale+','+scale+')';
+		evt.preventDefault && evt.preventDefault();
+		// 阻止默认事件
+		return false;
+	}
+		addMouseWheel(oImg,scroll);
+	});
+
+	
+
+	</script>
+</head>
+<body>
+	<img src="img/01.jpg" height="80" width="80">
+</body>
+</html>

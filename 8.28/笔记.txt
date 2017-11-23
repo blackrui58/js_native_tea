@@ -1,0 +1,247 @@
+原生js
+
+框架和库: 本质上没有区别,都是将一些 常用的css或者是js操作封装到了一个或者多个文件里面,我们可以直接使用
+base.css
+common.js
+
+加快开发进度
+
+程序员必须得会用
+
+jQuery库: 想怎么使用就怎么使用
+
+框架: 得按照它里里面的规则进行使用  (bootstrap)
+
+jQuery能实现的东西,原生js一定可以使用;原生js能实现的,jq不一定能实现
+
+jQuery.js:
+1.http://jquery.com/
+jquery-3.2.1.js: 未经过压缩的文件,有注释有空格 (开发环境)
+jquery-3.2.1.min.js: 经过压缩的文件,没有注释也没有空格,体积小 (生产环境)
+
+开发环境: 程序员进行开发,
+生产环境: 服务器的环境
+测试环境: ....
+
+1.x.x: 所有浏览器都兼容
+2.x.x
+3.x.x: 不兼容IE低版本
+
+讲课: 1.7.2
+
+封装的操作(jq里面的都是方法,都得由jq对象调用)
+1.获取元素 (querySelectorAll())
+2.事件
+3.样式属性
+4.动画
+5.DOM操作
+6.ajax 
+7.jsonp
+8.插件
+
+使用:
+window.onload = function () {}
+ready(): 先把结构加载出来,不用等待音频视频图片加载
+
+jq:
+$(function () {})
+
+事件: click(fn),mouseenter(),mousemove(),mouseleave() on..
+
+show(): 显示元素
+hide(): 隐藏元素
+
+原生js对象: 调用的要么是属性,要么是方法
+jq对象: 调用的是方法 $().click(function() {})
+
+js-->jq: $(js原生对象)
+jq-->js: 取下标的方式就能转换
+
+在jq的事件方法里面,this还是指的js原生对象
+
+样式属性:
+设置:
+
+css(属性名,属性值): 设置一个属性
+css({属性名: 属性值,属性名: 属性值}): 设置多个属性
+
+获取:
+css(属性名)
+
+双标签的内容: (相当于innerHTML)
+html(): 没有参数,获取
+html(内容): 设置
+
+表单元素的内容: (相当于value)
+val(): 没有参数,获取
+val(内容): 设置
+
+根据下标获取jq对象: eq(下标)
+
+伪类选择器:
+:nth-child(): 下标从1开始
+:first-child: 第一个
+:last-child: 最后一个
+:odd : 奇数个 (下标)
+:even : 偶数个 (下标)
+:gt(下标): 大于下标数的
+:lt(下标): 下雨下标数的
+:eq(下标): 下标从0 开始
+
+属性选择器:
+选择器名[属性名=属性值]
+
+index(): 获取同级元素的下标
+类名:
+addClass(类名): 添加类名
+removeClass(类名): 删除类名
+
+---------------------------------------------------------------
+
+先引入js文件
+$(function () {}) 相当于以前的ready
+
+获取元素: $(选择器): . # :
+
+添加,删除类名:
+addClass()
+removeClass()
+
+样式属性:
+设置:
+css(属性名,属性值)
+css({属性名:属性值,....})
+
+获取:
+css(属性名)
+
+根据下标获取jq对象: eq(下标)
+获取jq对象的下标: index()
+
+双标签的内容:
+html(): 获取
+html(内容): 设置
+
+表单元素的内容:
+val()
+val(内容)
+
+事件:
+click()  mouseenter() mouseleave()...
+
+toggle(function () {},function (){})
+
+js-->jq: $(js对象)
+jq-->js: 取下标的方式获取
+js对象一定不能调用jq里面的方法;
+jq对象也不能调用js里面的方法
+
+hover(function () {
+	鼠标移入的时候执行
+},function (){
+	鼠标移出的时候执行
+})
+
+带有动画的方法:
+slideDown(): 下拉
+slideUp(): 上拉
+
+fadeIn(): 淡入 (显示)
+fadeOut(): 淡出(隐藏)
+
+动画:
+animate(params,[speed],[easing],[fn]): 常用
+params: 必需参数,带[]的参数,是可选参数,可有可无,顺序不限
+params: 属性对象 {属性名: 属性值}
+speed: 动画时间 slow  normal fast 数字: 单位是毫秒
+easing: 速率 linear swing
+fn: 动画完成以后执行的函数 (回调函数)
+
+
+params,
+options: 对象 {
+	complete: function () {},
+	easing: 'linear',
+	duration: 速度
+}
+
+使用动画以前,先停止动画: stop()
+
+链式操作(链式编程,链式函数): 当调用完一个方法以后,还可以继续往下面调用方法
+$('div').stop().animate({width: 400,height: 400})
+只有方法返回值是jq对象的时候才可以进行链式操作
+
+事件: click,mouseover(function (){}) DOM0级事件
+绑定事件: on(事件名,事件函数) DOM2级事件 (addEvent())
+移除事件: 
+off(事件名,事件函数)  removeEvent
+off(事件名): 移除该事件名的事件
+off(): 移除所有
+
+on('多个事件,中间空格隔开',function () {}): 每个事件都执行此function
+
+on({
+	事件名: 事件函数,
+	事件名: 事件函数
+}): 每个事件执行不一样的函数
+
+window.onscroll,window.onresize
+
+事件委托: 给父级元素添加事件,通过事件对象的srcElement|| target实现对应的操作
+$(父元素的选择器).on(事件名,子元素的选择器名,fn);
+
+scrollTop: 向上滚动的距离:
+document.documentElement.scrollTop || document.body.scrollTop
+
+clientWidth:
+document.documentElement.clientWidth || document.body.clientWidth
+
+向上滚动的距离
+scrollTop(): 获取
+scrollTop(值): 设置滚动距离
+
+宽,高:
+width(),height(): 内容宽,不带px
+outerWidth(),outerHeight(): 盒子宽高   			offsetHeight,offsetWidth
+innerWidth(),innerHeight(): 内容+padding		clientWidth,clientHeight
+
+offset(): 相当于我们原来的getPos()
+---------------------------------------------------
+总结:
+样式属性:
+css()
+
+值:
+html()
+val()
+
+事件:
+click()
+on()
+off
+
+类名
+addClass()
+removeClass()
+
+显示隐藏:
+show() hide()
+fadeIn() fadeOut()
+slideDown() slideUp
+
+宽高: width() height()
+盒子宽高: outerWidth() outerHeight
+clientHeight: innerHeight() innerWidth
+
+向上滚动:
+scrollTop() scrollLeft()
+
+动画:
+animate({属性名,属性值},fn)
+
+根据下标获取jq元素: eq(下标)
+获取下标: index()
+
+作业:
+1.吸顶条
+2.延迟加载

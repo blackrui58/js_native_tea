@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		li {
+			width: 300px;
+			height: 300px;
+			border: 1px solid red;
+			margin: 50px;
+			float: left;
+		}
+		li img {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+	<script type="text/javascript" src="jq1.7.2/jquery.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		lazeLoad();
+		$(window).scroll(lazeLoad);
+		$(window).resize(lazeLoad);
+		function lazeLoad() {
+			// 右边线
+			var result = $(window).height() + $(document).scrollTop();
+			$('ul li img').each(function (index,ele) {
+				// ele-->js对象-->jq对象
+				var top = $(ele).offset().top;
+				if (top <= result) {
+					// 加载图片
+					// ele.src = ele.getAttribute('_src');
+					var _src = $(ele).attr('_src');
+					$(ele).attr('src',_src);
+				}
+			});
+		}
+
+		
+	})
+	</script>
+</head>
+<body>
+	<ul>
+		<li><img _src="img/b1.jpg"></li>
+		<li><img _src="img/b2.jpg"></li>
+		<li><img _src="img/b3.jpg"></li>
+		<li><img _src="img/b4.jpg"></li>
+		<li><img _src="img/b5.jpg"></li>
+		<li><img _src="img/b6.jpg"></li>
+		<li><img _src="img/b7.jpg"></li>
+		<li><img _src="img/b8.jpg"></li>
+		<li><img _src="img/b9.jpg"></li>
+		<li><img _src="img/b10.jpg"></li>
+	</ul>
+</body>
+</html>

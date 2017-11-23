@@ -1,0 +1,131 @@
+绑定事件: DOM2级事件
+高版本浏览器:
+addEventListener(type,fn,false);
+低版本:
+attachEvent(type,fn)
+
+移除:
+removeEventListener(type,fn,false);
+detachEvent(type,fn)
+
+兼容:
+
+function addEvent (obj,type,fn) {
+	if (obj. addEventListener) {
+		obj. addEventListener(type,fn,false);;
+	} else {
+		obj.attachEvent('on'+type,fn)
+	}
+}
+
+function removeEvent (obj,type,fn) {
+	if (obj. removeEventListener) {
+		obj. removeEventListener(type,fn,false);;
+	} else {
+		obj.detachEvent('on'+type,fn)
+	}
+}
+
+取消冒泡: evt.cancelBubble = true;
+
+阻止默认事件:
+DOM0: return false;
+DOM2: return 低版本;
+	evt.preventDefault && evt.preventDefault();
+
+ready: DOMContentLoaded DOM事件,只能用绑定的方式添加
+
+onreadystatechange 
+
+document.readyState == 'complete'
+
+onmouseover onmouseout : 给父元素添加事件,子元素也会触发
+onmouseenter onmouseleave替代
+
+
+滚轮事件:
+
+onmousewheel: 兼容 除了火狐以外的浏览器
+
+DOMMouseScroll: 兼容火狐
+
+判断怎么滚?向上滚or向下滚
+
+wheelDelta: 除了火狐以外的
+向下: -120
+向上: 120
+
+detail:
+向下: 3
+向上: -3
+
+比例: 当前 / 总的
+
+400米 : 40%;
+1000米
+
+滚动条
+当前: top值
+总(最大值): div的高 - 条的高
+
+比例 = top / (div的高 - 条的高)
+
+把内容缩小来看
+
+ul:
+当前: ul的top值
+最大值: div的高 - ul的高
+
+滚动条的top / (div 的高 - 条的高) = ul的top / (div的高 - ul的高)
+
+二十三种设计模式: 
+
+代理(委托)设计模式  
+
+单例设计模式(自始至终,该对象只有一个)
+
+事件委托(代理): 把事件给别人(父元素)实现
+
+target:兼容所有高版本浏览器
+srcElement: Chrome IE低版本
+
+事件对象能做的事情:
+1. 获取事件发生的坐标: clientX,clientY,pageX,pageY,screenX,screenY
+2. 获取键码: keyCode,ctrlKey,shiftKey,altKey
+3. 获取的信息: 
+	除了火狐: wheelDelta
+	火狐: detail
+4. 阻止默认事件: preventDefault && preventDefault();
+5. 获取目标元素: target || srcElement
+
+放大镜效果:  算比例
+
+小图 / 大图 = 遮罩 / 大盒子
+
+小图的宽 / 大图的宽 = 遮罩宽 / 大盒子宽
+	350  / 800      = 218.75 /  500
+
+小图高 / 大图高 = 遮罩高 / 大盒子高
+	449 / 1026 =   218.811/ 500
+
+比例: 当前 / 总的(最大的)
+
+left:
+小盒子:
+x / maxX
+
+大图片:
+大图片的x / (大盒子的宽 - 大图片的宽)
+
+x / maxX = 大图片的x / (大盒子的宽 - 大图片的宽)
+
+大图片的x = x * (大盒子的宽 - 大图片的宽) / maxX
+
+top:
+小盒子:
+y / maxY
+
+大图片
+大图的y / (大盒子的高 - 大图片的高)
+
+大图片的y = y * (大盒子的高 - 大图片的高) / maxY

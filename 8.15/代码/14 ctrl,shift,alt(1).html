@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+			cursor: move;
+		}
+	</style>
+	<script type="text/javascript">
+	document.onkeydown = function (evt) {
+		evt = evt || window.event;
+		// alert(evt)
+		if (evt.keyCode == 123) {
+			alert(1);
+			return false;
+		}
+		// console.log('ctrl:'+evt.ctrlKey,'alt:'+evt.altKey,'shift:'+evt.shiftKey);
+		// 阻止复制 (ctrl + c)
+		if (evt.ctrlKey && evt.keyCode == 67) {
+			alert('不让复制,请充会员');
+			return false;
+		}
+	}
+	// 阻止右击
+	document.oncontextmenu = function () {
+		return false;
+	}
+	</script>
+</head>
+<body>
+	<div>萨克的三</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	var oDate = new Date();
+	oDate.setDate(oDate.getDate() + 1);
+
+	Date.prototype.getWeek = function () {
+		// 根据 getDay
+		return '星期'+'日一二三四五六'.charAt(this.getDay());	
+	}
+
+	// 星期三
+	alert(oDate.getWeek());
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

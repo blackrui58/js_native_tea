@@ -1,0 +1,17 @@
+原型+构造函数创建
+构造函数?
+1.自动创建了一个对象obj
+2.把obj赋值给了this
+3.返回了this
+
+封装继承多态
+
+继承属性: 改变this的指向
+父构造函数.call(this,形参对应的实参)
+父构造函数.apply(this,arguments)
+
+继承方法:
+子构造函数.prototype = new 父构造函数();
+子构造函数.prototype.constructor = 子构造函数
+
+子弹: 和飞机的属性和init都有

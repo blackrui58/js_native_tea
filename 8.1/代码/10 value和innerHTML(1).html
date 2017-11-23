@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<input type="text" />
+	<div>这是div</div>
+	<h1>这是h1</h1>
+	<button>获取</button>
+</body>
+</html>
+<script type="text/javascript">
+	var oInput = document.getElementsByTagName('input')[0];
+	var oDiv = document.getElementsByTagName('div')[0];
+	var oH1 = document.getElementsByTagName('h1')[0];
+	var oBtn = document.getElementsByTagName('button')[0];
+
+	oBtn.onclick = function () {
+		// alert(oInput.value);
+		// oInput.value = '456';
+
+		// alert(oH1.innerHTML);
+		var iValue = oInput.value;
+
+		oH1.innerHTML = oH1.innerHTML + iValue;
+	}
+
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="jq1.7.2/jquery.js"></script>
+	<script type="text/javascript">
+	$(function () {
+
+		function show() {
+			alert(1);
+		}
+		// 添加
+		// $('button').on('mouseenter',show);
+		$('button').on('mouseenter',function () {
+			alert(1);
+		});
+		$('button').on('click',function () {
+			alert(2);
+		})
+		// 移除
+		// $('button').off('mouseenter',show);
+		// 只移除事件名为mouse的事件
+		// $('button').off('mouseenter');
+		//移除该对面里面的所有事件
+		$('button').off();
+	})
+	</script>
+</head>
+<body>
+	<button>点击</button>
+</body>
+</html>

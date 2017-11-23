@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		ul {
+			display: none;
+			position: absolute;
+			left: 0;
+			top: 0;
+			list-style: none;
+			border: 1px solid red;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oul = document.getElementsByTagName('ul')[0];
+
+		document.oncontextmenu = function (evt) {
+			evt = evt || window.event;
+			oul.style.left = evt.clientX + 'px';
+			oul.style.top = evt.clientY + 'px';
+			oul.style.display = 'block';
+			return false;
+		}
+		document.onclick = function () {
+			oul.style.display = 'none';
+		}
+	}
+	</script>
+</head>
+<body>
+	<ul>
+		<li>请充值</li>
+		<li>充钱</li>
+		<li>微信支付</li>
+		<li>支付宝支付</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<input type="text"> + <input type="text">=<input type="text">
+	<button>计算</button>
+</body>
+</html>
+<script type="text/javascript">
+	var aInput = document.getElementsByTagName('input');
+	var oBtn = document.getElementsByTagName('button')[0];
+	
+	oBtn.onclick = function () {
+		var firstValue = Number(aInput[0].value);
+		var secondValue = Number(aInput[1].value);
+		aInput[2].value = firstValue + secondValue;
+	}
+</script>

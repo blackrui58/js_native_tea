@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		ul li {
+			float: left;
+			margin: 20px;
+			width: 100px;
+			height: 100px;
+			background-color: #ccc;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload = function () {
+		var aLi = document.getElementsByTagName('li');
+
+		for (var i = 0;i < aLi.length;i++) {
+			aLi[i].onclick = function () {
+				// 先把所有的变为灰色
+				for (var j = 0;j < aLi.length;j++) {
+					aLi[j].style.background = '#ccc';
+				}
+				//再把点击的变为红色
+				this.style.background = 'red';
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li><li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li><li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

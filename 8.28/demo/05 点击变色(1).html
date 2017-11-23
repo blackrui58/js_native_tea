@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	div {
+		width: 200px;
+		height: 200px;
+		background-color: #ccc;
+	}
+	</style>
+	<script type="text/javascript" src="jq1.7.2/jquery.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		$('div').click(function (){
+			// this.style.background = 'red';
+			// this-->js原生-->jq
+			// $(this).css('background','red');
+			// $(this).css('width',400);
+			// $(this).css('height',400);
+			// $(this).css({background: 'red',width: 400,height: 400});
+			// console.log($(this).css('width'));
+			// 设置双标签里面的内容,代替innerHTML
+			$(this).html('<h1>1231231</h1>');
+			console.log($(this).html());
+		});
+	})
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

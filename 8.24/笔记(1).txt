@@ -1,0 +1,58 @@
+面向对象: 只管用,不管实现
+
+原型+构造函数的方式
+
+函数.prototype
+
+函数三个方法,改变this指向:
+call(this指向,形参对应的实参)
+apply(this指向,实参数组)
+bind(this指向,形参对应的实参)
+
+this: 谁调用函数,this就是谁,如果不知道谁调用,就是window
+
+面向对象的三大特性:
+1.封装: 方法
+2.继承: 继承属性,继承方法
+3.多态: 没有多态
+
+继承属性: 改变this的指向
+
+父对象有的,子对象也有,但子对象有的,父对象没有;
+父对象会影响子对象,子对象不影响父对象;
+
+对象有的属性: constructor,对象的构造函数
+
+继承方法:
+1.Worker.prototype = new Person(); //继承方法 new 父对象的构造函数();
+	// 把他爹找回来
+2.Worker.prototype.constructor = Worker;
+
+作用域链:
+先从自己找-->往上找-->往上找-->全局都没有-->报错
+
+原型链：
+先从自己的原型找-->往上层原型找-->往上层的原型找...--> object的原型 -->null
+
+w.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__
+
+原型: prototype: 属于函数;存放的是方法
+原型: __proto__: 属于对象;本质上就是函数里面的prototype
+
+constructor: 看对象的构造函数(爹)
+可以判断一个值是不是对象
+对象 instanceof 构造函数: 上层的关系 (true false)
+var a = 10;
+typeof a; number
+
+如果js内置的构造函数,那么new可以省略不写,但是如果是自己定义的构造函数,new 必须写;
+
+1.apply ,call, bind 
+2.有关属性继承问题: 父构造函数.apply(this,argument);也可以使用call
+3.有关方法继承问题: 
+	子构造函数.prototype = new 父构造函数();
+	子构造函数.prototype.constructor = 子构造函数;
+4.原型链: 一层层往上找
+
+飞机属性
+x,y,w,h,src,boomSrc,dieTime,blood,speed,score

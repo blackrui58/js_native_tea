@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<button>按钮</button>
+</body>
+</html>
+<script type="text/javascript">
+	// window.addEventListener('load',function () {
+	// 	alert(1);
+	// },false);
+	// window.addEventListener('load',function () {
+	// 	alert(2);
+	// },false);
+	var oBtn = document.getElementsByTagName('button')[0];
+	// 添加一个事件监听
+	// oBtn.addEventListener('click',function () {
+	// 	alert(1);
+	// },false);
+	// oBtn.addEventListener('click',function () {
+	// 	alert(2);
+	// },false);
+	
+	// oBtn.attachEvent('onclick',function () {
+	// 	alert(1);
+	// });
+	// oBtn.attachEvent('onclick',function () {
+	// 	alert(2);
+	// });
+	function show () {
+		alert(1);
+	}
+	
+	addEvent(oBtn,'click',show);
+	// 高版本
+	// oBtn.removeEventListener('click',show,false);
+	// oBtn.detachEvent('onclick',show);
+	removeEvent(oBtn,'click',show);
+
+	function addEvent (obj,type,fn) { // type = 'click'
+
+		if (obj.addEventListener) {
+			// 高版本
+			obj.addEventListener(type,fn,false);
+		} else {
+			//低版本
+			obj.attachEvent('on'+type,fn);
+		}
+
+	}
+
+	function removeEvent (obj,type,fn) {
+		if (obj.removeEventListener) {
+			obj.removeEventListener(type,fn,false);
+		} else {
+			obj.detachEvent('on'+type,fn);
+		}
+	}
+</script>

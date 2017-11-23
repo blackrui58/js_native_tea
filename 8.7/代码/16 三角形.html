@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	div {
+		width: 150px;
+		height: 100px;
+		background-color: #000;
+	}
+	div.active {
+		background: pink;
+		position: relative;
+	}
+	div.active span {
+		position: absolute;
+		border: 20px solid red;
+		/* 透明色: transparent; */
+		border-color: transparent transparent transparent #ccc;
+		right: -40px;
+		/*top: calc(50% - 20px);*/
+		top: 50%;
+		margin-top: -20px;
+	} 
+
+	</style>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oDiv = document.getElementsByTagName('div')[0];
+		oDiv.onmouseover = function () {
+			oDiv.className = 'active';
+		}
+		oDiv.onmouseout = function () {
+			oDiv.className = '';
+		}
+	}
+	</script>
+</head>
+<body>
+	<div>
+		<span></span>
+	</div>
+</body>
+</html>

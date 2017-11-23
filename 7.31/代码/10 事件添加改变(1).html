@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+	</style>
+	<script type="text/javascript">
+		// 定义函数
+		function toBig () {
+			document.getElementById('box').style.width = '300px';
+			document.getElementById('box').style.height = '300px';
+			document.getElementById('box').style.width = '100px';
+			document.getElementById('box').style.height = '100px';
+			document.getElementById('box').style.background = 'red';
+			document.getElementById('box').style.background = 'green';
+		}
+	</script>
+</head>
+<body>
+	<button onclick="toBig();">变化</button>
+	<button onclick="document.getElementById('box').style = '';">还原</button>
+	<div id="box"></div>
+</body>
+</html>

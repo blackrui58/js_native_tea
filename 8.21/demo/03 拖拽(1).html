@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: #ccc;
+			position: absolute;
+			left: 0;
+			cursor: pointer;
+			top: 0;
+		}
+	</style>
+	<script type="text/javascript" src="cookie.js"></script>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oDiv = document.getElementsByTagName('div')[0];
+
+		// left
+		var disX = 0;
+		var disY = 0;
+		if (getCookie('position')) {
+			var arr = eval(getCookie('position'));
+			oDiv.style.left = arr[0] + 'px';
+			oDiv.style.top = arr[1] + 'px';
+		}
+		oDiv.onmousedown = function (evt) {
+			evt = evt || window.event;
+			var x = evt.clientX - oDiv.offsetLeft;
+			var y = evt.clientY - oDiv.offsetTop;
+
+			document.onmousemove = function (evt) {
+				evt = evt || window.event;
+
+				disX = evt.clientX - x;
+				disY = evt.clientY - y;
+
+				oDiv.style.left = disX + 'px';
+				oDiv.style.top = disY + 'px';
+			}
+			document.onmouseup = function () {
+				document.onmousemove = null;
+				var arr = '['+disX+','+disY+']';
+
+				// 设置cookie
+				setCookie('position',arr,7);
+				
+
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

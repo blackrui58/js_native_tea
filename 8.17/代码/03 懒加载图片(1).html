@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		li {
+			width: 300px;
+			height: 300px;
+			border: 1px solid red;
+			margin: 50px;
+			float: left;
+		}
+		li img {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+	<script type="text/javascript" src="ready.js"></script>
+	<script type="text/javascript">
+
+	//绝对位置
+	function getPos (obj) {
+		var left = 0,top = 0;
+
+		while (obj) {
+			left += obj.offsetLeft;
+			top += obj.offsetTop;
+			obj = obj.offsetParent;
+		}
+		return {
+			left: left,
+			top: top
+		};
+	}
+	function scroll() {
+		var aImg = document.getElementsByTagName('img');
+		// 向上滚动的距离 
+		var x1 = document.documentElement.scrollTop || document.body.scrollTop;
+		// 窗口的高度
+		var x2 = document.documentElement.clientHeight || document.body.clientHeight;
+		var reslut = x1 + x2;
+
+		for (var i = 0;i < aImg.length;i++) {
+			if (getPos(aImg[i]).top <= reslut) {
+				aImg[i].src = aImg[i].getAttribute('_src');
+			}
+		}
+
+
+	}
+    ready(scroll);
+	window.onscroll = window.onresize = scroll;
+	</script>
+</head>
+<body>
+	<ul>
+		<li><img _src="img/b1.jpg"></li>
+		<li><img _src="img/b2.jpg"></li>
+		<li><img _src="img/b3.jpg"></li>
+		<li><img _src="img/b4.jpg"></li>
+		<li><img _src="img/b5.jpg"></li>
+		<li><img _src="img/b6.jpg"></li>
+		<li><img _src="img/b7.jpg"></li>
+		<li><img _src="img/b8.jpg"></li>
+		<li><img _src="img/b9.jpg"></li>
+		<li><img _src="img/b10.jpg"></li>
+	</ul>
+</body>
+</html>

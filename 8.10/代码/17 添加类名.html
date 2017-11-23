@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		.box {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+		.selected {
+			width: 400px;
+			height: 400px;
+			margin: 10px;
+			border: 10px solid #ccc;
+			border-radius: 50%;
+		}
+	</style>
+	<script type="text/javascript">
+	// 判断一个数组里面有没有一个值
+	function isFindInArr (arr,value) {
+		for (var i = 0;i < arr.length;i++) {
+			if (arr[i] == value) {
+				return true;
+			}
+		}
+		return false;
+	}
+	// 添加类名
+	function addClass (obj,className) {
+		var arr = obj.className.split(' ');
+
+		if (isFindInArr(arr,className) == false) {
+			obj.className = obj.className + ' '+className;
+		}
+	}
+	function change () {
+		var oDiv = document.getElementsByTagName('div')[0];
+		addClass(oDiv,'selected');
+	}
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+	<button onclick="change();">点击添加</button>
+</body>
+</html>

@@ -1,0 +1,165 @@
+Ajax
+jQuery库
+$(function () {})
+$(document).ready(function () {})
+
+伪类选择器:
+:nth-child(): 从1开始
+:first-child:
+:last-child:
+:odd
+:even
+:gt(大于)
+:lt(小于)
+:eq(): 从0开始
+
+选择器名[属性名=属性值]
+
+事件:
+DOM0级事件,把on去掉,变为了jq里面的方法:
+click mouseenter...
+
+toggle(function (){},function(){})
+
+hover(function (){移入},function (){移出})
+
+显示隐藏:
+show()
+hide()
+带动画的显示与隐藏
+slideDown(): 下拉显示
+slideUp(): 上拉隐藏
+fadeIn(): 淡入 (显示)
+fadeOut(): 隐藏
+
+开始动画以前,一定要先写stop()
+
+animate(params,speed,easing,fn);
+animate(params,{duration: ,easing,complete: function (){}})
+
+样式属性:
+css(属性名): 获取样式 (会带单位)
+css(属性名,属性值): 设置一个样式属性
+css({属性名: 属性值}): 设置多个样式属性
+
+内容宽高:
+width(): 获取 (不带单位)  height...
+width(值): 设置
+
+innerWidth(): 相当于clientWidth 内容宽 + padding
+
+outerWidth(): 相当于offsetWidth  内容+padding+border
+
+绝对位置:
+offset().left
+offset().top
+
+向上滚动:
+scrollTop()  scrollLeft()
+
+双标签里面的内容:
+html(): 获取
+html(内容): 设置
+
+表单元素的内容:
+val()
+val(内容): 设置
+
+根据下标获取jq元素:
+eq(下标)
+
+获取同级元素的下标: index()
+
+jq-->js: 取下标的方式,[下标]
+js-->jq: $(js对象)
+
+类名:
+addClass():
+removeClass():
+toggleClass():有则删除,没有就添加
+hasClass(类名): 有没有这个类名
+
+标签属性: oDiv.属性名= 属性值;
+attr(属性名): 获取属性            getAttribute()
+attr(属性名,属性值): 设置一个属性
+attr({属性名: 属性值}): 设置多个属性   setAttribute()
+
+removeAttr(属性名): 删除属性
+
+遍历数组: for (var i = 0;i < aDiv.length;i++) {}
+
+遍历:
+如果是标签元素的遍历:
+$('li').each(function (index,ele) {});
+如果是js数据类型的遍历:
+$.each(遍历的数据,function (index,ele){});
+
+json对象
+$.each(遍历的数据,function(key,value) {});
+
+原生js:
+1.先创建元素 createElement(标签名)
+2.设置里面的内容  innerHTML
+3.添加到父元素里面
+
+DOM操作:
+添加元素:
+append(): 在元素的最后面添加
+appendTo(): 把元素添加在谁的最后面
+prepend(): 在元素的最前面添加
+prependTo(): 把元素添加在设置的最后面
+insertBefore(): 插入到谁前面
+inertAfter(): 插入到谁后面
+删除元素:
+remove(): 删除所有,包括本身 (直接删除自己)
+empty(): 删除所有的子元素
+
+children(): 所有的子元素  (js的children)
+parent(): 父元素           (js: parentNode)
+
+siblings(): 所有的兄弟
+
+事件对象: 不需要进行兼容,直接用,pageX,pageY也不需要兼容
+
+阻止默认事件:
+DOM0: return false;
+DOM2: preventDefault(): 高版本
+	  return false; 低版本
+
+jq: return false:阻止所有的默认事件
+
+取消冒泡:
+return false: 也可以取消冒泡;
+
+evt.stopPropagation(): 可以取消冒泡
+
+练习
+交互(ajax)
+插件
+
+jQuery火?
+1.方便
+2.简单
+3.插件 (别人写好的效果,直接引入就可以使用,这个效果是依赖于jQuery实现的)
+
+用插件: jQuery-ui
+百度..下载代码..修改一些样式,那么就变成自己的
+
+写插件: 本质就是给jQuery对象添加方法
+
+原型: 写插件就是在jQuery对象的原型里面添加方法
+
+$: jQuery是一样的
+
+$.prototype = jQuery.prototype = $.fn
+
+extend({
+	属性名: 属性值,
+	方法名: 方法值
+})
+使用$.fn.extend({})添加插件,这个方法,只能由jQuery对象调用
+
+如果要直接使用$调用,那么把fn去掉就行
+
+$.fn.extend({})
+$.extend({})

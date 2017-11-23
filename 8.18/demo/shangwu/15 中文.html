@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	function check () {
+		var oInput = document.getElementsByTagName('input')[0];
+		var reg = /^[\u4e00-\u9fa5]$/;
+		// [0-9] [a-z]
+		// 最小的中文: 0x4e00  最大的 0x9fa5
+		//[\u4e00-\u9fa5]
+
+		alert(reg.test(oInput.value));
+
+	}
+	</script>
+</head>
+<body>
+	<input type="text">
+	<button onclick="check();">检测</button>
+</body>
+</html>

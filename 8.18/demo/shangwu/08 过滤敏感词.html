@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	var str = '原标题:住建部sb派员赴温州民房sb倒塌sb事故sb现场指导配合救援中新网10月10日电脑残 据住脑残建部网站脑残消息，2016年10月10日凌晨4时左右，浙江省温州市鹿城区发生一起民房倒塌mmb事故。[详细]';
+	// ***************************
+	// document.write(str.replace(/sb|脑残|mmb/g,'**'));
+	document.write(str.replace(/sb|脑残|mmb/g,function (s) {
+		// alert(typeof s);
+		var str = '';
+		for (var i = 0;i < s.length;i++) {// 3
+			str = str + '*';
+		}
+		return '<span style="color: red;">'+str+'</span>';
+	}))
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

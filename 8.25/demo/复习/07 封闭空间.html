@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+		// 封闭空间的作用
+		// 闭包： 子函数可以使用父函数的变量
+		// 1.解决变量冲突问题
+		// 2.i值问题
+		// var b = 20;
+		// (function () {
+		// 	var a = 10;
+		// 	alert(b);
+		// })();
+		// alert(a);
+		window.onload = function () {
+			var aBtn = document.getElementsByTagName('button');
+			for (var i = 0;i < aBtn.length;i++) {
+				(function (i) {// var i = 
+					aBtn[i].onclick = function () {
+						alert(i);
+					}
+				})(i)
+			}
+		}
+	</script>
+</head>
+<body>
+	<button>1</button>
+	<button>2</button>
+	<button>3</button>
+</body>
+</html>

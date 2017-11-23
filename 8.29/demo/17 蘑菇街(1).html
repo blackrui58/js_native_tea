@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		#box1 {
+			width: 865px;
+			margin: 0 auto;
+		}
+		.ul1 {
+			float: right;
+			width: 150px;
+			background: red;
+		}
+		.ul1 li {
+			height: 80px;
+			width: 100%;
+			background: #000;
+			color: #fff;
+			text-align: center;
+			line-height: 80px;
+		}
+		.ul1 li.active {
+			position: relative;
+			background: pink;
+			width: 160px;
+			left: -10px;
+		}
+		.ul1 li.active span {
+			width: 0;
+			height: 0;
+			position: absolute;
+			border: 10px solid pink;
+			border-color: transparent pink transparent transparent;
+			left: -20px;
+			top: 50%;
+			margin-top: -20px;
+		}
+		.ul2 {
+			float: left;
+			width: 715px;
+			height: 320px;
+			overflow: hidden;
+		}
+		.ul2 li {
+			display: none;
+		}
+	</style>
+	<script type="text/javascript" src="jq1.7.2/jquery.js"></script>
+	<script type="text/javascript">
+	
+	$(function () {
+	// 	$.fn.tab = function (selector1,selector2) {
+	// 		$(selector1).click(function () {
+	// 			// 移出所有
+	// 			$(selector1).removeClass('active');
+	// 			$(selector2).hide();
+	// 			// 给自己添加
+	// 			$(this).addClass('active');
+	// 			$(selector2).eq($(this).index()).show();
+	// 		})
+	// };
+
+		// $.fn.extend({
+		// 	tab: function tab (selector1,selector2) {
+		// 			$(selector1).click(function () {
+		// 				// 移出所有
+		// 				$(selector1).removeClass('active');
+		// 				$(selector2).hide();
+		// 				// 给自己添加
+		// 				$(this).addClass('active');
+		// 				$(selector2).eq($(this).index()).show();
+		// 			})
+		// 		} 
+		// });
+		$.extend({
+			tab: function tab (selector1,selector2) {
+					$(selector1).click(function () {
+						// 移出所有
+						$(selector1).removeClass('active');
+						$(selector2).hide();
+						// 给自己添加
+						$(this).addClass('active');
+						$(selector2).eq($(this).index()).show();
+					})
+				}
+		})
+
+		$.tab('#box1 .ul1 li','#box1 .ul2 li');
+		console.log($());
+	})
+	</script>
+</head>
+<body>
+	<div id="box1">
+		<ul class="ul1" id="ul1">
+			<li class="active">时尚新品天天见<span></span></li>
+			<li>时尚新品天天见<span></span></li>
+			<li>时尚新品天天见<span></span></li>
+			<li>时尚新品天天见<span></span></li>
+		</ul>
+		<ul class="ul2" id="ul2">
+			<li style="display: block;"><a href="#"><img src="蘑菇街/0.jpg" height="530" width="715"></a></li>
+			<li><a href="#"><img src="蘑菇街/1.jpg" height="530" width="715"></a></li>
+			<li><a href="#"><img src="蘑菇街/2.jpg" height="530" width="715"></a></li>
+			<li><a href="#"><img src="蘑菇街/3.jpg" height="530" width="715"></a></li>
+		</ul>
+	</div>
+</body>
+</html>

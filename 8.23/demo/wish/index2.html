@@ -1,0 +1,333 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="./Css/index.css" />
+<script src="new_ajax3.js"></script>
+<script type="text/javascript">
+	
+	window.onload = function () {
+		// url地址
+		var url = 'wish.php';
+		// 获取dl的父元素
+		var main = document.getElementById('main');
+		//  最上面的盒子
+		var topDiv = document.getElementById('top');
+		//  我要许愿的按钮
+		var sendBtn = document.getElementById('send');
+		//  遮罩
+		var layer = document.getElementById('layer');
+		// 发表心愿
+		var sendDiv = document.getElementById('send-form');
+		// 关闭按钮
+		var closeBtn = document.getElementById('close');
+		// 发布按钮
+		var send_Btn = document.getElementById('send-btn');
+		// 用户名
+		var username = document.getElementById('username');
+		// 内容
+		var content = document.getElementById('content');
+
+		var fontNum = document.getElementById('font-num');
+
+		// 兼容可视区宽高
+		var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+		var clientHeight = document.documentElement.clientHeight || document.body.clientHeight ;
+
+		// 表情的父盒子
+		var phiz = document.getElementById('phiz');
+		var aImg = phiz.getElementsByTagName('img');
+		// alert(clientHeight)
+		var maxX = 0;
+		var maxY = 0;
+		// 输入框内容的长度
+		var length = 0;
+
+		// 我要许愿
+		sendBtn.onclick = function () {
+			layer.style.display = 'block';
+			sendDiv.style.display = 'block';
+		}
+
+		// 关闭许愿
+		closeBtn.onclick = function () {
+			layer.style.display = 'none';
+			sendDiv.style.display = 'none';
+		}
+
+		// 发布
+		// wish.php?act=add&username=xxx&content=xxx
+		send_Btn.onclick = function () {
+			ajax({
+				url: url,
+				data: {act: 'add',username: username.value,content: content.value},
+				success: function (str) {
+					layer.style.display = 'none';
+					sendDiv.style.display = 'none';
+					var json = eval('('+str+')')
+					console.log(json);
+					if (json.error) {
+						alert('发表失败');
+					} else {
+						alert(json.msg);
+						getAllWish();
+						username.value = '';
+						content.value = '';
+					}
+				}
+			});
+		}
+
+		// 图片的点击事件
+		for (var i = 0;i < aImg.length;i++) {
+			aImg[i].onclick = function () {
+				content.value += '['+this.alt+']';
+				show();
+			}
+		} 
+
+		getAllWish();
+		// 获取所有的心愿
+		// wish.php?act=get
+		function getAllWish () {
+			// 先清空所有内容
+			main.innerHTML = '';
+			ajax({
+				url: url,
+				data: {act: 'get'},
+				success: function (str) {
+					var json = eval('('+str+')');
+					console.log(json);
+					if (json.error) {
+						alert(json.msg);
+					} else {
+						//  获取到msg
+						var arr = json.msg;
+						// 显示所有的心愿
+						for (var i = 0;i < arr.length;i++) {
+							// 创建了dl
+							var oDl = createDl(arr[i].username,arr[i].id,arr[i].content,arr[i].time);
+							// 添加
+							main.appendChild(oDl);
+							// 随机
+							randomDL(oDl);
+							// 拖拽
+							drag(oDl);
+							
+						}
+					}
+				}
+			});
+		}
+		// var date = new Date();
+		// date.setTime(时间戳)
+		// date.getTime()
+
+		// 创建dl
+		function createDl(username,id,content,time) {
+			// time: "1503365078" --> 设置时间对象的时间戳为这个
+			// 再获取年月日  时分秒--> 字符串: 2017-8-22 9:37:38
+			var oDl = document.createElement('dl');
+			// 1 2 3 4 5 6 7 8 9 10
+			// 1 2 3 4 5 1 2 3 4 5
+			// 0-4 + 1
+			oDl.className = 'paper a'+(id % 5 + 1);
+			oDl.innerHTML = '<dt><span class="username">'+username+'</span><span class="num">NO.'+id+'</span></dt><dd class="content">'+str2face(content)+'</dd><dd class="bottom"><span class="time">'+setDateTime(time)+'</span><a href="javascript:;" class="close"></a></dd>';
+
+			// 获取到删除按钮
+			var oA = oDl.getElementsByTagName('a')[0];
+
+			oA.onclick = function () {
+				var t = confirm('确认删除吗?');
+
+				//wish.php?act=delete&id=0;
+				// 数据已经删除,标签元素还在界面上
+				if (t) {
+						ajax({
+						url: url,
+						data: {act: 'delete',id: id},
+						success: function (str) {
+							var json = eval('('+str+')');
+							console.log(json);
+							if (json.error) {
+								alert(json.msg);
+							} else {
+								// 删除成功
+								main.removeChild(oDl);
+							}
+						}
+					});
+				}
+
+			}
+			
+			return oDl;
+		}
+
+		// 格式化时间
+		// time : 时间戳 (秒)
+		function setDateTime(time) {
+			var oDate = new Date();
+			// 根据时间戳设置时间
+			oDate.setTime(time * 1000);
+			// 获取年月日 时分秒
+			var year = oDate.getFullYear();
+			var month = oDate.getMonth();
+			var date = oDate.getDate();
+			var hour = oDate.getHours();
+			var mintue = oDate.getMinutes();
+			var seconds = oDate.getSeconds();
+			// 字符串: 2017-8-22 9:37:38
+			var str = year+'-'+(month + 1)+'-'+date+' '+hour+':'+mintue+':'+seconds;
+			return str;
+
+		}
+
+		// 拖拽
+		function drag (obj) {
+			obj.onmousedown = function (evt) {
+				evt = evt || window.event;
+				var x = evt.clientX - obj.offsetLeft;
+				var y = evt.clientY - obj.offsetTop;
+
+				document.onmousemove = function (evt) {
+					evt = evt || window.event;
+
+					var disX = evt.clientX - x;
+					var disY = evt.clientY - y;
+					if (disX <= 0) {
+						disX = 0;
+					}
+					if (disX >= maxX) {
+						disX = maxX;
+					}
+					if (disY <= 0) {
+						disY = 0;
+					}
+					if (disY >= maxY) {
+						disY = maxY;
+					}
+					obj.style.left = disX + 'px';
+					obj.style.top = disY + 'px'
+				}
+				document.onmouseup = function () {
+					document.onmousemove = null;
+				}
+
+				return false;
+			}
+		}
+		// 随机
+		function random (n,m) {
+			return Math.floor(Math.random() * (m - n) + n);
+		}
+
+		// 随机dl
+		function randomDL (obj) {
+			// 
+			// 最大的x
+			maxX = clientWidth - obj.offsetWidth;
+			// 最大的y
+			maxY = clientHeight - obj.offsetHeight - topDiv.offsetHeight;
+			obj.style.left = random(0,maxX) + 'px';
+			obj.style.top = random(0,maxY) + 'px';
+		}
+
+		// 把字符串里面的[抱抱] --> 替换为 <img src="Images/phiz/huaxin.gif">
+		// wqeq[抓狂][抓狂][抓狂][抱抱][害羞][酷][嘻嘻][偷笑]
+		// ['[抓狂]','[抱抱]','[害羞]','[酷]','[嘻嘻]','[太开心]','[偷笑]','[钱]','[花心]','[挤眼]']
+		// 'wqeq[抓狂][抱抱][害羞]'
+		// 'weqe <img src="./Images/phiz/zhuakuang.gif" alt="抓狂" /> <img src="./Images/phiz/baobao.gif" alt="抱抱" /> <img src="./Images/phiz/haixiu.gif" alt="害羞" />'
+		function str2face (str) {
+			var arr = [];
+			var arr2 = [];
+			for (var i = 0;i < aImg.length;i++) {
+				arr.push('['+aImg[i].alt+']');
+				arr2.push(aImg[i].src);
+			}
+			
+			for (var i = 0;i < arr.length;i++) {
+				if (str.indexOf(arr[i]) != -1) {
+					// 抓狂
+					// replace()的返回值才是替换后的内容
+					str = str.replace(arr[i],'<img src="'+arr2[i]+'"/>');
+					i--;
+				}
+				
+			}
+			return str;
+		}
+
+		// 监听输入内容 (oninput,onpropertychage)
+		content.oninput = content.onpropertychage = show;
+
+		function show () {
+			// return false;
+			// console.log(content.value.length);
+			length = content.value.length;
+			if (length >= 10) {
+				fontNum.innerHTML = 0;
+				content.value = content.value.substr(0,10);
+			} else {
+				fontNum.innerHTML = 10 - length;
+			}
+		}
+	}
+
+</script>
+
+</head>
+<body>
+<div id='top'>
+    <span id='send'></span>
+</div>
+<div id='main'>
+   <!--  <dl class='paper a1'>
+        <dt>
+            <span class='username'>aaa</span>
+            <span class='num'>No.00001</span>
+        </dt>
+        <dd class='content'>欢迎来到aaa</dd>
+        <dd class='bottom'>
+            <span class='time'>今天08:30</span>
+            <a href="" class='close'></a>
+        </dd>
+    </dl> -->
+</div>
+
+<div id="layer"></div>
+
+<div id='send-form' style="z-index:2147483647;">
+    <p class='title'><span>许下你的愿望</span><a href="javascript:;" id='close'></a></p>
+    <form action="" name='wish'>
+        <p>
+            <label for="username">昵称：</label>
+            <input type="text" name='username' id='username'/>
+        </p>
+        <p>
+            <label for="content">愿望：(您还可以输入&nbsp;<span id='font-num'>50</span>&nbsp;个字)</label>
+            <textarea name="content" id='content'></textarea>
+            <div id='phiz'>
+                <img src="./Images/phiz/zhuakuang.gif" alt="抓狂" />
+                <img src="./Images/phiz/baobao.gif" alt="抱抱" />
+                <img src="./Images/phiz/haixiu.gif" alt="害羞" />
+                <img src="./Images/phiz/ku.gif" alt="酷" />
+                <img src="./Images/phiz/xixi.gif" alt="嘻嘻" />
+                <img src="./Images/phiz/taikaixin.gif" alt="太开心" />
+                <img src="./Images/phiz/touxiao.gif" alt="偷笑" />
+                <img src="./Images/phiz/qian.gif" alt="钱" />
+                <img src="./Images/phiz/huaxin.gif" alt="花心" />
+                <img src="./Images/phiz/jiyan.gif" alt="挤眼" />
+            </div>
+        </p>
+        <span id='send-btn'></span>
+    </form>
+</div>
+<!--[if IE 6]>
+<script type="text/javascript" src="./Js/iepng.js"></script>
+<script type="text/javascript">
+    DD_belatedPNG.fix('#send,#close,.close','background');
+</script>
+<![endif]-->
+</body>
+</html>

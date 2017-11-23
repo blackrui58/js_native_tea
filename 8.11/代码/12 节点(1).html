@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oDiv = document.getElementsByTagName('div')[0];
+		// 取得所有的属性
+		var attrs = oDiv.attributes[0];
+		//文本节点
+		var a = oDiv.childNodes[0];
+		// console.log(attrs);
+		console.log(a.nodeName);
+		// console.log(document.nodeType);
+	}
+	</script>
+
+</head>
+<body>
+	<div id="box" class="box">
+		<span>12312</span>
+	</div>
+</body>
+</html>

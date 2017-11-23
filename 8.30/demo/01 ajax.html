@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+	$(document).click(function () {
+
+		$.ajax({
+			url:'1.txt',
+			cache: false, // 默认的设置
+			timeout: 30000,
+			async: true,// 是否异步 (默认是true)
+			success: function (str) {
+				console.log(str);
+			},
+			error: function (s) { // s: oAjax对象
+				// 200-299 || 304代表数据请求成功
+				console.log(s.status);
+			},
+			complete: function () {
+				console.log(111);
+			}
+		})
+	});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

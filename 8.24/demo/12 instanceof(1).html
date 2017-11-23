@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	function Person (name,age) {
+		// var obj = new Object()
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.eat = function () {
+		alert('Person里面吃饭了');
+	}
+	function Worker (name,age) {
+		// 继承了属性
+		Person.apply(this,arguments);
+	}
+
+	Worker.prototype = new Person(); //继承方法 new 父对象的构造函数();
+	// 把他爹找回来
+	Worker.prototype.constructor = Worker;
+	Worker.prototype.eat = function () {
+		alert('Worker里面的吃饭')
+	}
+	
+	var w = new Worker('李四',20);
+
+	// console.log(w instanceof Worker); // true
+	// console.log(w instanceof Person);//true
+	// console.log(w instanceof Object); // true
+
+	var arr = [1,2,3];
+	var oDate = new Date();
+	console.log(arr instanceof Array);// true
+	console.log(arr instanceof Object); // true
+	console.log(arr instanceof Date); // false
+	console.log(oDate instanceof Date); // true
+	// var a = 'str';// string
+	// var a = new String('str');
+	// var a = new Number(10);
+	// var a = new Boolean(true);
+	// var a = true;
+	// var a = new String('str');
+	// var a = Array(1,2,3,4,5);
+	// var a = new Date();
+	var w1 = Worker();
+	console.log(w1); // true
+
+</script>
+</head>
+<body>
+	
+</body>
+</html>

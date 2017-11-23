@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	// 去重: 去除数组里面重复的内容
+
+	function isFindInArr (arr,value) {
+		for (var i = 0;i < arr.length;i++) {
+			if (arr[i] == value) {
+				return true;
+			}
+		}
+		return false;
+	} 
+
+	var arr = [1,2,3,4,5,2,3,4];
+	// var arr1 = [];
+
+	alert(isFindInArr(arr,8));
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

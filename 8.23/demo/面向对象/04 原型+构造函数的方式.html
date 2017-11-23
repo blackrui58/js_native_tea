@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	// 构造函数里面只写属性,不写方法
+	function Person (name,age) {
+		this.name = name;
+		this.age = age;
+	}
+
+	// 方法写到原型里面
+	// 创建了eat方法
+	Person.prototype.eat = function () {
+		alert(1);
+	}
+	// Person.prototype.a = 5;
+	Person.prototype.sleep = function () {
+		alert(2);
+	}
+	Person.prototype.showName = function () {
+		//  this-->该对象
+		return this.name;
+	}
+	var p1 = new Person('zs',20);
+	var p2 = new Person('ls',22);
+	// console.log(p1,p2)
+	// p1.eat();
+	// alert(p1.a);
+	alert(p2.showName());
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

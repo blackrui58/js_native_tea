@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	// function show (a,b) {
+	// 	// this-->[1,2,3]
+	// 	console.log(this,a,b);
+	// }
+	var show = function (a,b) {
+		console.log(this,a,b);
+	};
+	// bind不调用函数,会返回一个函数
+	(function (a,b) {
+		console.log(this,a,b);
+	}).bind([1,2,3],1,2)();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

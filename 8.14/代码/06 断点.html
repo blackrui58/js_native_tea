@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	#box {
+		width: 670px;
+		margin: 0 auto;
+		background: pink;
+		position: relative;
+	}
+	.ul1 {
+		overflow: hidden;
+		position: absolute;
+		right: 10px;
+		bottom: 0;
+	}
+	.ul1 li {
+		float: left;
+		margin: 5px;
+		width: 22px;
+		height: 22px;
+		background: #ccc;
+		text-align: center;
+		line-height: 22px;
+		border-radius: 50%;
+	}
+	.ul1 li.active {
+		background: orange;
+	}
+	.ul1 li a {
+		color: #fff;
+		text-decoration: none;
+	}
+	.ul2 li {
+		display: none;
+	}
+	img {
+		vertical-align: top;
+	}
+	</style>
+	<script type="text/javascript">
+	window.onload = function () {
+		//ul1
+		var oUl1 = document.getElementById('ul1');
+		var aLi1 = oUl1.getElementsByTagName('li');
+
+		// ul2
+		var oUl2 = document.getElementById('ul2');
+		var aLi2 = oUl2.getElementsByTagName('li');
+		// 默认显示第一个
+		aLi1[0].className = 'active';
+		aLi2[0].style.display = 'block';
+
+		for (var i = 0;i < aLi1.length;i++) {
+			aLi1[i].index = i;
+			aLi1[i].onmouseover = function () {
+				// 先清空所有
+				for (var j = 0;j < aLi1.length;j++) {
+					aLi1[j].className = '';
+					aLi2[j].style.display = 'none';
+				}
+
+				// 再给自己添加
+				// this.className = 'active';
+				aLi2[i].className = 'active';
+				// aLi2[this.index].style.display = 'block';
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul class="ul1" id="ul1">
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">6</a></li>
+		</ul>
+
+		<ul class="ul2" id="ul2">
+			<li><a href="#"><img src="../课后作业/轮播/pic1.jpg" height="240" width="670"></a></li>
+			<li><a href="#"><img src="../课后作业/轮播/pic2.jpg" height="240" width="670"></a></li>
+			<li><a href="#"><img src="../课后作业/轮播/pic3.jpg" height="240" width="670"></a></li>
+			<li><a href="#"><img src="../课后作业/轮播/pic4.jpg" height="240" width="670"></a></li>
+			<li><a href="#"><img src="../课后作业/轮播/pic5.jpg" height="240" width="670"></a></li>
+			<li><a href="#"><img src="../课后作业/轮播/pic6.jpg" height="240" width="670"></a></li>
+		</ul>
+	</div>	
+</body>
+</html>

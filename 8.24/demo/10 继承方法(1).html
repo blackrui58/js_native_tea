@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	function Person (name,age) {
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.eat = function () {
+		alert(this.name+'吃饭了');
+	}
+	Person.prototype.sleep = function () {
+		alert(this.name+'睡觉了');
+	}
+
+	function Worker (name,age) {
+		// 继承了属性
+		Person.apply(this,arguments);
+	}
+
+	Worker.prototype = new Person(); //继承方法 new 父对象的构造函数();
+	// 把他爹找回来
+	// Worker.prototype.constructor = Worker;
+	Worker.prototype.job = function () {
+		alert('job');
+	}
+	var p = new Person('张三',20);
+	var w = new Worker('李四',20);
+	// w.sleep();
+	// w.eat();
+	// w.job();
+	// p.job();
+	console.log(p);
+	console.log(w);
+
+</script>
+</head>
+<body>
+	
+</body>
+</html>

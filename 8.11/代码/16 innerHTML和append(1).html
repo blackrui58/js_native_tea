@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oDiv = document.getElementsByTagName('div')[0];
+		var oH1 = document.getElementsByTagName('h1')[0];
+		oH1.onclick = function () {
+			alert(1);
+		}
+		oDiv.appendChild(oH1);
+		// oDiv.innerHTML = '<h1>这是h1</h1>';
+
+		// var oH1 = oDiv.children[0];
+		// oH1.onclick = function () {
+		// 	alert(1);
+		// }
+	}
+	</script>
+</head>
+<body>
+	<div></div>
+	<h1>h1</h1>
+</body>
+</html>

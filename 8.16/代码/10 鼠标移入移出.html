@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: #ccc;
+			line-height: 200px;
+			text-align: center;
+		}
+		span {
+			color: red;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<span>这是div的span</span>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var oDiv = document.getElementsByTagName('div')[0];
+	// oDiv.onmouseover = function () {
+	// 	console.log(1);
+	// }
+	// oDiv.onmouseout = function () {
+	// 	console.log(2);
+	// }
+	oDiv.onmouseenter = function () {
+		console.log(1);
+	}
+	oDiv.onmouseleave = function () {
+		console.log(2);
+	}
+
+</script>

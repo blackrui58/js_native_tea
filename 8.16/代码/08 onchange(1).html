@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<!-- <select>
+		<option value="red">红色</option>
+		<option value="blue">蓝色</option>
+		<option value="green">绿色</option>
+	</select> -->
+	<input type="text">
+</body>
+</html>
+<script type="text/javascript">
+	// var oSel1 = document.getElementsByTagName('select')[0];
+	// oSel1.onchange = function () {
+	// 	document.body.style.background = this.value;
+	// }
+
+	var oInput = document.getElementsByTagName('input')[0];
+	oInput.onchange = function () {
+		if (this.value.indexOf('@qq.com') == -1) {
+			alert('请输入正确的邮箱')
+		}
+	}
+
+</script>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="new_ajax.js"></script>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oBtn = document.getElementsByTagName('button')[0];
+		oBtn.onclick = function () {
+			ajax('douban.json?act=add&user=ww&t='+Math.random(),function (str) {
+				console.log(str);
+			},function (err) {
+				console.log(err);
+			});
+		}
+	}
+	</script>
+</head>
+<body>
+	<button>发送</button>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	console.log(window.location);
+	// href
+	// console.log(location.href);
+	// search:url?后面的内容 : 包括?号
+	// console.log(location.search);
+	// hash: 哈希字段 #后面的内容 : 包括#
+	// console.log(location.hash);
+	function change() {
+		// location.href = 'http://www.baidu.com';
+		// window.open('http://www.baidu.com');
+		// location.search = 'a=周星星';
+		// location.hash = 'top';
+
+		// 替换url地址 : 不支持浏览器后退
+		location.replace('http://www.baidu.com');
+	}
+	</script>
+</head>
+<body>
+	<a href="http://www.baidu.com">百度</a>
+	<h1 id="top">顶部</h1>
+	
+	<button onclick="change();">变</button>
+</body>
+</html>

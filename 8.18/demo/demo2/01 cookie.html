@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	function setCookie() {
+		var oDate = new Date();
+		// 设置天
+		oDate.setDate(oDate.getDate()+7);
+		// key=value
+		document.cookie = 'aaa=zs;path=/;';
+		document.cookie = 'bbb=18;path=/;';
+	}
+	function getCookie() {
+		alert(document.cookie)
+	}
+	</script>
+</head>
+<body>
+	<button onclick="setCookie();">存cookie</button>
+	<button onclick="getCookie();">取cookie</button>
+</body>
+</html>

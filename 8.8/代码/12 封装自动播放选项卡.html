@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	#box {
+		width: 670px;
+		margin: 0 auto;
+		background: pink;
+		position: relative;
+	}
+	.ul1 {
+		overflow: hidden;
+		position: absolute;
+		right: 10px;
+		bottom: 0;
+	}
+	.ul1 li {
+		float: left;
+		margin: 5px;
+		width: 22px;
+		height: 22px;
+		background: #ccc;
+		text-align: center;
+		line-height: 22px;
+		border-radius: 50%;
+	}
+	.ul1 li.active {
+		background: orange;
+	}
+	.ul1 li a {
+		color: #fff;
+		text-decoration: none;
+	}
+	.ul2 li {
+		display: none;
+	}
+	img {
+		vertical-align: top;
+	}
+
+
+		#box1 {
+			width: 310px;
+			margin: 0 auto;
+		}
+		#box1 .top button {
+			width: 80px;
+			height: 30px;
+			background: #ccc;
+			margin: 10px 10px;
+			outline: none;
+			border: 1px solid blue;
+		}
+		#box1 .bottom div {
+			height: 200px;
+			border: 1px solid red;
+			display: none;
+		}
+		/* 选中的类名 */
+		#box1 .top button.selected {
+			border-bottom: 3px solid red;
+			font-weight: bold;
+		}
+	</style>
+	<script type="text/javascript">
+
+	// 选项卡的封装
+	// id: 选项卡的父盒子的id值
+	// isSelected: 选中的类名
+	// event: 该选项卡的事件
+	// isCarousel: 是否需要轮播  (true false)
+	function tab (id,isSelected,event,isCarousel) {
+		event = event || 'onmouseover';
+		isSelected = isSelected || 'active';
+		// 选项卡的大盒子
+		var oBox = document.getElementById(id);
+		//ul1
+		var oUl1 = oBox.children[0];
+		var aLi1 = oUl1.children;
+		// ul2
+		var oUl2 = oBox.children[1];
+		var aLi2 = oUl2.children;
+
+		// 图片的下标
+		var iNow = 0;
+		// 默认显示第一个
+		aLi1[0].className = isSelected;
+		aLi2[0].style.display = 'block';
+
+		for (var i = 0;i < aLi1.length;i++) {
+			aLi1[i].index = i;
+			aLi1[i][event] = function () {
+				iNow = this.index;
+				clearAdd();
+			}
+		}
+
+		// 清空所有,给自己添加
+		function clearAdd () {
+			// 先清空所有
+			for (var j = 0;j < aLi1.length;j++) {
+				aLi1[j].className = '';
+				aLi2[j].style.display = 'none';
+			}
+			// 再给自己添加
+			// i = 0,1,2,3,4,5,0,1,2,3,4,5
+			aLi1[iNow].className = isSelected;
+			aLi2[iNow].style.display = 'block';
+		}
+
+		if (isCarousel) {
+			// 自动播放的代码
+			// 开启定时器,自动播放
+			var tid = setInterval(next,1000);
+			// 给整个父盒子添加鼠标移入
+			oBox.onmouseover = function () {
+				clearInterval(tid);
+			}
+			oBox.onmouseout = function () {
+				tid = setInterval(next,1000);
+			}
+			// 下一页的函数
+			function next() {
+				iNow++;
+				// this.index = 0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0
+				if (iNow == aLi1.length) {
+					iNow = 0;
+				}
+				clearAdd();
+			}
+		}
+
+	}
+
+	window.onload = function () {
+		// 轮播
+		tab('box','active','',true);
+		// 昨天
+		tab('box1','selected','onclick');
+	}
+
+	</script>
+</head>
+<body>
+		<!-- 轮播的选项卡 -->
+	<div id="box">
+		<ul class="ul1" id="ul1">
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">6</a></li>
+		</ul>
+
+		<ul class="ul2" id="ul2">
+			<li><a href="#"><img src="../课后作业/轮播/pic1.jpg" height="240" width="670"></a></li>
+			<li><a href="#"><img src="../课后作业/轮播/pic2.jpg" height="240" width="670"></a></li>
+			<li><a href="#"><img src="../课后作业/轮播/pic3.jpg" height="240" width="670"></a></li>
+			<li><a href="#"><img src="../课后作业/轮播/pic4.jpg" height="240" width="670"></a></li>
+			<li><a href="#"><img src="../课后作业/轮播/pic5.jpg" height="240" width="670"></a></li>
+			<li><a href="#"><img src="../课后作业/轮播/pic6.jpg" height="240" width="670"></a></li>
+		</ul>
+	</div>
+	<!-- 昨天的选项卡 -->
+	<div id="box1">
+		<div class="top">
+			<button>初中</button>
+			<button>中考</button>
+			<button>高中</button>
+		</div>
+		<div class="bottom" id="bottom">
+			<div>初中的内容</div>
+			<div>中考的内容</div>
+			<div>高中的内容</div>
+		</div>
+	</div>	
+</body>
+</html>

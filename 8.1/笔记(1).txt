@@ -1,0 +1,66 @@
+事件: 用户操作 (点击,鼠标移入移出,键盘)
+添加事件: onclick  onmouseover onmouseout
+js: 改变css样式
+步骤:
+1.先获取到对应的元素: document.getElementById(id值) (box)
+2.box.style.样式属性名 = 样式属性值;
+
+变量: 保存数据,方便全局修改
+全局变量和局部变量
+变量的定义: var 变量名 = 变量值;
+
+函数: 实现某种功能
+定义函数:
+function 函数名 () { 功能代码 }
+函数调用: 函数名();
+
+常用添加事件步骤:
+1.获取需要添加事件的元素 (box)
+2.
+box.onmouseover = function () {
+	功能代码
+}
+当触发事件以后,就能执行功能代码
+
+function 函数名 () {
+	功能代码
+}
+
+function() {}  :  匿名函数
+
+获取元素的方式
+
+1.根据id值获取: document.getElementById(id值)
+2.根据标签名获取: document.getElementsByTagName(标签名) : 结果是多个 
+
+HTMLCollection: html元素集合(容器)对象 (aBtn)
+0,1: 下标 ,根据下标获取到对应的元素值: aBtn[下标值]
+
+Cannot set property 'display' of undefined: 不能给一个undefined的值设置display属性
+
+加号在js里面有两个意思:
+1.数学的加,做加法运算
+2.连接符,连接+左右两边的内容,当+左右两边至少有一个是字符串的情况下,就是连接符
+
+js操作标签(元素)属性 (oA):
+1.设置属性
+a.oA.title = 值
+b.oA['title'] = 值
+
+2.获取属性
+a. oA.title  oA.属性名
+b. oA['title']  oA['属性名']  用变量代表属性名的时候
+var a = 'title';
+alert(oA[a]);
+
+class属于关键字,用className代替
+
+换肤: 改变背景,字体颜色,切换背景图片
+
+js的预解析: js在正式运行js代码以前,将变量的声明还有函数的定义放到最前面
+
+标签元素的属性
+value : 表单元素的值  
+innerHTML : 获取的是双标签里面的内容
+
+<button>内容</button>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	#box {
+		width: 670px;
+		margin: 0 auto;
+		background: pink;
+		position: relative;
+	}
+
+	img {
+		vertical-align: top;
+	}
+	.pre-next {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		margin-top: -30px;
+		height: 60px;
+		width: 100%;
+	}
+	.pre-next a {
+		width: 40px;
+		height: 60px;
+		background: rgba(0,0,0,0.3);
+		color: #fff;
+		text-decoration: none;
+		font-size: 20px;
+		line-height: 60px;
+		position: absolute;
+		text-align: center;
+	}
+	#pre {
+		left: 0;
+	}
+	#next {
+		right: 0;
+	}
+	</style>
+	<script type="text/javascript" src="common.js"></script>
+	<script type="text/javascript">
+	ready(function () {
+		var arr = ['轮播/pic1.jpg','轮播/pic2.jpg','轮播/pic3.jpg','轮播/pic4.jpg','轮播/pic5.jpg','轮播/pic6.jpg'];
+		var oDiv = document.getElementById('box');
+		var oImg = oDiv.getElementsByTagName('img')[0];
+		// 上一页  下一页
+		var oPre = document.getElementById('pre');
+		var oNext = document.getElementById('next');
+
+		// 记录下标
+		var index = 0;
+
+		// 下一页
+
+		addEvent(oNext,'click',function () {
+			index++;
+			oImg.src = arr[index % 6];
+		});
+		// oNext.onclick = function () {
+		// 	index++;
+		// 	oImg.src = arr[index % 6];
+		// }
+		addEvent(oPre,'click',function () {
+			index--;
+			// -1
+			if (index < 0) {
+				index = arr.length - 1;
+			}
+			oImg.src = arr[index % 6];
+		});
+		// oPre.onclick = function () {
+		// 	index--;
+		// 	// -1
+		// 	if (index < 0) {
+		// 		index = arr.length - 1;
+		// 	}
+		// 	oImg.src = arr[index % 6];
+		// }
+
+
+		addMouseWheel(oDiv,scroll);
+
+		function scroll (evt) {
+			evt = evt || window.event;
+			
+			if (isUp(evt)) { // 向上
+				index++;
+				// 0 1 2 3 4 5 0 1 2 3 4 5
+				// index % 6;
+			} else { // 向下
+				index--;
+				// -1
+				if (index < 0) {
+					index = arr.length - 1;
+				}
+			}
+			oImg.src = arr[index % 6];
+			evt.preventDefault && evt.preventDefault();
+			// 阻止默认事件
+			return false;
+	}
+
+	});
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul class="ul2" id="ul2">
+			<li><a href="#"><img src="轮播/pic1.jpg" height="240" width="670"></a></li>
+		</ul>
+		<div class="pre-next">
+			<a href="javascript:;" id="pre">&lt;</a>
+			<a href="javascript:;" id="next">&gt;</a>
+		</div>
+	</div>	
+</body>
+</html>

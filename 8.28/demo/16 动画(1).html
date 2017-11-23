@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	div {
+		width: 200px;
+		height: 200px;
+		border: 1px solid #000;
+	}
+	</style>
+	<script type="text/javascript" src="jq1.7.2/jquery.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		$('button').hover(function () {
+			$('div').stop().animate({width: 400,height: 400}).click(function (){
+				alert(1);
+			}).css('background','red').html('123');
+
+		},function () {
+			$('div').stop().animate({width: 200,height: 200})
+		});
+	})
+	</script>
+</head>
+<body>
+	<button>动</button>
+	<div></div>
+</body>
+</html>

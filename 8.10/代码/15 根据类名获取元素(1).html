@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			margin: 20px;
+			float: left;
+		}
+		button {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+		}
+	</style>
+	<script type="text/javascript">
+	
+	// 判断一个数组里面有没有一个值
+	function isFindInArr (arr,value) {
+		for (var i = 0;i < arr.length;i++) {
+			if (arr[i] == value) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	function change () {
+		// var aDiv = document.getElementsByClassName('red');
+		var aDiv = getByClass('box');
+		console.log(aDiv);
+		for (var i = 0;i < aDiv.length;i++) {
+			aDiv[i].style.background = 'green';
+		}
+
+	}
+	// 根据类名获取元素
+	function getByClass (className) {
+		// 如果判断条件成立,直接使用js自带
+		if (document.getElementsByClassName) {
+			return document.getElementsByClassName(className);
+		} else { // 自己实现同样的功能
+			var result = [];
+			// 获取到所有的标签元素 (集合)
+			var aTag = document.getElementsByTagName('*');
+			for (var i = 0;i < aTag.length;i++) {
+				// console.log(aTag[i].className);//box box1
+				var arr = aTag[i].className.split(' ');
+				if (isFindInArr(arr,className)) {
+					result.push(aTag[i]);
+				}
+			}
+			return result;
+		}
+	}
+	</script>
+</head>
+<body>
+	<div></div>
+	<div class="box box1 ajskdsa dakd"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div></div>
+	<div></div>
+	<button onclick="change();">点击</button>
+</body>
+</html>

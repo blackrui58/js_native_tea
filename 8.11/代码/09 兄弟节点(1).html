@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+
+	//上一个兄弟节点
+	// function previousSibling (obj) {
+	// 	if (obj.previousElementSibling) {
+	// 		return obj.previousElementSibling;// 高版本
+	// 	} else {
+	// 		return obj.previousSibling; //低版本
+	// 	}
+	// }
+
+	// function previousSibling (obj) {
+	// 	return obj.previousElementSibling ? obj.previousElementSibling : obj.previousSibling;		
+	// }
+	function previousSibling (obj) {
+		return 	obj.previousElementSibling || obj.previousSibling;
+	}
+
+
+	window.onload = function () {
+		var oUl = document.getElementsByTagName('ul')[0];
+
+		var oLi = oUl.children[2];
+		console.log(previousSibling(oLi));
+		
+		// console.log(oLi.previousSibling); // 低版本
+		// if (oLi.previousElementSibling) {
+		// 	console.log(oLi.previousElementSibling);// 高版本
+		// } else {
+		// 	console.log(oLi.previousSibling); //低版本
+		// }
+	}
+	</script>
+</head>
+<body>
+	<ul>
+		<li class="box1">111</li>
+		<li class="box2">222</li>
+		<li class="box3">333</li>
+		<li class="box4">444</li>
+	</ul>
+</body>
+</html>

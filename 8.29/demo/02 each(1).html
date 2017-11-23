@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		li {
+			width: 200px;
+			height: 200px;
+			float: left;
+			background: #ccc;
+			margin: 20px;
+		}
+	</style>
+	<script type="text/javascript" src="jq1.7.2/jquery.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		console.log($('li'));
+		// for (var i = 0;i < $('li').length;i++) {
+		// 	console.log($('li')[i]);
+		// }
+		$('li').each(function (a,b) {
+			// 下标  数组里面元素
+			console.log(a,b);
+		});
+	})
+	</script>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		button {
+			width: 60px;
+			height: 30px;
+			background:#ccc;
+			outline: none;
+		}
+		#content div {
+			width: 200px;
+			height: 200px;
+			border: 1px solid red;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<button title="0">推荐</button>
+		<button title="1">排行榜</button>
+		<button title="2">歌单</button>
+	</div>
+	<div id="content">
+		<div>推荐的内容</div>
+		<div>排行榜的内容</div>
+		<div>歌单的内容</div>
+	</div>
+</body>
+</html>
+<script>
+	var oDiv = document.getElementById('box');
+	//在div里面获取button
+	var aBtn = oDiv.getElementsByTagName('button');
+	//内容的父级div
+	var oDivCon = document.getElementById('content');
+	var aDiv = oDivCon.getElementsByTagName('div');
+	for (var i = 0;i < aBtn.length;i++) {
+		aBtn[i].onclick = function () {
+			//将所有的颜色复原
+			for (var j = 0;j < aBtn.length;j++) {
+				aBtn[j].style.background = '#ccc';
+				aDiv[j].style.display = 'none';
+			}
+			//点击的时候执行,i = 3
+			this.style.background = 'red';
+			// alert(this.title); 0 , 1, 2
+
+			//显示div
+			aDiv[this.title].style.display = 'block';
+			// aDiv[1].style.display = 'block';
+			// aDiv[2].style.display = 'block';
+		}
+	}
+
+</script>

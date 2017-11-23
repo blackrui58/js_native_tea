@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #ul1{
+            width: 512px;
+            height: 320px;
+            position: absolute;
+            left: 50%;
+            margin-left: -256px;
+            top: 20%;
+            overflow: hidden;
+        }
+        #ul1 li{
+            width: 512px;
+            height: 320px;
+            float: left;
+            position: absolute;
+        }
+        #ul1 li img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script src="jquery-3.2.1.js"></script>
+    <script>
+        $(function () {
+            var w = 30;
+            var W = $('#ul1 li').width();
+            $('#ul1').width(W + ($('#ul1 li').length - 1) * w);
+
+            $('#ul1 li').each(function (index,ele) {
+                if (index >= 1) {
+                    $(ele).css('left',$('#ul1').width() - ($('#ul1 li').length - index) * w);
+                }
+            })
+
+            $('#ul1 li').mouseenter(function () {
+                var index1 = $(this).index();
+                $('#ul1 li').each(function (index,ele) {
+                    if (index <= index1) {
+                        $(ele).stop().animate({left: index * w});
+                    } else {
+                        $(ele).stop().animate({left: $('#ul1').width() - ($('#ul1 li').length - index) * w});
+                    }
+                });
+            });
+        })
+    </script>
+</head>
+<body>
+    <ul id="ul1">
+        <li><img src="img2/1.jpg"></li>
+        <li><img src="img2/2.jpg"></li>
+        <li><img src="img2/3.jpg"></li>
+        <li><img src="img2/4.jpg"></li>
+        <li><img src="img2/5.jpg"></li>
+        <li><img src="img2/6.jpg"></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		.box {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			margin: 10px;
+			float: left;
+		}
+		.active {
+			background: green;
+		}
+	</style>
+	<script type="text/javascript" src="common.js"></script>
+	<script type="text/javascript">
+	
+	window.onload = function () {
+		var aDiv = document.getElementsByTagName('div');
+		for (var i = 0;i < aDiv.length;i++) {
+			aDiv[i].onclick = function () {
+				for (var j = 0;j < aDiv.length;j++) {
+					removeClass(aDiv[j],'active');
+				}
+				addClass(this,'active');
+			}
+		}
+	}
+
+
+
+	</script>
+</head>
+<body>
+	<div class="active box box1 box2"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+</body>
+</html>

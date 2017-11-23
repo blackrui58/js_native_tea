@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+	</style>
+	<script type="text/javascript">
+
+	// 获取样式
+	function getStyle () {
+		if (oDiv.currentStyle) {
+			return oDiv.currentStyle.width;
+		} else {
+			return getComputedStyle(oDiv,false).width;
+		}
+	}
+	function getStyle1 () {
+			var oDiv = document.getElementsByTagName('div')[0];
+			var oH1 = document.getElementsByTagName('h1')[0];
+			// 设置是行内样式
+			// oDiv.style.width = '300px';
+			// 获取也是行内样式
+			// alert(oDiv.style.width);
+			// var value = getComputedStyle(oDiv,false).width;
+			// 如果oDiv.currentStyle是undefined的话,就是高版本
+			// 如果oDiv.currentStyle不是undefined的话,就是低版本
+			if (oDiv.currentStyle) {
+				var value1 = oDiv.currentStyle.width;
+			} else {
+				var value1 = getComputedStyle(oDiv,false).width;
+			}
+			alert(value1);
+
+			if (oH1.currentStyle) {
+				var value2 = oH1.currentStyle.height;
+			} else {
+				var value2 = getComputedStyle(oH1,false).height;
+			}
+			alert(value2);
+
+		}
+	</script>
+</head>
+<body>
+	<button onclick="getStyle1();" >获取</button>
+	<div style="width: 300px;"></div>
+	<h1 style="height: 300px;background: #ccc;"></h1>
+</body>
+</html>

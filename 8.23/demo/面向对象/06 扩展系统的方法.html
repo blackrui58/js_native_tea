@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	var str = '     welcome to bj     ';
+	// 对象
+	// var str = new String('     welcome to bj     ');
+	// 包装对象
+
+	String.prototype.trim = String.prototype.trim || function () {
+		// this-->字符串
+		return this.replace(/^\s+|\s+$/g,'');
+	}
+	// trim方法字符串是有的,但是不支持低版本
+	alert('|'+str.trim()+'|');
+
+	// trim
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

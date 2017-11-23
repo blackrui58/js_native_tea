@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="event.js"></script>
+</head>
+<body>
+	<button>点击</button>
+</body>
+</html>
+<script type="text/javascript">
+	
+	var oBtn = document.getElementsByTagName('button')[0];
+	// addEvent(oBtn,'click',function (evt) {
+	// 	evt = evt || window.event;
+	// 	evt.cancelBubble = true;
+	// 	alert('button');
+	// })
+	// addEvent(document,'click',function () {
+	// 	alert('document');
+	// })
+	// oBtn.onclick = function (evt) {
+	// 	evt = evt || window.event;
+	// 	evt.cancelBubble = true;
+	// 	alert('button');
+	// }
+	// document.onclick = function () {
+	// 	alert('document');
+	// }
+
+	// document.oncontextmenu = function () {
+	// 	return false;
+	// }
+	addEvent(document,'contextmenu',function (evt) {
+		evt = evt || window.event;
+		// if (evt.preventDefault) {
+		// 	evt.preventDefault();
+		// }
+		// var a = 10 && 20;
+		evt.preventDefault && evt.preventDefault();
+		return false;// 阻止低版本的默认事件
+	})
+
+</script>

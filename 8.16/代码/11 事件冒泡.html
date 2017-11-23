@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			background-color: red;
+			height: 200px;
+
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<button>按钮</button>
+	</div>
+	
+</body>
+</html>
+<script type="text/javascript">
+	var oDiv = document.getElementsByTagName('div')[0]
+	var oBtn = document.getElementsByTagName('button')[0];
+	oBtn.onclick = function(evt) {
+		evt = evt || window.event;
+		evt.cancelBubble = true;
+		alert('button');
+	}
+	oDiv.onclick = function (evt) {
+		evt = evt || window.event;
+		evt.cancelBubble = true;
+		alert('div');
+	}
+	document.body.onclick = function () {
+		alert('body');
+	}
+	document.onclick = function (){
+		alert('document');
+	}
+</script>

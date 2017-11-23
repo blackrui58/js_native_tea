@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			position: absolute;
+			left: 0;
+			top: 0;
+			cursor: move;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oDiv = document.getElementsByTagName('div')[0];
+		// 鼠标摁下
+		oDiv.onmousedown = function (evt) {
+			evt = evt || window.event;
+			// 摁下的时候先记录鼠标的位置
+			var disX = evt.clientX - oDiv.offsetLeft;
+			var disY = evt.clientY - oDiv.offsetTop;
+			
+			// 鼠标移动事件
+			document.onmousemove = function (evt) {
+				evt = evt || window.event;
+				// 减去鼠标原来摁的位置
+				var x = evt.clientX - disX;
+				var y = evt.clientY - disY;
+				// 可视区的宽高
+				var wW = document.documentElement.clientWidth || document.body.clientWidth;
+				var wH = document.documentElement.clientHeight || document.body.clientHeight;
+				// x的最大值
+				var maxX = wW - oDiv.offsetWidth;
+				var maxY = wH - oDiv.offsetHeight;
+				// 左边的最小值
+				if (x <= 10) {
+					x = 0;
+				}
+				if (y <= 10) {
+					y = 0;
+				}
+				if (x >= maxX - 10) {
+					x = maxX;
+				}
+				if (y >= maxY - 10) {
+					y = maxY;
+				}
+				oDiv.style.left = x + 'px';
+				oDiv.style.top = y + 'px';
+				// return false;
+			}
+			document.onmouseup = function () {
+				document.onmousemove = null;
+				// 释放捕获
+				if (oDiv.releaseCapture) {
+					oDiv.releaseCapture();
+				}
+			}
+			// 设置捕获
+			if (oDiv.setCapture) {
+				oDiv.setCapture();
+			}
+			// oDiv.setCapture && oDiv.setCapture();
+			//  1 || 2   1 && 2
+			return false;
+		}
+	}
+	</script>
+</head>
+<body>
+	哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+	<div></div>
+</body>
+</html>

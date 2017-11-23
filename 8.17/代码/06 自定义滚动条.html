@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义滚动条</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		body {
+			height: 10000px;
+		}
+		#box {
+			width: 170px;
+			background-color: red;
+			height: 480px;
+			margin: 100px auto;
+			overflow: hidden;
+			position: relative;
+		}
+		#box ul {
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		#box ul li {
+			width: 160px;
+			height: 160px;
+			border-bottom: 1px solid #ccc;
+		}
+		#box ul li img {
+			width: 160px;
+			height: 160px;
+			vertical-align: top;
+		}
+		#box #bar {
+			width: 8px;
+			position: absolute;
+			right: 1px;
+			top: 0;
+			height: 80px;
+			background-color: black;
+			border-radius: 4px;
+		} 
+	</style>
+	<script type="text/javascript" src="common.js"></script>
+	<script type="text/javascript">
+	ready(function () {
+		var oDiv= document.getElementById('box');
+		var oUl = document.getElementById('ul1');
+		var oBar = document.getElementById('bar');
+		// top值
+		var dis = 0;
+		// 滚动条的最大值
+		var maxBarTop = oDiv.offsetHeight - oBar.offsetHeight; 
+		// ul的最大值
+		var maxUlTop = oDiv.offsetHeight - oUl.offsetHeight;
+		// 拖拽
+		oBar.onmousedown = function (evt) {
+			//记录位置
+			evt = evt || window.event;
+			// var disY = evt.clientY - oDiv.offsetTop - oBar.offsetTop;
+			var disY = evt.clientY - getPos(oBar).top;
+
+			document.onmousemove = function (evt) {
+				evt = evt || window.event;
+
+				dis = evt.clientY - disY - oDiv.offsetTop;
+				if (dis <= 0) {
+					dis = 0;
+				}
+				if (dis >= maxBarTop) {
+					dis = maxBarTop;
+				}
+				// 比例
+				var scale = dis / maxBarTop;
+				// 算ul的top
+				var ulTop = scale * maxUlTop;
+				oBar.style.top = dis + 'px';
+				oUl.style.top = ulTop + 'px';
+
+			}
+			document.onmouseup = function () {
+				document.onmousemove = null;
+			}
+
+			return false;
+
+
+		}
+
+		// 鼠标滚动事件
+		addMouseWheel(oDiv,function (evt) {
+			evt = evt || window.event;
+			if (isUp(evt)) {
+				dis -= 10;
+				if (dis <= 0) {
+					dis = 0;
+				}
+			} else {
+				dis += 10;
+				if (dis >= maxBarTop) {
+					dis = maxBarTop;
+				}
+			}
+			// 比例
+			var scale = dis / maxBarTop;
+			// 算ul的top
+			var ulTop = scale * maxUlTop;
+			oBar.style.top = dis + 'px';
+			oUl.style.top = ulTop + 'px';
+			return false;
+		});
+	});
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul id="ul1">
+			<li><img src="img/01.jpg" alt=""></li>
+			<li><img src="img/02.jpg" alt=""></li>
+			<li><img src="img/03.jpg" alt=""></li>
+			<li><img src="img/04.jpg" alt=""></li>
+			<li><img src="img/05.jpg" alt=""></li>
+			<li><img src="img/06.jpg" alt=""></li>
+			<li><img src="img/07.jpg" alt=""></li>
+		</ul>
+		<div id="bar"></div>
+	</div>
+</body>
+</html>

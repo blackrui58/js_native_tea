@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	#box {
+		width: 100px;
+		height: 100px;
+		background-color: blue;
+	}
+	.box {
+		width: 200px;
+		height: 200px;
+		background-color: red;
+	}
+	</style>
+	
+</head>
+<body>
+	<button onclick="change();">设置</button>
+
+	<div id="box"></div>
+
+	<h1></h1>
+</body>
+</html>
+<script type="text/javascript">
+	var oH1 = document.getElementsByTagName('h1')[0];
+	var oDiv = document.getElementsByTagName('div')[0];
+	// 设置样式属性
+	// obj: 给谁设置样式属性
+	// json: 设置的样式是什么,必须是对象
+	function setStyle (obj,json) {
+		// var obj = oH1,json = json1
+		for (var key in json) {
+			obj.style[key] = json[key];
+		}
+	}
+
+	function change () {
+		
+		// oh1要设置的样式
+		var json1 = {
+			width: '200px',
+			height: '200px',
+			background: 'red',
+			margin: '100px'
+		};
+		// oDiv要设置的样式
+		var json2 = {
+			width: '400px',
+			height: '400px',
+			background: '#ccc'
+		}
+		// 给oH1设置样式
+		setStyle(oH1,json1);
+		// 给 oDiv设置样式
+		// for (var key in json2) {
+		// 	oDiv.style[key] = json2[key];
+		// }
+		setStyle(oDiv,json2);
+
+
+	}
+	</script>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	function check () {
+		var oInput = document.getElementsByTagName('input')[0];
+		var reg = /^(0[1-9]\d{1,2}-)?[1-9]\d{6,7}$/;
+		alert(reg.test(oInput.value));
+	}
+	</script>
+</head>
+<body>
+	<input type="text">
+	<button onclick="check();">检测</button>
+</body>
+</html>

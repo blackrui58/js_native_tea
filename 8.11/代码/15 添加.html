@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oH1 = document.createElement('h1');
+		oH1.innerHTML = '这是h1';
+		document.onclick = function () {
+			// true: 既赋值标签,又复制内容
+			var oH11 = oH1.cloneNode(true);
+			document.body.appendChild(oH11);
+		}
+	}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

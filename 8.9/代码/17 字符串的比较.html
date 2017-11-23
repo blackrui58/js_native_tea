@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	var a = '丁',b = '三';
+	// 中文比 Unicode 编码
+	// 最小值的文字的Unicode编码: 0x4e00
+	// 最大值的文字: 0x9fa5
+	for (var i = '0x4e00';i <= '0x9fa5';i++) {
+		document.write(String.fromCharCode(i));
+	}
+	alert(a > b);
+	
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

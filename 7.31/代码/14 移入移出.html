@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<button onmouseover="showDiv();" onmouseout="hideDiv();">设置</button>
+	<div id="box"></div>
+</body>
+</html>
+<script type="text/javascript">
+	//定义函数
+	function showDiv () {
+		var oDiv = document.getElementById('box');
+		oDiv.style.display = 'block';
+	}
+
+	function hideDiv () {
+		var oDiv = document.getElementById('box');
+		oDiv.style.display = 'none';
+	}
+</script>

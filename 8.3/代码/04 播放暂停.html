@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 65px;
+			height: 66px;
+			background: url(../课后作业/sprite_entrylive@1x.png) no-repeat -85px -105px #ccc;
+			cursor: pointer;
+		}
+	</style>
+	<script type="text/javascript"></script>
+</head>
+<body>
+	<div></div>
+	<span>播放中....</span>
+	<video src="周二珂 - 告白气球.mkv" controls></video>
+</body>
+</html>
+<script type="text/javascript">
+	var oDiv = document.getElementsByTagName('div')[0];
+	var oSpan = document.getElementsByTagName('span')[0];
+	// true : 播放  false: 暂停
+	var flag = true;
+	oDiv.onclick = function () {
+
+		if (flag) {
+			oSpan.innerHTML = '暂停中....';
+			oDiv.style.backgroundPosition = '0 -105px';
+		} else {
+			oSpan.innerHTML = '播放中....';
+			oDiv.style.backgroundPosition = '-85px -105px';
+		}
+		flag = !flag;
+		
+	}
+</script>

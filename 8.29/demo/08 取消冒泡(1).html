@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="jq1.7.2/jquery.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		// $(document).click(function () {
+		// 	alert('document');
+		// });
+		// $('button').click(function (){
+		// 	alert('button');
+		// 	return false;
+		// });
+		$(document).on('click',function () {
+			alert('document');
+		})
+		$('button').on('click',function (evt) {
+			alert('button');
+			console.log(evt);
+			// return false;
+			// evt.cancelBubble = true;
+			evt.stopPropagation(); //取消冒泡
+		})
+	})
+	</script>
+</head>
+<body>
+	<button>点我</button>
+</body>
+</html>

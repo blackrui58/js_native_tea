@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 400px;
+			height: 400px;
+			background-color: red;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -200px;
+			margin-top: -200px;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oDiv = document.getElementsByTagName('div')[0];
+		// 开启定时器
+		var tid = setTimeout(function () {
+			oDiv.style.display = 'none';
+		},3000);
+
+		oDiv.onmouseover = function () {
+			// 清除定时器
+			clearTimeout(tid);
+		}
+		oDiv.onmouseout = function () {
+			tid = setTimeout(function () {
+				oDiv.style.display = 'none';
+			},3000);
+		}
+	}
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

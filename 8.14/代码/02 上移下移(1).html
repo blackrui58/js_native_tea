@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	function previousSibling (obj) {
+		return obj.previousElementSibling || obj.previousSibling;
+	}
+
+	function nextSibling (obj) {
+		return obj.nextElementSibling || obj.nextSibling;
+	}
+
+	function lastChild (obj) {
+		return obj.lastElementChild || obj.lastChild;
+	}
+
+	window.onload = function () {
+		var oUl = document.getElementsByTagName('ul')[0];
+		var aA = document.getElementsByTagName('a');
+		for (var i = 0;i < aA.length;i++) {
+			if (i % 2 == 0) {
+					// 上移
+				aA[i].onclick = function () {
+					// 如果点击的是第一个.那么不能往上移
+					var node = this.parentNode;
+					if (node == oUl.children[0]) {
+						alert('到顶了,别点了');
+						return; // 跳出函数的执行
+					}
+					oUl.insertBefore(node,previousSibling(this.parentNode));
+				}
+			} else {
+				aA[i].onclick = function () {
+					var node = this.parentNode;
+					// 和最后一个进行比较
+					if (node == lastChild(oUl)) {
+						alert('到底了');
+						return;
+					}
+					// 找点击的下一个兄弟节点,再下一个兄弟节点
+					var firstSibling = nextSibling(node);
+					var secondSibling = nextSibling(firstSibling);
+					oUl.insertBefore(node,secondSibling);
+				}
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<ul>
+		<li><a href="javascript:;">上移</a>1111<a href="javascript:;">下移</a></li>
+		<li><a href="javascript:;">上移</a>2222<a href="javascript:;">下移</a></li>
+		<li><a href="javascript:;">上移</a>3333<a href="javascript:;">下移</a></li>
+		<li><a href="javascript:;">上移</a>4444<a href="javascript:;">下移</a></li>
+		<li><a href="javascript:;">上移</a>5555<a href="javascript:;">下移</a></li>
+		<li><a href="javascript:;">上移</a>6666<a href="javascript:;">下移</a></li>
+
+		<li><a href="javascript:;">上移</a>7777<a href="javascript:;">下移</a></li>
+	</ul>
+</body>
+</html>

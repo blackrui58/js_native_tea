@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oDiv = document.getElementsByTagName('div')[0];
+		document.onkeydown = function (evt) {
+			// 上
+			evt = evt || window.event;
+			// 左上右下 37-40
+			switch (evt.keyCode) {
+				case 37:
+					oDiv.style.left = oDiv.offsetLeft - 10 + 'px';
+					break;
+				case 38:
+					oDiv.style.top = oDiv.offsetTop - 10 + 'px';
+					break;
+				case 39:
+					oDiv.style.left = oDiv.offsetLeft + 10 + 'px';
+					break;
+				case 40:
+					oDiv.style.top = oDiv.offsetTop + 10 + 'px';
+					break;
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

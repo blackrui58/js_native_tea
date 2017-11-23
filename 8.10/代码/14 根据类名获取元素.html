@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			margin: 20px;
+			float: left;
+		}
+		button {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+		}
+	</style>
+	<script type="text/javascript">
+	function random(n,m) {
+		return Math.floor(Math.random() * (m - n) + n);
+	}
+
+	function change () {
+		var aDiv = document.getElementsByClassName('red');
+		for (var i = 0;i < aDiv.length;i++) {
+			aDiv[i].style.background = 'rgb('+random(0,256)+','+random(0,256)+','+random(0,256)+')';
+		}
+	}
+	</script>
+</head>
+<body>
+	<div></div>
+	<div class="red"></div>
+	<div class="red"></div>
+	<div class="red"></div>
+	<div></div>
+	<div></div>
+	<button onclick="change();">点击</button>
+</body>
+</html>

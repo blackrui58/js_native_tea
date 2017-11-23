@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	// window.onload = function () {}
+	//  DOMContentLoaded
+
+	window.onload = function () {
+		alert('window');
+	}
+	ready(function () {
+		var oDiv = document.getElementsByTagName('div')[0];
+		alert(oDiv.innerHTML);
+	});
+
+	function ready(fn) {
+			if (document.addEventListener) {
+				document.addEventListener('DOMContentLoaded',fn,false);
+			} else {
+				document.onreadystatechange = function () {
+					if (document.readyState == 'complete') {
+					// 获取DOM
+						fn();
+					}
+				}
+			}
+		}
+	
+	
+	
+	</script>
+</head>
+<body>
+	<div>12321321</div>
+</body>
+</html>

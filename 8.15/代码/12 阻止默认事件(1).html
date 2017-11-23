@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oAa = document.getElementsByTagName('a')[0];
+		var oInput = document.getElementsByTagName('input')[0];
+		oAa.onclick = function () {
+			return false;
+		}
+		oInput.onkeydown = function (evt) {
+			evt = evt || window.event;
+
+			//  只能输入字母
+			if (evt.keyCode > 90 || evt.keyCode < 65 && evt.keyCode != 8) {
+				return false;
+			}
+			// if (evt.keyCode != 65) {
+			// 	return false;
+			// }
+			
+		}
+
+	}
+	</script>
+</head>
+<body>
+	<a href="http://www.baidu.com">百度</a>
+	<input type="text" />
+</body>
+</html>

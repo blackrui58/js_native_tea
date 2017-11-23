@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oDiv = document.getElementsByTagName('div')[0];
+		var oH1 = document.getElementsByTagName('h1')[0];
+		document.onclick = function () {
+			// var oH2 = document.createElement('h2');
+			// oH2.innerHTML = 'h2';
+			// // oDiv.appendChild(oH2);
+			// oDiv.insertBefore(oH2,oDiv.children[0]);
+			oDiv.removeChild(oH1);
+		}
+	}
+	</script>
+</head>
+<body>
+	<div>
+		<h1>这是h1</h1>
+	</div>
+</body>
+</html>

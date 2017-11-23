@@ -1,0 +1,118 @@
+onmousemove: 鼠标移动
+onkeyup: 键盘抬起
+onkeydown: 摁下
+
+事件对象: 获取事件的一些信息,事件发生的位置,键码
+在事件函数的参数里面:
+evt = evt || window.event;
+
+事件对象的属性:
+clientX,clientY
+pageX,pageY
+screenX,screenY
+keyCode: 键码
+ctrlKey altKey shiftKey
+
+默认事件: 不由程序员添加有的事件
+oncontextmenu
+return false;
+
+文字选中效果在高版本浏览器里面能直接阻止,但是在低版本,不支持
+
+在IE才有的方法: (拖拽中独有)
+事件的捕获:
+setCapture() : 将所有发生的事件都捕获到,都让其执行该事件函数
+
+释放捕获:
+releaseCapture(): 释放捕获;
+
+只要设置了捕获,一定要释放捕获
+
+其他事件:
+ondblclick: 双击
+
+表单的事件:
+onblur: 失去焦点
+onfocus: 获取焦点
+
+onsubmit: 表单提交的时候会触发的事件
+onchange: 值改变的时候 (select) 在input标签里面,失去焦点的时候会触发
+oninput: 文本框值内容改变的时候会触发的事件  (高版本)
+onpropertychange: 文本框值内容改变的时候会触发的事件  (低版本)
+
+事件:
+鼠标:
+onclick onmousedown onmouseup onmouseover onmouseout onmouseenter onmouseleave ondblclick oncontextmenu  onmousemove
+
+键盘:
+onkeydown onkeyup
+
+表单:
+onsubmit oninput onpropertychange onblur onfocus
+
+onload onscroll  onresize
+
+oDiv.onclick = function () {
+	
+}
+
+onmouseover onmouseout的问题?
+给父元素添加这两个事件,子元素也会触发事件
+
+onmouseenter: 鼠标移入
+onmouseleave: 鼠标移出
+
+事件冒泡： 事件会一层层往上级传递;并没有什么用,有时需要取消冒泡
+取消冒泡:
+evt.cancelBubble = true;
+
+DOM0级事件: .onclick  .onmouseover....
+事件重复添加,会被覆盖掉
+oBtn.onclick = null;移除
+
+DOM2级事件:
+事件是可以重复添加,不会被覆盖掉
+
+高版本,在低版本没有值
+addEventListener(type,fn,false)
+type: 事件类型  click mousemove 不需要加on
+fn: 事件函数
+false: 冒泡 (事件流)
+
+低版本:
+attachEvent(type,fn);
+type: 事件类型,得有onclick
+
+高版本:
+removeEventListener(type,fn,false)
+
+低版本:
+detachEvent(type,fn);
+
+移除事件的时候,一定要把对应的事件函数单独抽取出来,才能保证移除的是同一个事件函数.以函数名代替原来的匿名函数
+
+事件流: 事件的流向 (事件往哪里传递):
+1.捕获流: 为true就是捕获流,事件从外往里传递的
+2.冒泡流: 为false就是冒泡流,事件从里往外传递的
+
+高版本浏览器支持捕获流和冒泡流,但是在低版本里面,只有冒泡流
+
+取消冒泡,在IE低版本和高版本里面,直接通过设置cancelBubble就可以取消冒泡
+
+阻止默认事件,DOM0级事件可以直接return false来阻止;但是在DOM2级事件里面,低版本用return false,高版本用evt.preventDefault()
+evt.preventDefault && evt.preventDefault();
+return false;
+
+window.onload: 当浏览器窗口所有的内容加载完毕以后,才执行; 包括图片,音频,视频.....
+
+network: load 相当于window.onload的时间
+
+DOM事件: 只能用事件绑定(DOM2级事件的添加)的方式添加
+DOMContentLoaded: 当DOM结构加载完成以后; 不会先加载图片,音频,视频 (除了IE)
+
+在IE里面,IE高版本是类似与DOMContentLoaded事件,比window要快;在IE低版本,完全不支持该事件
+
+需要兼容: onreadychangestate  模拟DOMContentLoaded事件
+onreadystatechange: 准备(交互)  状态 改变
+
+ajax: 数据交互

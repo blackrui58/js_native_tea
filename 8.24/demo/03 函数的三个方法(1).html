@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	function show (a,b) {
+		// this --> window
+		console.log(this,a,b);
+		// 实参的集合
+		console.log(arguments);
+	}
+	// call(this的指向,形参对应的实参): 会调用函数
+	// apply(this的指向,实参数组): 会调用函数
+	// this --> window
+	// show.call(this,1,2);
+	show.apply(this,[1,2]);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

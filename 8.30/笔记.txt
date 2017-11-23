@@ -1,0 +1,152 @@
+$(function (){})
+$(document).ready(function () {})
+伪类选择器:
+nth-child(1): 开始
+first-child
+last-child
+odd
+even
+eq
+gt
+lt
+
+样式属性:
+css(属性名): 获取
+css(属性名,属性值): 设置一个属性
+css({属性名: 属性会}): 设置多个属性
+
+标签属性:
+attr(属性名): 获取
+attr(属性名,属性值): 设置一个属性
+attr({属性名: 属性会}): 设置多个属性
+
+双标签的内容:
+html(): 获取
+html(内容): 设置内容
+表单元素的内容:
+val(): 获取
+val(内容): 设置
+
+事件:
+click(),mouseover()..
+
+on(事件名,function () {})
+off(): 移除所有事件
+off(事件名): 移除该事件名的事件
+off(事件名,function(){}): 移除一个事件
+
+on('事件名空格隔开',function () {});
+on({
+	mouseenter: function () {},
+	click: function() {}
+})
+
+on(事件名,子元素,function () {});
+
+offset().left  .top : 绝对位置
+scrollTop(): 向上滚动的距离
+width()
+innerWidth()
+outerWidth()
+
+DOM操作:
+添加:
+append()
+appendTo()
+prepend()
+prependTo()
+insertBefore()
+insertAfter()
+
+删除:
+remove(): 删除所有的元素,包括本身
+empty(): 删除所有的子元素
+
+父子,兄弟:
+parent()
+children()
+siblings()
+
+动画执行以前应该加stop()
+slideDown()
+slideUp()
+fadeIn()
+fadeOut()
+
+写插件: 给原型里面添加方法
+$.fn.extend({})
+
+$.extend({})
+
+遍历(循环):
+$('li').each(function (index,ele) {}): jq对象
+$.each(数组或者对象,function (index,ele) {})  key,value
+
+ajax: 无刷新从服务器获取数据  异步JavaScript和XML
+
+接口 
+get,post的区别:
+1.get参数直接拼接在url地址后面,post的参数在url里面看不见
+2.get只能发送4kb的数据,post能发送1G
+3.post发送请求的时候,需要设置请求头
+4.get在send里面不需要参数,post需要参数 (get?后面的内容)
+5.get有缓存,post没有缓存
+
+缓存: 一个url地址只请求一次; 
+解决缓存问题: 加随机因子: t=Math.random() (当前时间 oDate)
+
+自己封装:
+ajax({
+	url: url地址,
+	type: 请求的类型,(默认是GET)
+	data: ?后面的参数,
+	success: function (str) {
+		var json = eval('('+str+')');
+	},
+	error: function () {
+		数据请求失败的回调函数
+	},
+});
+
+jsonp: 跨域取数据!
+
+json和jsonp的区别?
+json是目的,jsonp是手段;
+json是一种数据类型;jsonp是数据的处理方式;
+
+jq的交互:
+$.ajax({
+	url:,
+	data:,
+	type:,
+	async: true,
+	success:,
+	error:,
+	cache: false(不缓存,true为需要缓存),
+	timeout: 毫秒数 (网络超时),
+	complete: function () {} (交互完成,无论数据请求成功,或者失败,都走complete)
+})
+
+jsonp:
+
+dataType: 
+1.jsonp: 跨域取数据
+2.html: html文本
+3.text: 文本
+4.json: 直接返回的数据就是json
+$.ajax({
+	url:,
+	data:,
+	type:,
+	dataType: 'jsonp',
+	jsonp:'callback'(默认值),
+	success:function (str) {
+		str字符串
+	},
+	error:,
+	cache: false(不缓存,true为需要缓存),
+	timeout: 毫秒数 (网络超时),
+	complete: function () {} (交互完成,无论数据请求成功,或者失败,都走complete)
+})
+
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<input type="text" />
+	<input type="text" />
+	<input type="text" />
+	<button>发送</button>
+	<div></div>
+</body>
+</html>
+<script type="text/javascript">
+	var aInput = document.getElementsByTagName('input');
+	var oBtn = document.getElementsByTagName('button')[0];
+	var oDiv = document.getElementsByTagName('div')[0];
+
+	oBtn.onclick = function () {
+		oDiv.innerHTML = oDiv.innerHTML + aInput[0].value + '对' + aInput[1].value + '说:' + aInput[2].value + '<br>';
+		aInput[0].value = '';
+		aInput[1].value = '';
+		aInput[2].value = '';
+	}
+
+</script>

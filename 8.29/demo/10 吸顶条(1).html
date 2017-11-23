@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		div {
+			width: 100%;
+			height: 50px;
+			font-size: 30px;
+			line-height: 50px;
+			text-align: center;
+			background: #ccc;
+			left: 0;
+			top: 0;
+		}
+		#bar {
+			display: none;
+		}
+	</style>
+	<script type="text/javascript" src='jq1.7.2/jquery.js'></script>
+	<script type="text/javascript">
+	$(function () {
+		// 先获取div向上的绝对位置
+		var top = $('div').offset().top;
+		console.log(top);
+
+		$(window).scroll(function () {
+			var scrollTop = $(window).scrollTop();
+			if (scrollTop >= top) {
+				// 让吸顶条的position:fixed;显示替代的条
+				$('div').eq(0).css('position','fixed');
+				$('#bar').show();
+			} else {
+				$('div').eq(0).css('position','static');
+				$('#bar').hide();
+			}
+		});
+	})
+	</script>
+</head>
+<body>
+	<h1>明天</h1>
+	<h1>明天</h1>
+	<h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1><h1>明天</h1>
+	<h1>嘿嘿</h1>
+	<div>后天的内容</div>
+	<div id='bar'></div>
+	<h1>哈哈1</h1>
+	<h1>哈哈2</h1>
+	<h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1><h1>后天</h1>
+</body>
+</html>

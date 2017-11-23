@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background: #ccc;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="">
+	<script type="text/javascript" src="cookie.js"></script>
+</head>
+<body>
+	<button>浪漫</button>
+	<button>可爱</button>
+	<button>炫酷</button>
+	<h1>这是网页</h1>
+	<div></div>
+	<span>网页上的文字</span>
+</body>
+</html>
+<script type="text/javascript">
+	var aBtn = document.getElementsByTagName('button');
+	var oLink = document.getElementsByTagName('link')[0];
+	if (getCookie('skin')) {
+		oLink.href = getCookie('skin');
+	}
+	
+	aBtn[0].onclick = function () {
+		oLink.href = 'romantic.css';
+		setCookie('skin','romantic.css',7);
+	}
+	aBtn[1].onclick = function () {
+		oLink.href = 'cute.css';
+		setCookie('skin','cute.css',7);
+	}
+	aBtn[2].onclick = function () {
+		oLink.href = 'cool.css';
+		setCookie('skin','cool.css',7);
+	}
+
+</script>

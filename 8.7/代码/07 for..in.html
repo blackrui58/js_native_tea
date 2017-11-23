@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	var people = {
+		name: '张三',
+		sex: '男',
+		age: 20,
+		eat: function () {
+			alert('吃饭');
+		}
+	};
+	// people.name
+	for (var key in people) {
+		console.log(key,people[key]);
+	}
+	//添加属性
+	people.height = 140;
+
+	// 删除属性
+	delete people.eat;
+	console.log(people);
+	people.eat();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

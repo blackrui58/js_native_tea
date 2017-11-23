@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	// this: 函数里面的  谁调用函数,this就是谁
+
+	// alert(this); window
+
+	// 工厂模式:
+	function createObj () {
+		var obj = new Object();
+		obj.name = 'zs';
+		return obj;
+	}
+
+	function Show(a,b) {
+		// 1.自动创建了obj
+		// 2.把obj的值赋值给this
+		// return this
+		console.log(this,a,b);
+	}
+
+	// var a = new Show();
+	// gaibianthis指向,call(this指向,形参对应的实参)
+	// Show.call([1,2,3],2,3);
+	// arguments: 只在函数里面才有
+
+	// Show.apply([1,2,3],[1,2]);
+
+	Show.bind([1,2,3],1,2)();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	var a = 'string';
+	// 根据下标获取元素
+	// a.charAt(下标);
+	// 查找元素: indexOf(),查找不到是-1
+	// 从右往左查找: lastIndexOf(); 下标值不变
+	// 分割为数组: split()
+	// 截取字符串: substring(开始位置,结束位置): 包头不包尾  substr(开始位置,截取长度)
+	// 大小写: toUpperCase() toLowerCase
+	// 替换字符串: replace(要替换的文字,替换的文字)
+	// 替换字符串: replace(正则,替换文字)
+	// 替换字符串: replace();
+	var str = '推进工业产品生产许可证制度改革现场交流会日前在江苏省宿迁市召开。中共中央政治局常委、国务院总理李克强作出重要批示。批示指出：制造业是实体经济的重要基础。近年来随着中国制造发展和消费升级，工业产品种类更新加快，但企业市场准入制中共中央度性交易成本较高的问题凸显，与此同时，打击假冒伪劣产品、规范市场秩序的任务也李克强十分迫切。要认真贯彻党中央、国务院决策李克强部署，深入推进供给侧结构性改革，持续推动政府职能转变，把改革中共中央工业产品生产中共中央许可证制度李克强作为深化简政放权、放李克强管结合、优化服务改革的重要内容，适应市场需求，简化工业产李克强品市场准入前置审批，促进新技术、新工艺发展，使产品更为丰富、品质不断提升、市场更加繁荣。同时，坚持放中共中央管结合，将许可管理更多聚焦在安全风险高的产品上，政府集中更大力量加强事中事后监管，让假冒伪劣产品无藏身之地，进一步营造公平公正的市场环境，为促进中国制造品质升级、迈向中高端作出更大贡献。';
+	// document.write(str.replace('李克强','***'));
+	// document.write(str.replace(/李克强|中共中央/g,'***'));
+	document.write(str.replace(/李克强|中共中央/g,function (s) {
+		// s
+		var str = '';
+		for (var i = 0;i < s.length;i++) {
+			str += '*';
+		}
+		return '<span style="color: red">'+str+'</span>';
+	}));
+
+	// 校验邮箱 : 拆
+	/*
+	21312321@qq.com.cn
+	abc@163.com
+	hwqeqewyh@aaaedu.cc
+	a@sad.com.cc
+	abc@wqeq.org
+	abc_abc@abc.abc
+	a@163.abc
+	数字字母下划线除0
+	
+	[a-z1-9]\w+ @[a-z0-9]+(\.[a-z]{2,6}){1,2}
+
+	*/
+
+	var str = '21312321@qq.com.cn';
+
+	var reg = /^[a-z1-9]\w+@[a-z0-9]+(\.[a-z]{2,6}){1,2}$/;
+	alert(reg.test(str));
+
+	// trim
+	str.replace(/^\s+|\s+$/g,'');
+
+	// \d: 数字
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,177 @@
+自定义属性: data-属性名
+获取: oDiv.dataset.属性名
+自定义标签: 行内元素
+
+获取元素:
+document.querySelector(选择器名): 一个
+document.querySelectorAll(选择器名): 集合对象
+
+类名:
+oDiv.classList.add(): 添加
+oDiv.classList.remove(): 删除
+oDiv.classList.toggle(): 有则删除,无则添加
+
+js由什么组成?
+ECMAScript  DOM  BOM
+
+DOM树
+
+节点: 元素节点  属性节点  文本节点
+
+判断节点?
+
+nodeType: 
+1: 元素节点
+2: 属性节点
+3: 文本节点
+9: 文档节点(document)
+
+nodeValue:
+元素: null
+属性: 属性值
+文本: 文本值
+
+nodeName:
+元素: 标签名
+属性: 属性名
+文本: #text
+
+父子:
+父节点: 子节点.parentNode;
+子节点: 
+	1.父节点.childNodes: 会包括空格
+	2.父节点.children: 不会包括空格
+兄弟节点:
+	1.previousElementSibling previousSibling
+	2.nextElementSibling nextSibling
+兼容:
+	function previousSibling (obj) {
+		return obj.previousElementSibling || obj.previousSibling;
+	}
+第一个和最后一个:
+	1.firstElementChild firstChild
+	2.lastElementChild  lastChild
+DOM操作:
+添加元素:
+父元素.appendChild(子元素): 添加到最后面
+
+父元素.insertBefore(要添加的元素,谁)
+
+剪切: 一个元素只能添加一次
+
+克隆节点: 节点.cloneNode(true): 既克隆标签,又克隆内容
+
+删除:
+父元素.removeChild(子元素)
+
+BOM:
+window.open(url,target)
+window.close();
+
+刷新:
+windod.location.reload();
+
+
+history: 历史 (界面的前进后退)
+
+forward(): 向前
+back(): 向后
+go(index): 去 
+-1: 到上一界面
+0: 当前界面
+1: 下一个界面
+
+location: 专门操作url地址
+url地址: scheme://host:port/path
+   例如: https://www.souhu.com:80/daogou/1.html
+   https: 协议
+   www.souhu.com: 域名 (host)
+   port: 端口 (默认是80)
+   daogou/1.html: 文件路径
+
+读写属性: 既可以获取值,也可以设置值
+href: 整个url地址
+hash: #后面的内容
+search: ?后面的内容
+
+replace(): 替换掉当前的url地址
+
+
+protocol: 协议
+host: 域名
+port: 端口
+pathname: 文件路径
+
+调试代码: 断点调试
+1.打断点 (让程序执行到这一行就先停止)
+2.将你要观察的变量添加到watch里面 (选中右击)
+3.再点一下断点就是取消断点
+
+悬浮定位: 让一块内容固定地显示在网页的某块位置 (固定定位)
+
+固定定位IE6一下不支持,IE6
+
+可视区宽高:
+高:
+document.documentElement.clientHeight || document.body.clientHeight
+宽:
+document.documentElement.clientWidth || document.body.clientWidth
+
+
+clientWidth: 内容宽
+clientHeight: 内容高
+
+innerWidth
+innerHeight: 窗口的内容宽高
+
+outerWidth:
+outerHeight: 窗口的宽高
+
+盒子的宽高:
+
+clientWidth: 内容宽 + padding
+clientHeight: 内容高 + padding
+
+
+offsetWidth: 内容宽 + padding + border
+offsetHeight: 内容高 + padding + border
+
+向上/左滚动的距离:
+document.body.scrollTop: chrome
+document.documentElement.scrollTop: Firefox IE
+
+兼容:
+document.documentElement.scrollTop || document.body.scrollTop
+
+scrollLeft:
+document.documentElement.scrollLeft || document.body.scrollLeft
+
+事件: onscroll: 正在滚动
+onresize: 窗口大小发生改变的时候触发
+
+hack技术:
+
+
+位置属性:
+offsetLeft: 和position里面的left是一样的,区别是这个是不带单位的;如果有margin-left,还会把left值加上
+
+offsetLeft: 到具有定位的父级的左边的距离
+
+offsetTop: 和position里面的top是一样的,区别是这个是不带单位的;如果有margin-top,还会把top值加上
+
+offsetTop: 到具有定位的父级的上边的距离
+
+绝对位置: 盒子到浏览器窗口左边或者上边的位置
+
+offsetParent: 定位父级 (干爹)
+parentNode: 结构父级  (亲爹)
+
+延迟加载图片 (懒加载): 当需要看到这张图片的时候,才去加载这张图片
+
+用户体验,为用户节省流量
+
+网页加载的文件: 控制台--> network
+
+图片的懒加载:
+1.什么时候加载图片? 看到这张图片的时候,图片在可视区的时候
+2.怎么加载图片

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oDiv = document.getElementsByTagName('div')[0];
+		document.onclick = function () {
+			// 创建
+			// var oH1 = document.createElement('h1');
+			// oH1.innerHTML = '这是h1标题';
+			oDiv.innerHTML = oDiv.innerHTML + '<h1>这是标题</h1>';
+			// 添加
+			// oDiv.appendChild(oH1);
+		}
+	}
+	</script>
+</head>
+<body>
+	<div>
+		<!-- <h1>这是h1</h1> -->
+	</div>
+</body>
+</html>

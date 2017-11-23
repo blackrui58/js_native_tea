@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oText = document.getElementsByTagName('textarea')[0];
+		var oBtn = document.getElementsByTagName('button')[0];
+		var oUl = document.getElementsByTagName('ul')[0];
+		oBtn.onclick =  function () {
+			// alert(oText.value);
+			if (oText.value) {
+				// 1.创建li
+				var oLi = document.createElement('li');
+				oLi.innerHTML = oText.value + '<a href="javascript:;" style="display: none;">删除</a>';
+				oUl.insertBefore(oLi,oUl.children[0]);
+				oText.value = '';
+				// 取得li下面的A标签
+				var oA = oLi.getElementsByTagName('a')[0];
+				oA.onclick = function () {
+					// 从ul里面去删除
+					oUl.removeChild(this.parentNode);
+				}
+				oLi.onmouseover =  function () {
+					oA.style.display = 'inline';
+				}
+				oLi.onmouseout =  function () {
+					oA.style.display = 'none';
+				}
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<textarea></textarea>
+	<button>发布</button>
+	<ul>
+		<!-- <li>textarea里面的内容 <a href="javascript:;">删除</a></li> -->
+	</ul>
+</body>
+</html>

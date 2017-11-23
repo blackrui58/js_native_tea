@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	var arr = [1,2,3,4,5];
+	// indexOf在数组里面,IE低版本
+	Array.prototype.indexOf = Array.prototype.indexOf || function (a) {
+		// this-->arr对象
+		for (var i = 0;i < this.length;i++) {
+			if (this[i] == a) {
+				return i;
+			}
+		}
+		return -1;
+	};
+	// indexOf: 查找元素的下标
+	 // alert(arr.indexOf(5));
+	 var arr2 = [2,4,5,6,7];
+	 alert(arr2.indexOf(6));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

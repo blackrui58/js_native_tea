@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	span {
+		display: none;
+		color: red;
+	}
+	</style>
+</head>
+<body>
+	<input type="text">
+	<span>长度必须大于6</span>
+</body>
+</html>
+<script type="text/javascript">
+	var oInput = document.getElementsByTagName('input')[0];
+	var oSpan = document.getElementsByTagName('span')[0];
+	oInput.oninput = oInput.onpropertychange = function () {
+
+		if (this.value.length < 6) {
+			oSpan.style.display = 'inline-block';
+		} else {
+			oSpan.style.display = 'none';
+		}
+
+	}
+
+</script>

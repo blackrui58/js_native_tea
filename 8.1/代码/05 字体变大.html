@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<button>+</button>
+	<button>-</button>
+	<div>我用双手成就你的梦想</div>
+</body>
+</html>
+<script type="text/javascript">
+	var aBtn = document.getElementsByTagName('button');
+
+	var oDiv = document.getElementsByTagName('div')[0];
+
+	var num = 16;
+
+	aBtn[0].onclick = function () {
+		num = num + 10;
+		// alert(num);
+		oDiv.style.fontSize = num + 'px';
+	}
+	aBtn[1].onclick = function () {
+		num = num - 10;
+		oDiv.style.fontSize = num + 'px';
+	}
+
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		
+		div {
+			width: 200px;
+			height: 200px;
+			background: #ccc;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oDiv = document.getElementsByTagName('div')[0]
+		document.onmousemove = function (evt) {
+			evt = evt || window.event;
+			// oDiv.style.left = evt.clientX + 'px';
+			// oDiv.style.top = evt.clientY + 'px';
+			if (evt.pageX) {
+				oDiv.style.left = evt.pageX - 100 + 'px'; // undefinedpx
+				oDiv.style.top = evt.pageY - 100 + 'px';
+			} else {
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+				oDiv.style.left = evt.clientX + scrollLeft - 100 + 'px';
+				oDiv.style.top = evt.clientY + scrollTop - 100 + 'px';
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<h1>王企鹅无群二群</h1>
+	<h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1><h1>王企鹅无群二群</h1>
+	<div></div>
+</body>
+</html>

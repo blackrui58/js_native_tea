@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	div {
+		width: 200px;
+		height: 200px;
+		background-color: red;
+		display: none;
+	}
+	</style>
+	<script type="text/javascript" src="jq1.7.2/jquery.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		$('button').toggle(function () {
+			// 第一次点击执行的函数
+			$('div').show();
+		},function () {
+			// 第二次点击执行的函数
+			$('div').hide();
+		},function(){
+			alert(3);
+		});
+	});
+	</script>
+</head>
+<body>
+	<button class="btn1">显示</button>
+	<div></div>
+</body>
+</html>

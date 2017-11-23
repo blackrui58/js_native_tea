@@ -1,0 +1,144 @@
+js: 改变css样式
+1.获取到对应的元素 box
+2.box.style.样式属性名 = 样式属性值
+
+获取元素:
+1.document.getElementById(id值): 一个
+2.document.getElementsByTagName(标签名): 一个集合
+3.父元素.getElementsByTagName(标签): 一个集合
+
+操作属性:oDiv
+1.设置属性:
+a.oDiv.属性名 = 属性值
+b.oDiv['属性名'] = 属性值
+2.获取属性:
+a.oDiv.属性名
+b.oDiv['属性名']
+
+事件:
+onclick onmouseover onmouserout
+onmousedown onmouseup 
+onblur  onfocus
+
+a || b   a && b
+
+函数: 实现某种功能的
+定义函数:
+function 函数名 (形参1,形参2..) {
+	函数体; 实现功能的代码
+	return ;如果没有return,undefined
+	alert(1);
+}
+调用函数: 函数名(实参1,实参2),还代表返回值
+循环语句:while  do..while  for 
+1.初始化循环变量
+2.判断循环条件
+3.执行循环代码
+4.改变循环变量
+
+对象: 女票,男票,狗  万物皆对象
+js: 所有的标签元素都是对象
+属性(特征): 描述该对象的信息
+方法(行为): 描述该对象的动作
+
+js操作属性:  title value
+设置属性: obj
+1.obj.属性名 = 属性值
+2.obj['属性名'] = 属性值
+获取属性
+1.obj.属性名
+2.boj['属性值']
+
+造一个对象? new 出来 
+
+方法: 本质上是函数
+调用方法(函数):
+document.getElementById()
+调用函数:
+函数名();
+调用方法: 只能由该对象调用对应的方法
+对象名.方法名();
+
+构造函数方式创建:
+new Object();
+
+字面量的方式创建: (json对象)
+{
+	key : value
+}
+json: 数据格式 
+
+变量和属性的区别:
+如果变量没有定义就使用,会报错;
+如果属性没有定义,值就是undefined,不会报错
+
+属性名如果是数字,必须用中括号的形式调用
+obj[0]
+
+this的值:
+1.在事件函数里面,谁发生事件,this就是谁
+2.在对象的方法里面,this指的就是该对象
+
+toString()方法 : 转字符串的方法,每个对象都有的一个方法
+在浏览器里面输出对象值的时候,默认调用的是该对象的toString()方法
+
+with (公有代码) {
+	var a = name; var a = 公有代码.name
+}
+
+for ..in: 也是循环,专门循环对象的,用于获取到对象里面的key和value
+
+for (var key in json) {
+	
+}
+
+删除属性:
+delete 对象名.属性名(方法名)
+
+封装函数? 重复的代码不写第二遍
+1.看有没有相似的代码
+2.如果有,则封装;
+3.看函数需不需要返回值
+4.将相同的代码保留,将不同的变量名作为形参传入
+
+设置样式的函数:
+obj: 给谁设置
+json: 设置的样式属性是什么
+function setStyle (obj,json) {
+	for (var key in json) {
+		obj.style[key] = json[key];
+	}
+}
+
+获取样式: 既能获取行内样式,也能获取内联样式
+高版本浏览器:
+getComputedStyle(obj,false).属性名 
+低版本浏览器:
+obj.currentStyle.属性名
+
+兼容浏览器的获取样式: 通过if..else 作兼容
+
+if (oDiv.currentStyle) { // 如果这是在高版本浏览器 ,在低版本浏览器
+	// 低版本
+	oDiv.currentStyle.属性名;
+} else { // 低版本,高版本
+	// 高版本
+	getConputedStyle(oDiv,false).属性名;
+}
+
+设置样式
+function setStyle (obj,json) {
+	for (var key in json) {
+		obj.style[key] = json[key];
+	}
+}
+获取样式
+function getStyle (obj,attr) {
+	if (obj.currentStyle) {
+		return obj.currentStyle[attr];
+	} else {
+		return getComputedStyle(obj,false)[attr];
+	}
+}
+
+选项卡: 一个选项对应一块内容

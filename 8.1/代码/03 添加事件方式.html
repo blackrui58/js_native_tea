@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			display: none;
+		} 
+	</style>
+</head>
+<body>
+	<button id="btn1">显示</button>
+	<button id="btn2">隐藏</button>
+	<div id="box"></div>
+</body>
+</html>
+<script type="text/javascript">
+	// 获取事件添加的元素
+	var oBtn1 = document.getElementById('btn1');
+	var oDiv = document.getElementById('box');
+	var oBtn2 = document.getElementById('btn2');
+	//
+	oBtn1.onmouseover = function () {
+		oDiv.style.display = 'block';
+	}
+
+	oBtn2.onclick = function () {
+		oDiv.style.display = 'none';
+	}
+
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: #ccc;
+		}
+		.box {
+			background: red;
+		}
+	</style>
+	<script type="text/javascript" src="jq1.7.2/jquery.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		$(document).click(function () {
+			$('div').toggleClass('box');
+			console.log($('div').hasClass('box'));
+
+			// $('div').attr('title','123');
+			$('div').attr({title: '123',a: '566',b: 67890});
+			alert($('div').attr('title'));
+		});
+	});
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

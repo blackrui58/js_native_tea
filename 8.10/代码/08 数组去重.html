@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+
+	// 判断数组里面是否有一个元素
+	function isFindInArr (arr,value) {
+		for (var i = 0;i < arr.length;i++) {
+			if (arr[i] == value) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	var arr = [1,23,1,31,23,213,213,21];
+
+	// 去重后的数组
+	var arr1 = [];
+
+	// for (var i = 0;i < arr.length;i++) {
+	// 	if (isFindInArr(arr1,arr[i]) == false) {
+	// 		arr1.push(arr[i]);
+	// 	}
+	// }
+
+	for (var i = 0;i < arr.length;i++) {
+		if (arr1.indexOf(arr[i]) == -1) {
+			arr1.push(arr[i]);
+		}
+	}
+
+	console.log(arr1);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

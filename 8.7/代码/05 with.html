@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	var obj = {
+		name: '张三',
+		age: 18,
+		height: 140
+	};
+	// var a = obj.name;
+	// var b = obj.age;
+	// var c= obj.height;
+	with(obj) {
+		var a = name;
+		var b = age;
+		var c = height;
+	}
+	console.log(a,b,c);
+	function add () {
+		// var oDiv = document.getElementsByTagName('div')[0];
+		// oDiv.style.width = '100px';
+		// oDiv.style.height = '100px';
+		// oDiv.style.background = 'red';
+		with (document) {
+			var oDiv = getElementsByTagName('div')[0];
+		}
+
+		with (oDiv.style) {
+			width = '100px';
+			height = '100px';
+			background = 'red';
+		}
+	}
+	</script>
+</head>
+<body>
+	<button onclick="add();">点击</button>
+	<div></div>
+</body>
+</html>

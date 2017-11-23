@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oH1 = document.getElementsByTagName('h1')[0];
+		var aBtn = document.getElementsByTagName('button');
+		var num = 0;
+
+		// 定时器的名字
+		var tid = null;
+		aBtn[0].onclick = function () {
+			// 关闭定时器
+			clearInterval(tid);
+			// 开启定时器
+			tid = setInterval(function () {
+				num++;
+				oH1.innerHTML = num;
+			},1000);
+		}
+		aBtn[1].onclick = function () {
+			// 关闭定时器
+			clearInterval(tid);
+		}
+	}
+	</script>
+</head>
+<body>
+	<button>开始</button>
+	<button>暂停</button>
+	<h1>0</h1>
+</body>
+</html>

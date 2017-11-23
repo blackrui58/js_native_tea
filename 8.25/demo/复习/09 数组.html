@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	//concat(): 连接多个数组
+	//shift() : 删除第一个元素
+	//unshift(): 在第一个元素以前添加
+	//push(): 最后一个元素后面添加
+	//pop(): 删除最后一个元素
+	//toString(): 数组-->字符串,中间逗号
+	//join(字符): 转字符串
+	//reverse(): 翻转数组
+	// sort(function (n1,n2) {
+	// 	retunr n1 - n2;
+	// }) 
+	// 冒泡排序
+	var arr = [2,3,43,432,21,3,21,21];
+
+	// for (var i = 0;i < arr.length;i++) {
+	// 	for (var j = i + 1;j < arr.length;j++) {
+	// 		if (arr[j] < arr[i]) {
+	// 			// 换位置
+	// 			var temp = arr[i];
+	// 			arr[i] = arr[j];
+	// 			arr[j] = temp;
+	// 		}
+	// 	}
+	// }
+	// alert(arr);
+	// 数组去重
+	var arr = [2,3,43,432,21,3,21,21];
+	var arr1 = [];
+
+	// 
+	Array.prototype.indexOf = Array.prototype.indexOf || function (value) {
+		for (var i = 0;i < this.length;i++) {
+			if (this[i] == value) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+
+	for (var i = 0;i < arr.length;i++) {
+		// 不兼容
+		if (arr1.indexOf(arr[i]) == -1) {
+			arr1.push(arr[i]);
+		}
+	}
+	alert(arr1);
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

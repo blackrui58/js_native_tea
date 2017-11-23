@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		//上面的全选
+		var oAll = document.getElementsByTagName('input')[0];
+		var oDiv = document.getElementById('box');
+		var aInput = oDiv.getElementsByTagName('input');
+
+		// false为不选,ture全选
+		var flag = false;
+
+		// 记录选中的个数
+		var count = 0;
+
+		// 全选不选的点击
+		oAll.onclick = function () {
+			if (flag) {
+				//不选
+				for (var i = 0; i < aInput.length;i++) {
+					aInput[i].checked = false;
+				}
+				count = 0;
+				flag = false;
+			} else {
+				//全选
+				for (var i = 0; i < aInput.length;i++) {
+					aInput[i].checked = true;
+				}
+				count = aInput.length;
+				flag = true;
+			}
+		}
+
+		//每个都有点击事件
+		for (var i = 0;i < aInput.length;i++) {
+			aInput[i].onclick = function () {
+				// 如果点击后选中,count+1
+				if (this.checked) {
+					count++;
+				} else {
+					//点击没有选中,count-1
+					count--;
+				}
+				console.log(count);
+
+				if (count == aInput.length) {
+					//全选
+					oAll.checked = true;
+					flag = true;
+				} else {
+					//不选
+					oAll.checked = false;
+					flag = false;
+				}
+			}
+		}
+
+	}
+	</script>
+</head>
+<body>
+	<input type="checkbox">
+	<hr />
+	<div id="box">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+	</div>
+</body>
+</html>

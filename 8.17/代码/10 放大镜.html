@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		#box {
+			width: 900px;
+			margin: 50px auto;
+		}
+		#small_box {
+			width: 350px;
+			height: 449px;
+			float: left;
+			position: relative;
+		}
+		#mask {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 218.75px;
+			height:  218.811px;
+			background: yellow;
+			opacity: 0.5;
+			display: none;
+		}
+		#big_box {
+			width: 500px;
+			height: 500px;
+			border: 1px solid #ccc;
+			float: right;
+			overflow: hidden;
+			position: relative;
+			display: none;
+		}
+		#big_box img {
+			position: absolute;
+			left: 0px;
+			top: 0;
+		}
+	</style>
+	<script type="text/javascript" src="common.js"></script>
+	<script type="text/javascript">
+		ready(function () {
+			// 小盒子
+			var small_box = document.getElementById('small_box');
+			var mask = document.getElementById('mask');
+
+			//大盒子
+			var big_box = document.getElementById('big_box');
+			var bgImg = document.getElementById('bgImg');
+
+			// 小盒子移入事件
+			addEvent(small_box,'mouseenter',function(){
+				mask.style.display = 'block';
+				big_box.style.display = 'block';
+			});
+			addEvent(small_box,'mouseleave',function(){
+				mask.style.display = 'none';
+				big_box.style.display = 'none';
+			});
+
+			// 移动mask
+			addEvent(document,'mousemove',moveMask);
+
+			// mask移动的事件函数
+			function moveMask (evt) {
+				evt = evt || window.event;
+				var x = evt.clientX - getPos(small_box).left - mask.offsetWidth / 2;
+				var y = evt.clientY - getPos(small_box).top - mask.offsetHeight / 2;
+				// 最大x值
+				var maxX = small_box.offsetWidth - mask.offsetWidth;
+				var maxY = small_box.offsetHeight - mask.offsetHeight;
+				if (x <= 0) {
+					x = 0;
+				}
+				if (x >= maxX ) {
+					x = maxX ;
+				}
+				if (y <= 0) {
+					y = 0;
+				}
+				if (y >= maxY) {
+					y = maxY;
+				}
+				// 这是大图的x
+				var bigX = x * (big_box.offsetWidth - bgImg.offsetWidth) / maxX;
+				// 这是大图的y
+				var bigY = y * (big_box.offsetHeight - bgImg.offsetHeight) / maxY;
+				mask.style.left = x + 'px';
+				mask.style.top = y + 'px';
+
+				bgImg.style.left = bigX + 'px';
+				bgImg.style.top = bigY + 'px';
+			}
+
+
+		});
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div id="small_box">
+			<img src="放大镜/small(3).jpg" height="449" width="350">
+			<div id="mask"></div>
+		</div>
+		<div id="big_box">
+			<img src="放大镜/big(3).jpg" height="1026" width="800" id="bgImg">
+		</div>
+	</div>
+</body>
+</html>

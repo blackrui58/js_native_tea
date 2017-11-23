@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	var obj = {
+		id: 10,
+		name: '张三',
+		Chinese: 90,
+		Math: 90,
+		English: 70,
+		average: function () {
+			// this --> 该对象
+			return (this.Chinese + this.Math + this.English) / 3;
+		},
+		toString: function () {
+			return '[object Object]';
+		}
+	};
+	// 属性值的获取: obj.属性名
+	// alert(obj.average());
+	// console.log(obj);
+	// alert(obj);
+	//  返回值就是: [object Object]
+	// alert(obj.toString());
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

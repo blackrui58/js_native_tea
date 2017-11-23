@@ -1,0 +1,94 @@
+可视区的宽高:
+document.documentElement.clientWidth || document.body.clientWidth;
+document.documentElement.clientHeight || document.body.clientHeight;
+
+clientWidth
+clientHeight: 内容+padding
+
+offsetWidth
+offsetHeight: 内容+padding+border
+
+offsetLeft: 到具有定位的父盒子左边的距离
+offsetTop: 到具有定位的父盒子上边的距离
+
+绝对位置: 盒子到窗口上边或者左边的距离
+
+function getPos (obj) {
+	var left = 0,top = 0;
+	while (obj) {
+		left += obj.offsetLeft;
+		top += obj.offsetTop;
+		obj = obj.offsetParent;
+	}
+	return {
+		left: left,
+		top: top
+	}
+}
+
+window.onscroll
+
+window.onresize
+
+关于居中:
+left的距离:
+(父盒子的宽 - 子盒子的宽) / 2
+top的距离
+(父盒子的高 - 子盒子的高) / 2
+
+瀑布流: 
+1.每个LI宽度一致,高度随机
+2.滚不完
+
+创建20个li
+li添加的原理: 哪个ul的总高度(offsetHeight)比较小,就把li添加到哪个ul里面
+
+scrollHeight: 滚动高度 (内容高度): 当内容小于盒子高的时候,scrollHeight就是盒子的height;如果大于,那么就是所有内容的高
+
+在事件函数里面,参数是事件对象
+
+事件对象: 包含着事件的一些信息,比如坐标位置,按的是什么键
+
+screenX,screenY: 相对于屏幕左上角的点为圆点
+clientX,clientY: 相对于body左上角,相对于可视区
+pageX,pageY: 相对于body左上角,会加上滚动的距离
+
+事件对象:
+在高版本浏览器中,事件对象就是事件函数的参数;
+在低版本浏览器中,事件对象是window.event;
+
+oBox.onclick = function (evt) {
+	evt = evt || window.event;
+}
+
+低版本是不支持pageX,pageY的
+
+鼠标的事件:
+onclick onmousedown onmouseup onmouseover onmouseout 
+
+onmousemove: 鼠标移动的事件
+
+键盘事件: 
+onkeydown: 键盘摁下
+onkeyup: 键盘抬起
+
+事件对象的属性:
+键码 (keyCode): ASCii值 : 小写字母比大写字母多32; 不区分大小写
+A,a: 65
+
+默认事件: 不是由程序员添加的事件,但是可以产生对应的事件效果
+a链接点击可以实现跳转
+input文本框直接按字母就可以进行输入
+鼠标右击浏览器窗口...
+
+阻止默认事件: 在默认事件里面加 return false;
+
+右击: oncontextmenu
+
+键码: keyCode
+
+ctrlKey,shiftKey,altKey: true  false
+
+事件对象:
+clientX,clientY,pageX,pageY,screenX,screenY
+keyCode  ctrlKey  altKey shiftKey

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	// key: value
+	var url = 'username=张三&pwd=12345&sex=男&checkbox=true';
+	// var json = {
+	// 	username: '张三',
+	// 	pwd: '123456',
+	// 	sex: '男'
+	// }
+	
+	function url2Json (URL) {
+		var json = {};
+		// 1.先根据&切割为数组
+		var arr1 = URL.split('&');
+		/*
+		0: username=张三,
+		1: pwd=12345,
+		2: sex=男
+		*/
+
+		for (var i = 0;i < arr1.length;i++) {
+			var arr2 = arr1[i].split('=');
+			json[arr2[0]] = arr2[1];
+		}
+		return json;
+	}
+
+	console.log(url2Json(url));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

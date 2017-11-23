@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	#box {
+		width: 426px;
+		height: 640px;
+		background: url(../课后作业/iphoneUnlock/iphone.jpg) no-repeat;
+		margin: 0 auto;
+		position: relative;
+	}
+	.btn {
+		width: 93px;
+		height: 62px;
+		/*background: url(../课后作业/iphoneUnlock/unlock_btn.jpg) no-repeat;*/
+		position: absolute;
+		left: 30px;
+		bottom: 30px;
+	}
+	</style>
+	<script type="text/javascript">
+	function getPos (obj) {
+		var left = 0,top = 0;
+		while (obj){
+			left += obj.offsetLeft;
+			top += obj.offsetTop;
+			obj = obj.offsetParent;
+		}
+		return {
+			left: left,
+			top: top
+		}
+	}
+	window.onload = function () {
+		var oBox = document.getElementsByTagName('div')[0];
+		var oDiv = document.getElementsByTagName('div')[1];
+		var x;
+		var maxX;
+		// 当盒子移出它的范围的时候,offsetWidth会把子元素的宽加进去
+		var boxW = oBox.offsetWidth;
+		var divW = oDiv.offsetWidth;
+		oDiv.onmousedown = function (evt) {
+			// 先获取摁下点坐标
+			evt = evt || window.event;
+			var disX = evt.clientX - getPos(oDiv).left;
+			document.onmousemove = function (evt) {
+				evt = evt || window.event;
+				// console.log(evt.clientX);
+				x = evt.clientX - disX - oBox.offsetLeft;
+				maxX = boxW - 30 - divW;
+				if (x <= 30) {
+					x = 30;
+				}
+				if (x >= maxX) {
+					x = maxX;
+					// 切换背景图
+					oBox.style.backgroundImage = 'url(../课后作业/iphoneUnlock/iphone2.jpg)';
+					oDiv.style.display = 'none';
+				} else {
+					oDiv.style.display = 'block';
+				}
+				oDiv.style.left = x + 'px';
+			}
+			document.onmouseup = function () {
+				document.onmousemove = null;
+				if (x < maxX) {
+					oDiv.style.left = '30px';
+				}
+			}
+			return false;
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div class="btn"><img src="../课后作业/iphoneUnlock/unlock_btn.jpg" height="62" width="93"></div>
+	</div>
+</body>
+</html>

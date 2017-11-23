@@ -1,0 +1,139 @@
+定时器:
+间歇调用: 每隔一段时间,调用一个函数
+
+开启定时器:
+var tid = setInterval(函数,时间);
+
+清除定时器:
+clearInterval(tid)
+
+重复开启定时器,定时器叠加,越来越快;在开启之前,先清除定时器
+
+Math对象:
+abs(): 绝对值
+max(): 最大值
+min(): 最小值
+ceil(): 天花板函数 (向上取整)
+floor(): 向下取整
+round(): 四舍五入取整
+sqrt(): 开平方
+pow(): 几次幂
+random(): 随机数 [0,1)
+
+function random (n,m) {
+	return Math.floor(Math.random() * (m - n) + n);
+}
+
+另外一种定时器: 延迟调用: 只调用一次
+开启:
+var tid = setTimeout(函数,时间);
+
+清除:
+clearTimeout(定时器的名字);
+
+this: 谁调用函数,this指的就是谁.;如果不知道谁调用的函数,this指的就是window对象
+window: 窗口,所有的全局变量都是window的属性;全局函数是window的方法
+
+回调函数: 你不需要自己去调用函数,它会在某个时间点自己调用;不会等着这个函数执行完毕再去执行下一行代码
+(事件函数,定时器函数)
+
+number  string boolean function object
+
+数组: 也是对象; 用来保存多个值  和集合(伪数组)非常类似
+数组里面每个值会称之为元素
+
+数组的创建: new 出来
+字面量创建方式: [1,2,2,34]
+
+length: 数组的长度; 元素个数
+
+数组里面保存的值最好是相同的数据类型
+
+遍历数组: 把数组里面的每个元素都牵出来溜溜
+
+数组的方法:
+concat(): 连接数组,返回值是一个新的数组
+reverse(): 把数组倒过来,改变原来的数组,返回值也是该数组
+push(): 给数组的最后一项加一个元素
+pop(): 删除数组的最后一项,返回值是删除的元素
+shift(): 删除数组的第一个值
+unshift(): 给数组的第一个值前面加值
+join(符号): 转成字符串,符号由自己定
+toString(): 转成字符串,中间逗号隔开
+sort(): 排序数组,默认按照字符排序
+按照数字排序:
+sort(function (n1,n2) {
+	return n1 - n2; // 升序,从小到大排序
+	return n2 - n1; // 降序,从大到小排序
+});
+
+万能方法: 可以任意添加删除元素
+splice(a,b,c)
+a: 下标
+b: 删除几个元素
+c: 可写可不写;如果写了,代表添加
+
+在遍历的过程中,删除一个数,要在删除完这个数以后,i--;
+
+indexOf(): 查找元素的下标; 能否查找到一个元素,如果不能查找到一个数,下标为-1
+在低版本不能用
+
+是否能在一个数组中查找到某个元素?
+function isFindInArr (arr,value) {
+for (var i = 0;i < arr.length;i++) {
+		if (arr[i] == value) {
+			return true;
+		}
+	}
+		return false;
+} 
+
+算法: 
+冒泡排序: 将数组里面的元素进行排序
+arr = [1,2,3,4,6]: 将一个值和数组里面的每一个值都进行比较,如果前面值比后面要大,那么这两个值换位置
+1.sort(function (n1,n2) {
+	return n1 - n2;
+})
+2.冒泡排序
+a.怎么换位置?
+b.怎么让一个元素和后面的元素比较? for 循环嵌套
+function bubbleSort (arr) {
+	//从小到大排序
+	for (var i = 0;i < arr.length;i++) {
+		for (var j = i + 1;j < arr.length;j++) {
+			if (arr[i] > arr[j]) {
+				var temp;
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
+	return arr;
+} 
+
+包装对象
+字符串: 也有很多方法
+charAt(下标): 根据下标获取到每一个字符
+高版本浏览器,[]取下标可以,但是在IE7以下,不行
+indexOf(): 查找元素的下标 (默认查找第一个),查不到也是-1
+lastIndexOf(): 从右往左查 
+toLowerCase(): 全部小写
+toUpperCase(): 全部大写
+截取字符串: 一个值都是截取到最后
+substring(开始位置,结束位置): 包头不包尾
+substr(开始位置,截取的长度)
+
+分割字符串:将字符串分割为数组
+split(字符): 根据字符分割为数组
+
+
+navigator.userAgent: 查看浏览器的一些信息
+
+内核(渲染引擎)
+chrome,Safari: webkit
+Firefox: Gecko
+IE: Trident
+
+时间对象: new Date();
+

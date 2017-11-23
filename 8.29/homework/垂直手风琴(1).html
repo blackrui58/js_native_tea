@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>手风琴</title>
+	<style>
+		a {
+			text-decoration: none;
+			font-size: 30px;
+			font-weight: bold;
+		}
+		.box .down {
+			width: 50px;
+			height: 50px;
+			display: inline-block;
+			line-height: 50px;
+			text-align: center;
+			border-radius: 50%;
+			color: white;
+			background-color: #ccc;
+		}
+		.box p {
+			display: none;
+		}
+	</style>
+	<script src="jquery-3.2.1.js"></script>
+	<script>
+	$(function () {
+		$('.box').click(function () {
+			//所有的上拉，再给自己添加下拉
+			$('.box p').stop().slideUp();
+			$('.box .down').html('+');
+			//拿到点击div的p标签
+			var jqoP = $(this).children().eq(2);
+			//如果此时在显示
+			if (jqoP.css('display') == 'block') {
+				// + 
+				$(this).children().eq(0).html('+');
+				jqoP.stop().slideUp();
+			} else {
+				// -
+				$(this).children().eq(0).html('-');
+				jqoP.stop().slideDown();
+			}
+			
+		});
+	})
+	</script>
+</head> 
+<body>
+	<div class="box">
+		<a href="javascript:;" class="down">+</a>
+		<a href="javascript:;">section1</a>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros.</p>
+	</div>
+	<div class="box">
+		<a href="javascript:;" class="down">+</a>
+		<a href="javascript:;">section2</a>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros.</p>
+	</div>
+	<div class="box">
+		<a href="javascript:;" class="down">+</a>
+		<a href="javascript:;">section3</a>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros.</p>
+	</div>
+</body>
+</html>

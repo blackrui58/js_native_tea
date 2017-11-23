@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		.box {
+			display: block;
+			width: 200px;
+			height: 200px;
+			background-color: #ccc;
+			color: #fff;
+			text-align: center;
+			line-height: 200px;
+		}
+		a {
+			color: red !important;
+		}
+	</style>
+</head>
+<body>
+	<a href="#" title="跳转到百度" >这是a标签</a>
+	<button>切换</button>
+</body>
+</html>
+<script type="text/javascript">
+	var oBtn = document.getElementsByTagName('button')[0];
+	var oA = document.getElementsByTagName('a')[0];
+
+	oBtn.onclick = function () {
+		// var a = 'title';
+		// alert(oA[a]);
+		// oA.title = '跳转到淘宝';
+		// oA.href = 'http://www.baidu.com';
+		oA.className = 'box';
+	}
+
+</script>

@@ -1,0 +1,176 @@
+延迟调用: 隔一段时间以后,调用函数
+开启定时器:
+var tid = setTimeout(函数,时间);
+
+关闭定时器:
+clearTimeout(tid);
+
+this: 谁调用的函数,this指的就是谁;不知道谁调用的,this就是window
+
+window: 所有的全局变量,函数
+
+数组:
+1. new Array(1,2,3);
+2. [1,2,3]
+
+属性: length 元素个数
+
+方法:
+concat(): 连接多个数组,返回值是新的数组
+reverse(): 翻转数组
+toString(): 逗号隔开
+join(): 根据符号隔开
+sort(): 默认按照字符排序
+升序:
+sort(function (n1,n2) {
+	return n1 - n2;
+	return n2 - n1;
+})
+
+pop(): 删除最后一个
+push(): 往最后里面添加
+unshift(): 往第一个前面添加
+shift(): 删除第一个
+
+splice(a,b,c): 下标  删除的个数  添加或者替换
+
+indexOf(): 查找元素的下标; IE7以下不好使
+
+遍历数组
+
+在遍历数组的过程中,删除数组里面的元素个数,需要在删除以后,i--
+
+判断数组里面有没有一个值?
+
+function isFindInArr (arr,value) {
+	for (var i = 0;i < arr.lenght;i++) {
+		if (arr[i] == value) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+冒泡排序: 将数组里面的值,和每一个值进行比较,如果小,就换位置
+
+function bubbleSort (arr) {
+	for (var i = 0;i < arr.length;i++) {
+		for (var j = i + 1;j < arr.length;j++) {
+			if (arr[i] > arr[j]) {
+				var temp;
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
+}
+
+字符串的方法:
+charAt(): 根据下标获取元素
+str[下标]: 低版本不支持
+indexOf(): 查找字符的下标;不能找到是-1
+lastIndexOf(): 从右往左查,下标不变
+toUpperCase(): 全部大写
+toLowerCase(): 全部小写
+split(字符): 根据字符分割为数组
+substring(开始位置,结束位置): 包头不包尾
+substr(开始位置,截取长度)
+都是一个值,从开始位置截取到最后
+
+
+时间对象: new Date();
+
+获取:
+getFullYear()
+getMonth()
+getDate()
+getDay() 星期几
+getHours()
+getMinutes()
+getSeconds()
+getTime(): 时间戳
+
+设置年月日
+setFullYear(年,月(从0开始),日)
+setHours(时,分,秒)
+setTime(时间戳)
+
+设置天数的时候,写0天会自动到上个月的最后一天;
+设置天数超过本月的天数,会自动跳到下个月1号;
+
+本月有多少天? 设置当前时间为下个月,设置天数为0天
+
+本月第一天星期几?
+
+根据类名获取元素? 
+
+数据的存储
+磁盘: 存储静态文件,从网络下载的文件,游戏,应用程序
+内存: 只要是运行中的软件,都是在内存里面运行 (对象,变量)
+
+只要定义了变量,相当于在内存中开辟了一片存储空间
+var a = 10;
+
+对象会在内存中开辟两片空间,一片用来保存变量,一片用来保存对象,如果将变量的值赋值给另外一个变量,那么这个变量也可以操作同一个对象,这个就是对象的引用
+
+普通的变量不会互相影响;对象是可以影响的
+
+
+垃圾回收机制  GC   JAVA引入过来的
+
+回收: 浏览器帮你回收
+
+垃圾: 没用东西
+		 没用的变量
+		 	变量的生命周期
+		 		变量的作用域
+全局变量: 生命周期最长,只要浏览器不关闭,那么该变量一直存在 (越少越好)
+局部变量: 生命周期最短,只要不调用函数,变量自动销毁,调用完以后,又消失
+
+封闭空间: (function () {
+	
+})();
+
+闭包: 子函数可以使用父函数的变量
+
+function show () {
+	var a = 10;
+	function show1 () {
+		var b = a;
+		function show2 () {
+			var c = b;
+			var a = 20;
+			function show3 () {
+				
+				var d = a;
+				var e = b;
+				var f = c;
+			}
+		}
+	}
+}
+
+作用域链: 先从自己的作用域找,再从父级找,父级的父级,父级的父级..没有父级了,就是window(全局),全局要是还没有,报错了
+
+
+建议不要嵌套过多的函数
+
+function show () {
+	var a = 10;
+	function show1 (){
+		var b = ;
+	}
+	function show2 () {
+		var c = ;
+	}
+}
+window.onload = function () {
+	var a = 10;
+	function show(){
+		alert(a);
+	}
+}
+
+定义变量的时候不使用var,就是全局变量

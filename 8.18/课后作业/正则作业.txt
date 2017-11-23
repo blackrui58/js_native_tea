@@ -1,0 +1,29 @@
+小练习：
+1. 校验网址
+		{0,2}
+	http://www.baidu.com
+	http://www.baidu.com/
+	http://baidu.com
+	www.baidu.com
+	baidu.com
+	https://www.baidu.com
+	tieba.baidu.com
+	news.baidu.com
+	yuan.news.baidu.com
+	news.baidu.com.cn
+	news.baidu.com.cn.net.org
+2. 校验表单
+	email:  邮箱
+	url: 网址
+	nickname:中文昵称
+	age: 16-100  16<age && age < 100
+	QQ: 
+	tel:座机
+
+3.记住上次拖拽的位置
+4.图片延迟加载
+5.瀑布流
+6.吸顶条
+7.放大镜
+8.自定义滚动条
+9.事件委托

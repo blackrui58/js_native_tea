@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	function Person (name,age) {
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.eat = function () {
+		alert(this.name+'吃饭了');
+	}
+	Person.prototype.sleep = function () {
+		alert(this.name+'睡觉了');
+	}
+
+	function Worker (name,age) {
+		// 继承了属性
+		Person.apply(this,arguments);
+	}
+
+	// 工人的原型 = 人的原型
+	Worker.prototype = Person.prototype;// 错误的 ,对象的引用
+	Worker.prototype.job = function () {
+		alert('job');
+	}
+	var p = new Person('张三',20);
+	var w = new Worker('李四',20);
+	// p.eat();
+	// w.eat();
+	// w.sleep();
+	// w.job();
+	p.job();
+	// console.log(w);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

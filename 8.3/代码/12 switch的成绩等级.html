@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	/*
+	100: 100
+	90以上: 优秀 90-99 
+	80 - 90: 良好 80 - 89 
+	60-80: 及格 60-69 70-79
+	60分以下: 回去再来
+	*/ 
+	var score = prompt('请输入你的分数');
+
+	var s = parseInt(score / 10);
+
+	switch (s) {
+		case 10:
+		case 9: 
+			alert('优秀');
+			break;
+		case 8:
+			alert('良好');
+			break;
+		case 7:
+		case 6: 
+			alert('及格');
+			break;
+		default: 
+			alert('你没用');
+	}
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

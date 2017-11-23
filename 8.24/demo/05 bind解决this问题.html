@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oBtn = document.querySelector('button');
+		oBtn.onclick = function () {
+			// this --> oBtn
+			setTimeout(function (){
+				// this --> oBtn
+				alert(this.innerHTML);
+			}.bind(this),1000);
+		}
+	}
+	</script>
+</head>
+<body>
+	<button>点我</button>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	var data = {
+                act: 'add',
+                user: 'zs',
+                pass: 123
+            };
+    data.t = Math.random();
+    console.log(data);
+    // act=add&user=用户名&pass=密码
+    var arr = [];
+    for (var key in data) {
+    	arr.push(key+'='+data[key]);
+    }
+    // console.log(arr);
+    // 数组转字符串
+    console.log(arr.join('&'));
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

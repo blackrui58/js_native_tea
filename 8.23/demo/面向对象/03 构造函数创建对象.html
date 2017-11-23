@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	function Person (name,age) {
+		this.name = name;
+		this.age = age;
+		this.eat = function () {
+			alert(1);
+		}
+	}
+
+	var p = new Person('zs',18);
+	var p1 = new Person('ls',20);
+
+	var arr = new Array(1,2,3,4);// arr.length: 4
+	var arr1 = new Array(1,2,3,4,5);// arr.length: 5
+
+	console.log(p1,p);
+	console.log(Array.prototype,Array.prototype);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

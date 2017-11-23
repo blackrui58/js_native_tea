@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="ajax.js"></script>
+	<script type="text/javascript">
+	window.onload = function () {
+		var oBtn = document.getElementsByTagName('button')[0];
+		var oImg = document.getElementsByTagName('img')[0];
+		oBtn.onclick = function () {
+			// url: 接口(文件地址)
+			// 数据请求成功的回调函数: fn data就是文件里面的数据
+			// 数据请求失败的回调函数
+			ajax('1.jso?t='+Math.random(),function (data) {
+				alert(data);
+			},function (err) {
+				console.log(err);
+			});
+		}
+	}
+	</script>
+</head>
+<body>
+	<button>获取</button>
+	<img src="">
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+
+	// 加0	
+	function addZero (n) {
+		if (n < 10) {
+			return '0'+n;
+		} else {
+			return n;
+		}
+	}
+
+	window.onload = function () {
+		var oH2 = document.getElementsByTagName('h2')[0];
+
+		setInterval(function () {
+			var oDate = new Date();
+			// 单独设置分
+			oDate.setMinutes(1);
+			var hour = oDate.getHours();
+
+			var minutes = oDate.getMinutes();
+
+			var seconds = oDate.getSeconds();
+
+			oH2.innerHTML = addZero(hour)+':'+addZero(minutes)+':'+addZero(seconds);
+		},1000);
+	}
+	</script>
+</head>
+<body>
+	<h2></h2>
+</body>
+</html>

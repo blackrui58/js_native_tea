@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<button>显示</button>
+	<ul style="display: none;">
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+	</ul>
+</body>
+</html>
+<script type="text/javascript">
+	var oBtn = document.getElementsByTagName('button')[0];
+	var oUl = document.getElementsByTagName('ul')[0];
+	oBtn.onclick = function (evt) {
+		evt = evt || window.event;
+		evt.cancelBubble = true;
+		oUl.style.display = 'block';
+	}
+	document.onclick = function () {
+		oUl.style.display = 'none';
+	}
+</script>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload = function () {
+			var oBtn = document.getElementsByTagName('button')[0];
+			oBtn.aaa = '123'
+			// alert(oBtn.index);
+			// oBtn.setAttribute('index',1);
+
+			alert(oBtn.getAttribute('aaa'));
+		}
+	</script>
+</head>
+<body>
+	<button index="0" title="wqe">aaa</button>
+	<button index="1">bbb</button>
+	<button index="2">ccc</button>
+</body>
+</html>

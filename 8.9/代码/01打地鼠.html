@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 10px;
+			padding: 0;
+			list-style: none;
+			text-align: center;
+		}
+		button {
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+		}
+		ul {
+			width: 300px;
+			overflow: hidden;
+			margin: 0 auto;
+			background: #ccc;
+		}
+		ul li {
+			float: left;
+			margin: 10px;
+			/*margin-top: 10px;*/
+			width: 80px;
+			height: 80px;
+			background-color: pink;
+			position: relative;
+			border-radius: 50%;
+		}
+		ul li button {
+			width: 50px;
+			height: 50px;
+			background-color: orange;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -25px;
+			margin-top: -25px;
+			outline: none;
+			border-radius: 50%;
+		}
+	</style>
+	<script type="text/javascript">
+	// 随机数
+	function random (n,m) {
+		return Math.floor(Math.random() * (m - n) + n);
+	}
+
+	window.onload = function () {
+		// 开始按钮
+		var beginBtn = document.getElementsByTagName('button')[0];
+		// 得分
+		var oH1 = document.getElementsByTagName('h1')[0];
+		var oUl = document.getElementsByTagName('ul')[0];
+
+		// 所有的老鼠
+		var aBtn = oUl.getElementsByTagName('button');
+
+		//时间
+		var oH2 = document.getElementsByTagName('h2')[0];
+
+		// 时间
+		var time = 60;
+
+		// 分数
+		var score = 0;
+
+		// 定时器名字
+		var tid = null;
+		// 老鼠的定时器
+		var tid2 = null;
+
+		//每隔多少的时间
+		var times = 800;
+
+		beginBtn.onclick = function () {
+
+			// 给每只老鼠添加点击事件
+			for (var i = 0;i < aBtn.length;i++) {
+					aBtn[i].onclick = function () {
+						score++;
+						// 得分
+						oH1.innerHTML = '得分'+score;
+						// 隐藏
+						this.style.display = 'none';
+						// 每得两分,时间加快100ms
+						if (score % 10 == 0) {
+							times -= 100;
+						}
+					}
+				}
+
+			// 关闭定时器
+			clearInterval(tid);
+			// 开启定时器
+			tid = setInterval(function () {
+				time--;
+				oH2.innerHTML = '时间:'+time;
+				
+				//清除老鼠的定时器
+				clearInterval(tid2);
+				// 开启定时器-->显示老鼠的
+				tid2 = setInterval(function () {
+					// 显示老鼠
+					// 先隐藏所有的老鼠
+					for (var i = 0;i < aBtn.length;i++) {
+						aBtn[i].style.display = 'none';
+					}
+					// 0-8
+					aBtn[random(0,9)].style.display = 'block';
+				},times);
+
+				// 如果time = 0,游戏结束-->关闭两个定时器;显示所有的老鼠;不能点击
+				if (time == 55) {
+					clearInterval(tid);
+					clearInterval(tid2);
+					for (var i = 0;i < aBtn.length;i++) {
+						aBtn[i].style.display = 'block';
+						// 清空每只老鼠的点击事件
+						aBtn[i].onclick = null;
+					}
+				}
+
+			},1000)
+		}
+	}
+	</script>
+</head>
+<body>
+	<button>开始游戏</button>
+	<h1>得分: 0</h1>
+	<ul>
+		<li><button>老鼠</button></li>
+		<li><button>老鼠</button></li>
+		<li><button>老鼠</button></li>
+		<li><button>老鼠</button></li>
+		<li><button>老鼠</button></li>
+		<li><button>老鼠</button></li>
+		<li><button>老鼠</button></li>
+		<li><button>老鼠</button></li>
+		<li><button>老鼠</button></li>
+	</ul>
+	<h2>时间: 60</h2>
+</body>
+</html>

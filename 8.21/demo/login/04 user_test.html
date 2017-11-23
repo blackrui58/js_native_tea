@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>用户注册ajax接口测试</title>
+<link type="text/css" rel="stylesheet" href="style/common.css">
+</head>
+<script type="text/javascript" src="new_ajax1.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        // alert(decodeURIComponent('%E5%93%88%E5%93%88'));
+        // 注册
+        var add_user = document.getElementById('add_user');
+        var add_pass = document.getElementById('add_pass');
+        var add_btn = document.getElementById('add_btn');
+
+        // 登录
+        var login_user = document.getElementById('login_user');
+        var login_pass = document.getElementById('login_pass');
+        var login_btn = document.getElementById('login_btn');
+        // 注册
+        add_btn.onclick = function () {
+
+            var add_user_name = encodeURIComponent(add_user.value);
+            var url = 'user.php';
+            var data = {
+                act: 'add',
+                user: add_user_name,
+                pass: add_pass.value,
+            };
+            // var url = 'user.php?act=add&user='+add_user_name+'&pass='+add_pass.value+'&t='+Math.random();
+            // console.log(url);
+            ajax(url,data,function (str) {
+                var json = eval('('+str+')')
+                console.log(json);
+                if (json.error) {
+                    alert('注册失败,失败原因'+json.desc);
+                } else {
+                    alert(json.desc);
+                    add_user.value = '';
+                    add_pass.value = '';
+                }
+
+            });
+        }
+        //登录
+        login_btn.onclick = function () {
+            var login_user_name = encodeURIComponent(login_user.value);
+            // alert(login_user_name)
+            // var url = 'user.php?act=login&user='+login_user_name+'&pass='+login_pass.value+'&t='+Math.random();
+            var url = 'user.php';
+            var data = {
+                act: 'login',
+                user: login_user_name,
+                pass: login_pass.value
+            };
+            // console.log(url);
+            ajax(url,data,function (str) {
+                var json = eval('('+str+')')
+                console.log(json);
+                if (json.error) {
+                    alert('登录失败,失败原因'+json.desc);
+                } else {
+                    alert(json.desc);
+                    login_user.value = '';
+                    login_pass.value = '';
+                }
+
+            });
+        }
+
+
+    }
+</script>
+<body>
+<!--登陆-->
+<div class="loginBox">
+	<ul class="loginList clearfix">
+    	<li class="hTxt">用户注册</li>
+        <li class="inputBox">
+        	<input type="text" class="inputs" id="add_user">
+        </li>
+        <li class="inputBox">
+        	<input type="password" class="inputs" id="add_pass">
+        </li>
+        <li class="btns">
+            <input id="add_btn" type="button" class="reg" value="" />
+        </li>
+        <li class="look"><a href="user_view.php" target="_blank">查看已注册用户</a></li>
+    </ul>
+</div>
+<!--注册-->
+<div class="loginBox">
+	<ul class="loginList clearfix">
+    	<li class="hTxt">用户登陆</li>
+        <li class="inputBox">
+        	<input type="text" class="inputs" id="login_user">
+        </li>
+        <li class="inputBox">
+        	<input type="password" class="inputs" id="login_pass">
+        </li>
+        <li class="btns">
+            <input id="login_btn" type="button" class="login" value="" />
+        </li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload = function () {
+		var t1 = document.getElementById('t1');
+		var t2 = document.getElementById('t2');
+		var oBtn = document.getElementsByTagName('button')[0];
+		oBtn.onclick = function () {
+			// t2.value = t1.value.replace(/^/gm,'  ');
+			t2.value = t1.value.replace(/$/mg,'##');
+		}
+	}
+	</script>
+</head>
+<body>
+	<textarea id="t1"></textarea>
+	<button>整理</button>
+	<textarea id="t2"></textarea>
+</body>
+</html>

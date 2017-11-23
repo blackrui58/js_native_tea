@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	/*
+	如果明天下雨,那不用上课;
+	如果明天多云,上半天课;
+	如果明天下刀,必须上课;
+	如果明天下冰雹,发红包;
+	*/ 
+	var weather = prompt('输入明天天气');
+
+	switch (weather) {
+		case '下雨':
+			alert('不用上课');
+			break;
+		case '多云':
+			alert('上半天课');
+			break;
+		case '下刀':
+			alert('必须上课');
+			break;
+		case '下冰雹':
+			alert('下冰雹');
+			break;
+		default: //以上条件都不满足,就走default
+			alert('爱咋地咋地');
+	}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

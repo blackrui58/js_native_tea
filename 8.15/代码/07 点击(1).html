@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		body {
+			height: 1000px;
+		}
+	</style>
+	<script type="text/javascript">
+	document.onclick = function (evt) {
+		//事件的兼容
+		evt = evt || window.event;
+		console.log('client:'+evt.clientX,evt.clientY);
+		console.log('page:'+evt.pageX,evt.pageY);
+		// console.log('x:'+evt.x,evt.y);
+		// console.log(evt.screenX,evt.screenY);
+	}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

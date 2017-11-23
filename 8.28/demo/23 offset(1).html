@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			margin: 200px;
+			position: absolute;
+			left: 100px;
+			background: #ccc;
+		}
+	</style>
+	<script type="text/javascript" src="jq1.7.2/jquery.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		console.log($('div').offset().left);
+		console.log($('div').offset().top);
+	})
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>
